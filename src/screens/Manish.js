@@ -1,12 +1,24 @@
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
+import Login from './Login';
 
 const Manish = () => {
     return (
-        <View>
-            <Text>Manish</Text>
-        </View>
+        <>
+            <View style={styles.container}>
+                <Login />
+            </View>
+        </>
     )
 }
 
-export default Manish
+export default Manish;
+
+
+const styles = StyleSheet.create({
+    container: {
+        backgroundColor: "#FAFAFA",
+        flex: 1,
+    }
+
+})
