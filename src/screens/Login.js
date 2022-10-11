@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-import CommanTextInput from '../components/CommanTextInput';
+import CommanTextInput from '../components/CommonTextInput';
 import MainButton from '../components/MainButton';
 
 const Login = () => {
@@ -19,7 +19,7 @@ const Login = () => {
                 <CommanTextInput
                     name='Password'
                     style={styles.InputView}
-                    styles={styles.textInputSyle} />
+                    styles={styles.textInputStyle} />
             </View>
             <MainButton
                 name='Login'
@@ -46,7 +46,7 @@ const styles = StyleSheet.create({
         // justifyContent: "space-evenly",
         marginHorizontal: 20
     },
-    textInputSyle: {
+    textInputStyle: {
         height: 40,
         width: "100%",
         fontSize: 16,

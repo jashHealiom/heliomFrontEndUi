@@ -18,7 +18,3 @@ const CommanTextInput = (props) => {
 }
 
 export default CommanTextInput
-const styles = StyleSheet.create({
-
-
-})
