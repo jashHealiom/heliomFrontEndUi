@@ -12,14 +12,16 @@ const Login = () => {
                 <CommanTextInput
                     name='Email'
                     style={styles.InputView}
-                    styles={styles.textInputSyle} />
+                    styles={styles.textInputSyle}
+                />
             </View>
             <View style={{ marginTop: 20 }}>
                 <Text style={styles.labelEmailTextLogin}>PASSWORD</Text>
                 <CommanTextInput
                     name='Password'
                     style={styles.InputView}
-                    styles={styles.textInputStyle} />
+                    styles={styles.textInputStyle}
+                />
             </View>
             <MainButton
                 name='Login'
