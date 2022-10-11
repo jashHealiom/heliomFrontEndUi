@@ -18,6 +18,7 @@ const Login = () => {
                 <Text style={styles.labelEmailTextLogin}>PASSWORD</Text>
                 <CommanTextInput
                     name='Password'
+                    screenName={'login'}
                     style={styles.InputView}
                     styles={styles.textInputStyle} />
             </View>
