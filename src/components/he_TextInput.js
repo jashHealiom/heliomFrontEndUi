@@ -15,9 +15,10 @@ const CommanTextInput = (props) => {
                 onChangeText={props.onChangeText}
                 value={props.value}
             />
-            {/* {props.screenName != 'login' ? (<View>
+            {/* {props.screenName == 'login' ?(<View>
                 <Text>AGFDJHAGDJKJAS</Text>
-            </View>):null} */}
+                //login icon
+            </View>): //tick icon } */}
         </View>
     )
 }
