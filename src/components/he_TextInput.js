@@ -1,7 +1,7 @@
 import { View, Text, StyleSheet, TextInput } from 'react-native'
 import React from 'react'
 
-const CommanTextInput = (props) => {
+const He_TextInput = (props) => {
     // screen type
     // image
     return (
@@ -15,6 +15,7 @@ const CommanTextInput = (props) => {
                 onChangeText={props.onChangeText}
                 value={props.value}
             />
+
             {/* {props.screenName == 'login' ?(<View>
                 <Text>AGFDJHAGDJKJAS</Text>
                 //login icon
@@ -23,4 +24,4 @@ const CommanTextInput = (props) => {
     )
 }
 
-export default CommanTextInput
+export default He_TextInput

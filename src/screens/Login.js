@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import CommanTextInput from '../components/he_TextInput';
+import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
 import Dropdown from '../components/he_DropDown';
 import RadioButton from '../components/he_RadioButton';
@@ -43,7 +43,7 @@ const Login = () => {
                 (<>
                     <View style={styles.EmailInputContainer}>
                         <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
-                        <CommanTextInput
+                        <He_TextInput
                             name='Email'
                             style={styles.InputView}
                             styles={styles.textInputSyle}
@@ -59,7 +59,7 @@ const Login = () => {
                                 <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}
                                     ButtonStyle={styles.ButtonStyleCountry_Code}
                                     overlay={styles.DropDownoverlayCountry_Code} />
-                                <CommanTextInput
+                                <He_TextInput
                                     name='Moblie No'
                                     screenName={'login'}
                                     style={styles.InputView1}
@@ -71,7 +71,7 @@ const Login = () => {
                 )}
             <View style={styles.EmailInputContainer}>
                 <Text style={styles.labelEmailTextLogin}>PASSWORD</Text>
-                <CommanTextInput
+                <He_TextInput
                     name='Password'
                     screenName={'login'}
                     style={styles.InputView}

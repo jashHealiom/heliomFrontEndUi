@@ -76,12 +76,13 @@ module.exports = StyleSheet.create({
         position: 'absolute',
         backgroundColor: '#fff',
         width: '100%',
-        height: 122,
+        height: 200,
         shadowColor: '#000000',
         shadowRadius: 4,
         shadowOffset: { height: 4, width: 0 },
         shadowOpacity: 0.5,
     },
+
     overlay: {
         width: '90%',
         height: '50%',
@@ -90,6 +91,16 @@ module.exports = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 20,
     },
+    SelectedDropDownItem: {
+        flexDirection: 'row', borderWidth: 1,
+        marginRight: 5,
+        justifyContent: "center", alignItems: "center",
+        borderColor: "#24DAC6", borderRadius: 20
+    },
+    SelectedDropDownContainer: {
+        flexDirection: "row", width: "100%", backgroundColor: "#FAFAFA",
+    },
+    SelectedDropDownText: { color: "#24DAC6" },
     item: {
         paddingHorizontal: 10,
         paddingVertical: 10,

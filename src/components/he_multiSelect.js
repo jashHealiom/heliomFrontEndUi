@@ -8,70 +8,90 @@ import {
     View,
     SafeAreaView,
 } from 'react-native';
-// import { Icon } from 'react-native-elements';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 
-const Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
+const styles = require("../assets/css/ComponentStyle");
+export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
     const DropdownButton = useRef();
     const [visible, setVisible] = useState(false);
     const [selected, setSelected] = useState([]);
     const [dropdownTop, setDropdownTop] = useState(0);
-    const [isScrollEnabled, setIsScrollEnabled] = useState(true);
 
-    // useEffect(() => {
-    //     setTimeout(() => {
-    //         setIsScrollEnabled(true);
-    //     }, 3000);
-    // }, []);
-    const toggleDropdown = ()=> {
+
+    const toggleDropdown = () => {
         visible ? setVisible(false) : openDropdown();
     };
 
-    const openDropdown = ()=> {
+    const openDropdown = () => {
         DropdownButton.current.measure((_fx, _fy, _w, h, _px, py) => {
             setDropdownTop(py + h);
         });
         setVisible(true);
     };
 
-    const onItemPress = (item, selectedData)=> {
-        // if item not present in selectedData
-        setSelected((selectedData)=>[...selectedData, item]); //render this in flatlist row wala with 2-3 columns
-        // warna kn
+    const onItemPress = (item) => {
+        setSelected(item);
         onSelect(item);
         setVisible(false);
     };
+    const InsertDropDownValue = (item) => {
+        let selectedItem = selected;
+        var obj = {};
+        obj["label"] = item.label
+        obj["value"] = item.value;
+        selectedItem.push(obj);
+        setSelected(selectedItem);
+        onSelect(item);
+        // setVisible(false);
+    };
+    const DeleteDropDownValue = (index) => {
+        var newData = [...selected]
+        if (index > -1) {
+            newData.splice(index, 1);
+            setSelected(newData);
+        }
+    }
 
-    const renderItem = ({ item })=> (
-        <TouchableOpacity style={styles.item} onPress={() => onItemPress(item, selected)}>
+    const renderItem = ({ item }) => (
+        <TouchableOpacity style={styles.item} onPress={() => InsertDropDownValue(item)} >
             <Text>{item.label}</Text>
         </TouchableOpacity>
     );
 
-    const renderDropdown = ()=> {
+    const renderDropdown = () => {
         return (
             <Modal visible={visible} transparent animationType="none">
-                {/* <SafeAreaView> */}
-                    <TouchableOpacity
-                        style={overlay}
-                        onPress={() => setVisible(false)}
-                    >
-                        <View style={[styles.dropdown, { top: dropdownTop }]}>
-                            <FlatList
-                                data={data}
-                                isScrollEnabled={true}
-                                renderItem={renderItem}
-                                keyExtractor={(item, index) => index.toString()}
-                            />
+                <TouchableOpacity
+                    style={overlay}
+                    onPress={() => setVisible(false)}
+                >
+                    <View style={[styles.dropdown, { top: dropdownTop, }]}>
+                        <FlatList
+                            data={data}
+                            scrollEnabled={true}
+                            renderItem={renderItem}
+                            keyExtractor={(item, index) => index.toString()}
+                        />
+                        <View style={styles.SelectedDropDownContainer}>
+                            {selected.map((item, index) => {
+                                return <View style={styles.SelectedDropDownItem}>
+                                    <Text style={styles.SelectedDropDownText}>{item.value}</Text>
+                                    <TouchableOpacity onPress={() => DeleteDropDownValue(index)} >
+                                        <Icon name="close-outline" color="#24DAC6" size={30} />
+                                    </TouchableOpacity>
+                                </View>
+                            })}
                         </View>
-                    </TouchableOpacity>
-                {/* </SafeAreaView> */}
+                    </View>
+
+
+                </TouchableOpacity>
             </Modal>
         );
     };
 
     return (
-        <View>
         <TouchableOpacity
             ref={DropdownButton}
             style={ButtonStyle}
@@ -83,57 +103,8 @@ const Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
             </Text>
             {/* <Icon style={styles.icon} type="font-awesome" name="chevron-down" /> */}
         </TouchableOpacity>
-        {/* flatlist with row, columns */}
-        </View>
     );
 };
 
 
-const styles = StyleSheet.create({
-    button: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        backgroundColor: '#FAFAFA',
-        height: 40,
-        zIndex: 1,
-        width: '100%', borderBottomWidth: 1,
-        borderBottomColor: "#000",
-
-    },
-    buttonText: {
-        flex: 1,
-        // textAlign: 'center',
-    },
-    icon: {
-        marginRight: 10,
-    },
-    dropdown: {
-        // position: 'absolute',
-        backgroundColor: '#fff',
-        width: '100%',
-        height: 122,
-        shadowColor: '#000000',
-        shadowRadius: 4,
-        shadowOffset: { height: 4, width: 0 },
-        shadowOpacity: 0.5,
-    },
-    overlay: {
-        width: '90%',
-        height: '50%',
-        // backgroundColor: "#f2f",
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginHorizontal: 20,
-    },
-    item: {
-        paddingHorizontal: 10,
-        paddingVertical: 10,
-        borderBottomWidth: 1,
-        borderLeftWidth: 1,
-        borderRightWidth: 1,
-        borderColor: "#24DAC6"
-    },
-});
-
-export default Dropdown;
 
