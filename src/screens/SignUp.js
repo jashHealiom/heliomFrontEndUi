@@ -72,7 +72,7 @@ const SignUp = () => {
                         <Dropdown label="Select Item" data={ArrayData.gender} onSelect={setSelected} ButtonStyle={styles.ButtonStyle} overlay={styles.DropDownoverlay} />
                     </View>
                     <View style={styles.EmailInputContainer}>
-                        <Text style={styles.TitleText}>MOBILE</Text>
+                        <Text style={styles.TitleText}>MOBLIE</Text>
                         <View style={styles.MobileInputContainer}>
                             <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}
                                 ButtonStyle={styles.ButtonStyleCountry_Code} overlay={styles.DropDownoverlay} />

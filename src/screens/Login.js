@@ -51,7 +51,7 @@ const Login = () => {
                 (
                     <>
                         <View style={{ marginTop: 20, }}>
-                            <Text style={styles.labelEmailTextLogin}>Moblie</Text>
+                            <Text style={styles.labelEmailTextLogin}>MOBILE</Text>
                             <View style={styles.MobileInputContainer}>
                                 <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}
                                     ButtonStyle={styles.ButtonStyleCountry_Code}
