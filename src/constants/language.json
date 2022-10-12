@@ -1,0 +1,20 @@
+{
+    "language": [
+        {
+            "label": "English",
+            "value": "English"
+        },
+        {
+            "label": "Spanish",
+            "value": "Spanish"
+        },
+        {
+            "label": "Chinese Mandarin",
+            "value": "Chinese Mandarin"
+        },
+        {
+            "label": "Chinese Cantonese",
+            "value": "Chinese Cantonese"
+        }
+    ]
+}
