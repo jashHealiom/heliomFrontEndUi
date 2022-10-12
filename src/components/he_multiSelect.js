@@ -14,9 +14,15 @@ import {
 const Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
     const DropdownButton = useRef();
     const [visible, setVisible] = useState(false);
-    const [selected, setSelected] = useState(undefined);
+    const [selected, setSelected] = useState([]);
     const [dropdownTop, setDropdownTop] = useState(0);
+    const [isScrollEnabled, setIsScrollEnabled] = useState(true);
 
+    // useEffect(() => {
+    //     setTimeout(() => {
+    //         setIsScrollEnabled(true);
+    //     }, 3000);
+    // }, []);
     const toggleDropdown = ()=> {
         visible ? setVisible(false) : openDropdown();
     };
@@ -28,14 +34,16 @@ const Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
         setVisible(true);
     };
 
-    const onItemPress = (item)=> {
-        setSelected(item);
+    const onItemPress = (item, selectedData)=> {
+        // if item not present in selectedData
+        setSelected((selectedData)=>[...selectedData, item]); //render this in flatlist row wala with 2-3 columns
+        // warna kn
         onSelect(item);
         setVisible(false);
     };
 
     const renderItem = ({ item })=> (
-        <TouchableOpacity style={styles.item} onPress={() => onItemPress(item)}>
+        <TouchableOpacity style={styles.item} onPress={() => onItemPress(item, selected)}>
             <Text>{item.label}</Text>
         </TouchableOpacity>
     );
@@ -43,6 +51,7 @@ const Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
     const renderDropdown = ()=> {
         return (
             <Modal visible={visible} transparent animationType="none">
+                {/* <SafeAreaView> */}
                     <TouchableOpacity
                         style={overlay}
                         onPress={() => setVisible(false)}
@@ -50,17 +59,19 @@ const Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
                         <View style={[styles.dropdown, { top: dropdownTop }]}>
                             <FlatList
                                 data={data}
-                                scrollEnabled={true}
+                                isScrollEnabled={true}
                                 renderItem={renderItem}
                                 keyExtractor={(item, index) => index.toString()}
                             />
                         </View>
                     </TouchableOpacity>
+                {/* </SafeAreaView> */}
             </Modal>
         );
     };
 
     return (
+        <View>
         <TouchableOpacity
             ref={DropdownButton}
             style={ButtonStyle}
@@ -72,6 +83,8 @@ const Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
             </Text>
             {/* <Icon style={styles.icon} type="font-awesome" name="chevron-down" /> */}
         </TouchableOpacity>
+        {/* flatlist with row, columns */}
+        </View>
     );
 };
 
@@ -95,7 +108,7 @@ const styles = StyleSheet.create({
         marginRight: 10,
     },
     dropdown: {
-        position: 'absolute',
+        // position: 'absolute',
         backgroundColor: '#fff',
         width: '100%',
         height: 122,

@@ -1,12 +1,12 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CommanTextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
 import Dropdown from '../components/he_DropDown';
 import RadioButton from '../components/he_RadioButton';
 import Country_Code from '../constants/Country_Code.json';
 const styles = require("../assets/css/Style");
-const Login = () => {
+const Login = () => {    
     const [selectedOption, setSelectedOption] = useState('Email');
     const [selected, setSelected] = useState(undefined);
     const [Email, setEmail] = useState('')
@@ -27,12 +27,15 @@ const Login = () => {
             setSelectedOption(item);
         }
     };
+    useEffect(()=>{
+        onSelect(options[0])
+    },[])
     return (
         <View style={styles.MainView}>
             <Text style={styles.HeadText}>Log In</Text>
             <RadioButton
                 selectedOption={selectedOption}
-                onSelect={onSelect}
+                onSelect={(item)=>onSelect(item)}
                 options={options}
                 type={options.text}
             />
