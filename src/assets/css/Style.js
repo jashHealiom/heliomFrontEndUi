@@ -26,6 +26,7 @@ module.exports = StyleSheet.create({
     textInputStyle1: {
         height: 40,
         width: "100%",
+        paddingLeft: 0,
         fontSize: 16,
         backgroundColor: "#fff"
 
@@ -105,7 +106,7 @@ module.exports = StyleSheet.create({
         marginRight: 10,
     },
     dropdown: {
-        position: 'absolute',
+        // position: 'absolute',
         backgroundColor: '#fff',
         width: '20%',
         shadowColor: '#000000',

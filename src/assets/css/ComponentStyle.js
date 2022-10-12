@@ -1,6 +1,9 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from "react-native";
 
-const styles = StyleSheet.create({
+const windowHeight = Dimensions.get("window").height;
+const windowWidth = Dimensions.get("window").width;
+
+module.exports = StyleSheet.create({
     button: {
         height: 20,
         width: 20,
@@ -34,8 +37,8 @@ const styles = StyleSheet.create({
     },
 
     Radiocircle: {
-        height: 20,
-        width: 20,
+        height: 18,
+        width: 18,
         borderRadius: 10,
         borderWidth: 1,
         borderColor: '#ACACAC',
@@ -44,11 +47,55 @@ const styles = StyleSheet.create({
     },
 
     RadiocheckedCircle: {
-        width: 14,
-        height: 14,
+        width: 13,
+        height: 13,
         borderRadius: 7,
-        backgroundColor: '#794F9B',
+        backgroundColor: '#24DAC6',
     },
-});
+    RadioButtonItem: {
+        marginLeft: 8
+    },
+    button: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#FAFAFA',
+        height: 40,
+        zIndex: 1,
+        width: '100%', borderBottomWidth: 1,
+        borderBottomColor: "#000",
 
-export default styles;
+    },
+    buttonText: {
+        flex: 1,
+        // textAlign: 'center',
+    },
+    icon: {
+        marginRight: 10,
+    },
+    dropdown: {
+        position: 'absolute',
+        backgroundColor: '#fff',
+        width: '100%',
+        height: 122,
+        shadowColor: '#000000',
+        shadowRadius: 4,
+        shadowOffset: { height: 4, width: 0 },
+        shadowOpacity: 0.5,
+    },
+    overlay: {
+        width: '90%',
+        height: '50%',
+        // backgroundColor: "#f2f",
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginHorizontal: 20,
+    },
+    item: {
+        paddingHorizontal: 10,
+        paddingVertical: 10,
+        borderBottomWidth: 1,
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderColor: "#24DAC6"
+    },
+})

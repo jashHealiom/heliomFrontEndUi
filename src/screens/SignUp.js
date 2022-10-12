@@ -75,7 +75,8 @@ const SignUp = () => {
                         <Text style={styles.TitleText}>MOBLIE</Text>
                         <View style={styles.MobileInputContainer}>
                             <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}
-                                ButtonStyle={styles.ButtonStyleCountry_Code} overlay={styles.DropDownoverlay} />
+                                ButtonStyle={styles.ButtonStyleCountry_Code}
+                                overlay={styles.DropDownoverlayCountry_Code} />
                             <CommanTextInput
                                 name='Moblie No'
                                 screenName={'login'}
