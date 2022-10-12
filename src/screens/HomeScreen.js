@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native'
 import React from 'react'
-import MainButton from '../components/MainButton'
+import MainButton from '../components/he_Button'
 
 const HomeScreen = ({ navigation }) => {
     return (

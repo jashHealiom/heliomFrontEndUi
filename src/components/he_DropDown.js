@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useRef, useState } from 'react';
+import React, { FC, ReactElement, useRef, useState, useEffect } from 'react';
 import {
     FlatList,
     StyleSheet,
@@ -7,7 +7,6 @@ import {
     Modal,
     View,
     SafeAreaView,
-    ScrollView,
 } from 'react-native';
 // import { Icon } from 'react-native-elements';
 
@@ -15,14 +14,22 @@ interface Props {
     label: string;
     data: Array<{ label: string; value: string }>;
     onSelect: (item: { label: string; value: string }) => void;
+    ButtonStyle: style;
+    overlay: style;
 }
 
-const Dropdown: FC<Props> = ({ label, data, onSelect }) => {
+const Dropdown: FC<Props> = ({ label, data, onSelect, ButtonStyle, overlay }) => {
     const DropdownButton = useRef();
     const [visible, setVisible] = useState(false);
     const [selected, setSelected] = useState(undefined);
     const [dropdownTop, setDropdownTop] = useState(0);
+    const [isScrollEnabled, setIsScrollEnabled] = useState(false);
 
+    useEffect(() => {
+        setTimeout(() => {
+            setIsScrollEnabled(true);
+        }, 3000);
+    }, []);
     const toggleDropdown = (): void => {
         visible ? setVisible(false) : openDropdown();
     };
@@ -50,29 +57,28 @@ const Dropdown: FC<Props> = ({ label, data, onSelect }) => {
         return (
             <Modal visible={visible} transparent animationType="none">
                 <SafeAreaView>
-                    {/* <ScrollView> */}
                     <TouchableOpacity
-                        style={styles.overlay}
+                        style={overlay}
                         onPress={() => setVisible(false)}
                     >
                         <View style={[styles.dropdown, { top: dropdownTop }]}>
                             <FlatList
                                 data={data}
+                                scrollEnabled={isScrollEnabled}
                                 renderItem={renderItem}
                                 keyExtractor={(item, index) => index.toString()}
                             />
                         </View>
                     </TouchableOpacity>
-                    {/* </ScrollView> */}
                 </SafeAreaView>
-            </Modal >
+            </Modal>
         );
     };
 
     return (
         <TouchableOpacity
             ref={DropdownButton}
-            style={styles.button}
+            style={ButtonStyle}
             onPress={toggleDropdown}
         >
             {renderDropdown()}
@@ -106,6 +112,7 @@ const styles = StyleSheet.create({
         position: 'absolute',
         backgroundColor: '#fff',
         width: '100%',
+        height: 122,
         shadowColor: '#000000',
         shadowRadius: 4,
         shadowOffset: { height: 4, width: 0 },

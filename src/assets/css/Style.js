@@ -12,7 +12,7 @@ module.exports = StyleSheet.create({
     },
     MainView: {
         flex: 1,
-        marginTop: 60,
+        marginTop: 40,
         backgroundColor: "#FAFAFA",
         marginHorizontal: 20
     },
@@ -69,8 +69,73 @@ module.exports = StyleSheet.create({
     },
     MobileInputContainer: {
         flexDirection: "row", width: "100%",
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 40
     },
     EmailInputContainer: {
         marginTop: 12
-    }
+    },
+    ButtonStyle: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#FAFAFA',
+        height: 40,
+        zIndex: 1,
+        width: '100%', borderBottomWidth: 1,
+        borderBottomColor: "#000",
+
+    },
+    ButtonStyleCountry_Code: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+        backgroundColor: '#FAFAFA',
+        height: 40,
+        zIndex: 1,
+        width: '20%', borderBottomWidth: 1,
+        borderBottomColor: "#000",
+
+    },
+    buttonText1: {
+        flex: 1,
+        // textAlign: 'center',
+    },
+    icon: {
+        marginRight: 10,
+    },
+    dropdown: {
+        position: 'absolute',
+        backgroundColor: '#fff',
+        width: '20%',
+        shadowColor: '#000000',
+        shadowRadius: 4,
+        shadowOffset: { height: 4, width: 0 },
+        shadowOpacity: 0.5,
+    },
+    DropDownoverlay: {
+        width: '90%',
+        height: '50%',
+        // backgroundColor: "#f2f",
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginHorizontal: 20,
+    },
+    DropDownoverlayCountry_Code: {
+        width: '19%',
+        height: '50%',
+        // backgroundColor: "#f2f",
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginHorizontal: 20,
+    },
+    item: {
+        paddingHorizontal: 10,
+        paddingVertical: 10,
+        borderBottomWidth: 1,
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderColor: "#24DAC6"
+    },
+
 })
