@@ -1,0 +1,24 @@
+{
+	"gender": [
+		{
+			"label": "Male",
+			"value": "Male"
+		},
+		{
+			"label": "Female",
+			"value": "Female"
+		},
+		{
+			"label": "Nonbinary",
+			"value": "Nonbinary"
+		},
+		{
+			"label": "Male Born Female",
+			"value": "Male Born Female"
+		},
+		{
+			"label": "Female Born Male",
+			"value": "Female Born Male"
+		}
+	]
+}

@@ -1,85 +1,90 @@
 import { View, Text, StyleSheet } from 'react-native'
-import React from 'react'
-import CommanTextInput from '../components/CommonTextInput';
-import MainButton from '../components/MainButton';
-
+import React, { useState } from 'react'
+import CommanTextInput from '../components/he_TextInput';
+import MainButton from '../components/he_Button';
+import Dropdown from '../components/he_DropDown';
+import RadioButton from '../components/he_RadioButton';
+import Country_Code from '../constants/Country_Code.json';
+const styles = require("../assets/css/Style");
 const Login = () => {
+    const [selectedOption, setSelectedOption] = useState('Email');
+    const [selected, setSelected] = useState(undefined);
+    const [Email, setEmail] = useState('')
+    const options = [
+        {
+            key: 'Email',
+            text: 'Email',
+        },
+        {
+            key: 'Moblie',
+            text: 'Moblie',
+        },
+    ];
+    const onSelect = (item) => {
+        if (selectedOption && selectedOption.key === item.key) {
+            setSelectedOption(null);
+        } else {
+            setSelectedOption(item);
+        }
+    };
     return (
         <View style={styles.MainView}>
-            <Text style={styles.loginHeadText}>Log In</Text>
-            <View style={{ marginTop: 20 }}>
-                <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
-                <CommanTextInput
-                    name='Email'
-                    style={styles.InputView}
-                    styles={styles.textInputSyle} />
-            </View>
-            <View style={{ marginTop: 20 }}>
+            <Text style={styles.HeadText}>Log In</Text>
+            <RadioButton
+                selectedOption={selectedOption}
+                onSelect={onSelect}
+                options={options}
+                type={options.text}
+            />
+            {selectedOption.key === 'Email' ?
+                (<>
+                    <View style={styles.EmailInputContainer}>
+                        <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
+                        <CommanTextInput
+                            name='Email'
+                            style={styles.InputView}
+                            styles={styles.textInputSyle}
+                        />
+                    </View>
+                </>
+                ) :
+                (
+                    <>
+                        <View style={{ marginTop: 20, }}>
+                            <Text style={styles.labelEmailTextLogin}>Moblie</Text>
+                            <View style={styles.MobileInputContainer}>
+                                <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}
+                                    ButtonStyle={styles.ButtonStyleCountry_Code}
+                                    overlay={styles.DropDownoverlayCountry_Code} />
+                                <CommanTextInput
+                                    name='Moblie No'
+                                    screenName={'login'}
+                                    style={styles.InputView1}
+                                    styles={styles.textInputStyle1}
+                                />
+                            </View>
+                        </View>
+                    </>
+                )}
+            <View style={styles.EmailInputContainer}>
                 <Text style={styles.labelEmailTextLogin}>PASSWORD</Text>
                 <CommanTextInput
                     name='Password'
                     screenName={'login'}
                     style={styles.InputView}
-                    styles={styles.textInputStyle} />
+                    styles={styles.textInputStyle}
+                />
             </View>
             <MainButton
                 name='Login'
                 ButtonText={styles.ButtonText}
-                styleButton={styles.Button}
-                onPress={() => navigation.navigate('')} />
+                styleButton={styles.CommanButton}
+                onPress={() => navigation.navigate(console.log("Login"))} />
         </View>
     )
 }
 
 export default Login
 
-const styles = StyleSheet.create({
-    loginHeadText: {
-        textAlign: "left",
-        color: "black",
-        fontFamily: "Rubik-Light",
-        fontSize: 30,
-    },
-    MainView: {
-        flex: 1,
-        marginTop: 60,
-        backgroundColor: "#FAFAFA",
-        // justifyContent: "space-evenly",
-        marginHorizontal: 20
-    },
-    textInputStyle: {
-        height: 40,
-        width: "100%",
-        fontSize: 16,
-        backgroundColor: "#fff"
 
-    },
-    InputView: {
-        borderBottomWidth: 1,
-        borderRadius: 5,
-        borderColor: "#000"
-    },
-    labelEmailTextLogin: {
-        textAlign: "left",
-        color: "black",
-        fontFamily: "Rubik-Regular",
-        fontSize: 12,
-    },
-    Button: {
-        backgroundColor: "#24DAC6",
-        height: 40, width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
-        marginVertical: 30,
-        borderRadius: 2,
-        backgroundColor: "#24DAC6",
 
-    },
-    ButtonText: {
-        fontFamily: "Rubik-Regular",
-        fontSize: 14,
-        fontWeight: "300",
-        color: "#1B1E29",
-        textAlign: "center",
-    }
-})
