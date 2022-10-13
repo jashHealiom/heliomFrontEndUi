@@ -4,12 +4,13 @@ import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
 import Dropdown from '../components/he_DropDown';
 import MultiSelect from '../components/he_multiSelect';
+import DatePickerApp from '../components/he_DatePicker';
 import ArrayData from '../constants/ArrayData.json';
 import language from '../constants/language.json';
 import Country_Code from '../constants/Country_Code.json';
 
 const styles = require("../assets/css/Style");
-const SignUp = () => {
+const ProviderSignUp = () => {
     const [selected, setSelected] = useState([]);
     return (
 
@@ -27,7 +28,7 @@ const SignUp = () => {
                     <Text style={styles.TitleText}>EMAIL</Text>
                     <He_TextInput
                         name='Email'
-                        SCreenName={'login'}
+                        SCreenName={'SignUp'}
                         style={styles.InputView}
                         styles={styles.textInputStyle}
                     />
@@ -36,7 +37,7 @@ const SignUp = () => {
                     <Text style={styles.TitleText}>LEGAL FIRST NAME</Text>
                     <He_TextInput
                         name='LEGAL FIRST NAME'
-                        screenName={'login'}
+                        screenName={'SignUp'}
                         style={styles.InputView}
                         styles={styles.textInputStyle}
                     />
@@ -45,7 +46,7 @@ const SignUp = () => {
                     <Text style={styles.TitleText}>MIDDLE NAME</Text>
                     <He_TextInput
                         name='MIDDLE NAME'
-                        screenName={'login'}
+                        screenName={'SignUp'}
                         style={styles.InputView}
                         styles={styles.textInputStyle}
                     />
@@ -54,7 +55,7 @@ const SignUp = () => {
                     <Text style={styles.TitleText}>LAST NAME</Text>
                     <He_TextInput
                         name='LAST NAME'
-                        screenName={'login'}
+                        screenName={'SignUp'}
                         style={styles.InputView}
                         styles={styles.textInputStyle}
                     />
@@ -63,7 +64,7 @@ const SignUp = () => {
                     <Text style={styles.TitleText}>NICK NAME</Text>
                     <He_TextInput
                         name='NICK NAME'
-                        screenName={'login'}
+                        screenName={'SignUp'}
                         style={styles.InputView}
                         styles={styles.textInputStyle}
                     />
@@ -78,24 +79,33 @@ const SignUp = () => {
                         dropdown={styles.dropdownSingleSelect} />
                 </View>
                 <View style={styles.EmailInputContainer}>
+                    <Text style={styles.TitleText}>NPI/Medical license identification number</Text>
+                    <He_TextInput
+                        name='11-Digit No.'
+                        screenName={'SignUp'}
+                        style={styles.InputView}
+                        styles={styles.textInputStyle}
+                    />
+                </View>
+                <View style={styles.EmailInputContainer}>
                     <Text style={styles.TitleText}>MOBLIE</Text>
                     <View style={styles.MobileInputContainer}>
                         <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}
                             ButtonStyle={styles.ButtonStyleCountry_Code}
                             overlay={styles.DropDownoverlayCountry_Code}
-                            dropdown={styles.dropdownSingleSelect} />
+                            dropdown={styles.dropdownSingleSelectCountry_Code} />
                         <He_TextInput
                             name='Moblie No'
-                            screenName={'login'}
+                            screenName={'SignUp'}
                             style={styles.InputView1}
                             styles={styles.textInputStyle1}
                         />
                     </View>
                 </View>
                 <MainButton
-                    name='Signup'
-                    ButtonText={styles.ButtonText}
-                    styleButton={styles.CommanButton}
+                    name='Next'
+                    ButtonText={styles.Provider_ButtonText}
+                    styleButton={styles.Provider_CommanButton}
                     onPress={() => console.log("Done")}
                 />
             </View>
@@ -103,4 +113,4 @@ const SignUp = () => {
     )
 }
 
-export default SignUp
+export default ProviderSignUp

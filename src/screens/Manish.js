@@ -1,8 +1,9 @@
 import { View, Text, StyleSheet, Button } from 'react-native'
 import React, { useState } from 'react'
 import Login from './Login';
-import SignUp from './SignUp';
-
+import SignUp from './Patient_SignUp';
+import ProviderSignUp from './Provider_SignUp';
+import DatePickerApp from '../components/he_DatePicker';
 
 const options = [
     {
@@ -20,7 +21,8 @@ const Manish = () => {
         <>
             <View style={styles.container}>
                 {/* <Login /> */}
-                <SignUp />
+                {/* <SignUp /> */}
+                <ProviderSignUp />
             </View>
         </>
     )

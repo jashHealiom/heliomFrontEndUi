@@ -68,14 +68,27 @@ module.exports = StyleSheet.create({
         alignItems: "center",
         marginVertical: 30,
         borderRadius: 2,
-        backgroundColor: "#24DAC6",
-
+    },
+    Provider_CommanButton: {
+        backgroundColor: "#0086C3",
+        height: 40, width: "100%",
+        justifyContent: "center",
+        alignItems: "center",
+        marginVertical: 30,
+        borderRadius: 2,
     },
     ButtonText: {
         fontFamily: "Rubik-Regular",
         fontSize: 14,
         fontWeight: "300",
         color: "#1B1E29",
+        textAlign: "center",
+    },
+    Provider_ButtonText: {
+        fontFamily: "Rubik-Regular",
+        fontSize: 14,
+        fontWeight: "300",
+        color: "#FFFFFF",
         textAlign: "center",
     },
     DropDownText: {
@@ -88,7 +101,7 @@ module.exports = StyleSheet.create({
         height: 40
     },
     EmailInputContainer: {
-        marginTop: 12
+        marginTop: 10
     },
     ButtonStyle: {
         flexDirection: 'row',
