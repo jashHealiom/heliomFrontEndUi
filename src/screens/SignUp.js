@@ -11,6 +11,7 @@ import Country_Code from '../constants/Country_Code.json';
 const styles = require("../assets/css/Style");
 const SignUp = () => {
     const [selected, setSelected] = useState([]);
+    console.log(selected, "This is Dropdown Selected Item")
     return (
         <SafeAreaView>
             <ScrollView>
@@ -18,7 +19,7 @@ const SignUp = () => {
                     <Text style={styles.HeadText}>SignUp</Text>
                     <View style={styles.EmailInputContainer}>
                         <Text style={styles.TitleText}>LANGUAGE</Text>
-                        <MultiSelect label="Select Item" data={language.language} onSelect={setSelected}
+                        <MultiSelect label="Select Item" data={language.language} onSelect={(item) => setSelected(item)}
                             ButtonStyle={styles.ButtonStyle}
                             overlay={styles.DropDownoverlay}
                         />
