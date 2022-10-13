@@ -1,5 +1,7 @@
-import { View, Text, StyleSheet, TextInput } from 'react-native'
-import React from 'react'
+import { View, Text, StyleSheet, TextInput, Image } from 'react-native'
+import React from 'react';
+import images from "../assets/images/images";
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const He_TextInput = (props) => {
     // screen type
@@ -7,6 +9,8 @@ const He_TextInput = (props) => {
     return (
         <View style={props.style}>
             <TextInput
+                textContentType={props.textContentType}
+                ScreenName={props.screenName}
                 placeholder={props.name}
                 style={props.styles}
                 underlineColorAndroid="transparent"
@@ -15,11 +19,18 @@ const He_TextInput = (props) => {
                 onChangeText={props.onChangeText}
                 value={props.value}
             />
-
-            {/* {props.screenName == 'login' ?(<View>
-                <Text>AGFDJHAGDJKJAS</Text>
-                //login icon
-            </View>): //tick icon } */}
+            {/* {props.ScreenName == 'login' ? <Text>Hello</Text> : null} */}
+            {props.textContentType == 'emailAddress' ? (<View >
+                <Image
+                    // style={styles.eyeClosedImg}
+                    source={images.faceIdIc}
+                ></Image>
+            </View>) : props.textContentType == 'password' ? (<View >
+                <Image
+                    // style={styles.eyeClosedImg}
+                    source={images.eyeClosed}
+                ></Image>
+            </View>) : null}
         </View>
     )
 }

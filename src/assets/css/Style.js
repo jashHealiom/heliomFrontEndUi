@@ -10,8 +10,12 @@ module.exports = StyleSheet.create({
         fontFamily: "Rubik-Light",
         fontSize: 30,
     },
-    MainView: {
+    Container: {
         flex: 1,
+        backgroundColor: "#FAFAFA",
+    },
+    MainView: {
+        // flex: 1,
         marginTop: 40,
         backgroundColor: "#FAFAFA",
         marginHorizontal: 20
@@ -25,21 +29,30 @@ module.exports = StyleSheet.create({
     },
     textInputStyle1: {
         height: 40,
-        width: "100%",
+        width: "88%",
         paddingLeft: 0,
         fontSize: 16,
+        paddingLeft: 5,
         backgroundColor: "#fff"
 
     },
     InputView: {
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        alignItems: "center",
+        // height: 40,
         borderBottomWidth: 1,
         borderRadius: 5,
-        borderColor: "#000"
+        borderColor: "#000",
+
     },
     InputView1: {
         width: "80.9%",
         borderBottomWidth: 1,
+        justifyContent: "space-between",
+        alignItems: "center",
         borderRadius: 5,
+        flexDirection: 'row',
         borderColor: "#000"
     },
     TitleText: {

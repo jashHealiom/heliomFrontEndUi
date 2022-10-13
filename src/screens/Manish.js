@@ -19,8 +19,8 @@ const Manish = () => {
     return (
         <>
             <View style={styles.container}>
-                {/* <Login /> */}
-                <SignUp />
+                <Login />
+                {/* <SignUp /> */}
             </View>
         </>
     )
