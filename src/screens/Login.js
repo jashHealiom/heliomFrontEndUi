@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
@@ -32,7 +32,7 @@ const Login = () => {
         onSelect(options[0])
     }, [])
     return (
-        <View style={styles.Container}>
+        <KeyboardAvoidingView enabled={true} style={styles.Container}>
             <View style={styles.MainView}>
                 <Text style={styles.HeadText}>Log In</Text>
                 <RadioButton
@@ -50,7 +50,7 @@ const Login = () => {
                                 textContentType='emailAddress'
                                 screenName={'login'}
                                 style={[styles.InputView, {}]}
-                                styles={styles.textInputSyle}
+                                styles={styles.textInputStyle}
                             />
                         </View>
                     </>
@@ -62,7 +62,8 @@ const Login = () => {
                                 <View style={styles.MobileInputContainer}>
                                     <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}
                                         ButtonStyle={styles.ButtonStyleCountry_Code}
-                                        overlay={styles.DropDownoverlayCountry_Code} />
+                                        overlay={styles.DropDownoverlayCountry_Code}
+                                        dropdown={styles.dropdownSingleSelectCountry_Code} />
                                     <He_TextInput
                                         name='Moblie No'
                                         textContentType='telephoneNumber'
@@ -80,8 +81,8 @@ const Login = () => {
                         name='PASSWORD'
                         textContentType='password'
                         screenName={'login'}
-                        style={[styles.InputView, {}]}
-                        styles={styles.textInputSyle}
+                        style={styles.InputView}
+                        styles={styles.textInputStyle}
 
                     />
                 </View>
@@ -108,7 +109,7 @@ const Login = () => {
                     source={images.illustrationLeft}
                 />
             </View>
-        </View>
+        </KeyboardAvoidingView>
 
     )
 }

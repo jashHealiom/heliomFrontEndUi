@@ -1,11 +1,9 @@
-import { View, Text, StyleSheet, TextInput, Image } from 'react-native'
+import { View, Text, TextInput, Image } from 'react-native'
 import React from 'react';
 import images from "../assets/images/images";
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const He_TextInput = (props) => {
-    // screen type
-    // image
     return (
         <View style={props.style}>
             <TextInput
@@ -19,15 +17,12 @@ const He_TextInput = (props) => {
                 onChangeText={props.onChangeText}
                 value={props.value}
             />
-            {/* {props.ScreenName == 'login' ? <Text>Hello</Text> : null} */}
             {props.textContentType == 'emailAddress' ? (<View >
                 <Image
-                    // style={styles.eyeClosedImg}
                     source={images.faceIdIc}
                 ></Image>
             </View>) : props.textContentType == 'password' ? (<View >
                 <Image
-                    // style={styles.eyeClosedImg}
                     source={images.eyeClosed}
                 ></Image>
             </View>) : null}

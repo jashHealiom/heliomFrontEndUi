@@ -67,7 +67,6 @@ module.exports = StyleSheet.create({
     },
     buttonText: {
         flex: 1,
-        // textAlign: 'center',
     },
     icon: {
         marginRight: 10,

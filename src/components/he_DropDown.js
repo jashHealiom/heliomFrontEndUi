@@ -11,7 +11,7 @@ import {
 // import { Icon } from 'react-native-elements';
 
 const styles = require("../assets/css/ComponentStyle");
-export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
+export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay, dropdown }) => {
     const DropdownButton = useRef();
     const [visible, setVisible] = useState(false);
     const [selected, setSelected] = useState(undefined);
@@ -47,7 +47,7 @@ export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
                     style={overlay}
                     onPress={() => setVisible(false)}
                 >
-                    <View style={[styles.dropdown, { top: dropdownTop }]}>
+                    <View style={[dropdown, { top: dropdownTop }]}>
                         <FlatList
                             data={data}
                             scrollEnabled={true}
