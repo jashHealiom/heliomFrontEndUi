@@ -32,6 +32,7 @@ export default Dropdown = ({ label, data, onSelect, buttonStyle, overlay }) => {
         setVisible(true);
     };
 
+    //insert Dropdown value
     const InsertDropDownValue = (item) => {
         const isFound = selected.some(element => {
             if (element.label === item.label) {
@@ -50,6 +51,7 @@ export default Dropdown = ({ label, data, onSelect, buttonStyle, overlay }) => {
             // setVisible(false);
         }
     };
+    //Delete Dropdown Value
     const DeleteDropDownValue = (index) => {
         var newData = [...selected]
         if (index > -1) {
@@ -57,12 +59,15 @@ export default Dropdown = ({ label, data, onSelect, buttonStyle, overlay }) => {
             setSelected(newData);
         }
     }
+    // Dropdown Search function
     const onSearch = (text) => {
         let searchData = data.filter(function (item) {
             return item.value.includes(text.slice(0, 1).toUpperCase() + text.slice(1, text.length));
         })
         setSearchResult(searchData)
     }
+
+    //render values
     const renderItem = ({ item, index }) => {
         const isFound = selected.some(element => {
             if (element.label === item.label) {

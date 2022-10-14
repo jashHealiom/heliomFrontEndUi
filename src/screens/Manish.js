@@ -6,6 +6,7 @@ import OtpVerfication from './otpVerfication'
 import ProviderSignUp from './ProviderSignUp';
 import DatePickerApp from '../components/he_DatePicker';
 import CreatePassword from './CreatePassword';
+import ChooseSignUp from './ChooseSignUp';
 const options = [
     {
         key: 'Email',
@@ -24,8 +25,8 @@ const Manish = () => {
                 {/* <Login /> */}
                 {/* <SignUp /> */}
                 <OtpVerfication />
-                {/* <CreatePassword />
-                <ProviderSignUp /> */}
+                {/* <ChooseSignUp /> */}
+                {/* <ProviderSignUp /> */}
             </View>
         </>
     )

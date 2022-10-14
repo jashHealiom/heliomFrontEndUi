@@ -4,7 +4,7 @@ import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
 import Dropdown from '../components/he_DropDown';
 import MultiSelect from '../components/he_multiSelect';
-import DatePickerApp from '../components/he_DatePicker';
+import He_Loader from '../components/he_Loader';
 import ArrayData from '../constants/ArrayData.json';
 import language from '../constants/language.json';
 import Country_Code from '../constants/Country_Code.json';
@@ -16,6 +16,7 @@ const ProviderSignUp = () => {
     return (
 
         <ScrollView>
+            <He_Loader color="#0086C3" />
             <View style={styles.MainView}>
                 <View style={styles.backArrowContainer}>
                     <TouchableOpacity onPress={() => console.log("Back")}>

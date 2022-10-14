@@ -4,6 +4,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from '../screens/HomeScreen';
 import Jash from '../screens/Jash';
 import Manish from '../screens/Manish';
+import SignUp from '../screens/PatientSignUp'
+import ProviderSignUp from '../screens/ProviderSignUp';
 const Stack = createNativeStackNavigator();
 const Navigation = () => {
     return (
@@ -12,6 +14,8 @@ const Navigation = () => {
                 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="jashScreen" component={Jash} options={{ headerShown: false }} />
                 <Stack.Screen name="ManishScreen" component={Manish} options={{ headerShown: false }} />
+                <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
+                <Stack.Screen name="ProviderSignUp" component={ProviderSignUp} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )

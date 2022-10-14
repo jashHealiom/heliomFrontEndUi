@@ -149,4 +149,5 @@ module.exports = StyleSheet.create({
         borderRightWidth: 1,
         borderColor: "#24DAC6"
     },
+
 })
