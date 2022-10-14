@@ -34,7 +34,7 @@ const Login = () => {
     return (
         <KeyboardAvoidingView enabled={true} style={styles.Container}>
             <View style={styles.MainView}>
-                <Text style={styles.HeadText}>Log In</Text>
+                <Text style={styles.headText}>Log In</Text>
                 <RadioButton
                     selectedOption={selectedOption}
                     onSelect={(item) => onSelect(item)}
@@ -43,13 +43,13 @@ const Login = () => {
                 />
                 {selectedOption.key === 'Email' ?
                     (<>
-                        <View style={[styles.EmailInputContainer, {}]}>
+                        <View style={[styles.emailInputContainer, {}]}>
                             <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
                             <He_TextInput
                                 name='Email'
                                 textContentType='emailAddress'
                                 screenName={'login'}
-                                style={[styles.InputView, {}]}
+                                style={[styles.inputView, {}]}
                                 styles={styles.textInputStyle}
                             />
                         </View>
@@ -59,37 +59,37 @@ const Login = () => {
                         <>
                             <View style={{ marginTop: 20, }}>
                                 <Text style={styles.labelEmailTextLogin}>MOBILE</Text>
-                                <View style={styles.MobileInputContainer}>
+                                <View style={styles.mobileInputContainer}>
                                     <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}
-                                        ButtonStyle={styles.ButtonStyleCountry_Code}
-                                        overlay={styles.DropDownoverlayCountry_Code}
-                                        dropdown={styles.dropdownSingleSelectCountry_Code} />
+                                        buttonStyle={styles.buttonStyleCountryCode}
+                                        overlay={styles.dropdownOverlayCountryCode}
+                                        dropdown={styles.dropdownSingleSelectCountryCode} />
                                     <He_TextInput
                                         name='Moblie No'
                                         textContentType='telephoneNumber'
                                         screenName={'login'}
-                                        style={styles.InputView1}
+                                        style={styles.inputView1}
                                         styles={styles.textInputStyle1}
                                     />
                                 </View>
                             </View>
                         </>
                     )}
-                <View style={styles.EmailInputContainer}>
+                <View style={styles.emailInputContainer}>
                     <Text style={styles.labelEmailTextLogin}>PASSWORD</Text>
                     <He_TextInput
                         name='PASSWORD'
                         textContentType='password'
                         screenName={'login'}
-                        style={styles.InputView}
+                        style={styles.inputView}
                         styles={styles.textInputStyle}
 
                     />
                 </View>
                 <MainButton
                     name='Login'
-                    ButtonText={styles.ButtonText}
-                    styleButton={styles.CommanButton}
+                    buttonText={styles.buttonText}
+                    styleButton={styles.commanButton}
                     onPress={() => navigation.navigate(console.log("Login"))} />
 
 

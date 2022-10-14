@@ -3,21 +3,21 @@ import React, { Component } from 'react'
 const styles = require("../assets/css/ComponentStyle");
 export default RadioButton = ({ options, selectedOption, onSelect }) => {
     return (
-        <View style={styles.RadioContainer}>
+        <View style={styles.radioContainer}>
             {options.map((item) => {
                 return (
-                    <View key={item.key} style={styles.RadiobuttonContainer}>
+                    <View key={item.key} style={styles.radioButtonContainer}>
 
                         <TouchableOpacity
-                            style={styles.Radiocircle}
+                            style={styles.radiocircle}
                             onPress={() => {
                                 onSelect(item);
                             }}>
                             {selectedOption && selectedOption.key === item.key && (
-                                <View style={styles.RadiocheckedCircle} />
+                                <View style={styles.radiocheckedCircle} />
                             )}
                         </TouchableOpacity>
-                        <Text style={styles.RadioButtonItem}>{item.text}</Text>
+                        <Text style={styles.radioButtonItem}>{item.text}</Text>
                     </View>
                 );
             })}

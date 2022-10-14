@@ -11,7 +11,7 @@ import {
 // import { Icon } from 'react-native-elements';
 
 const styles = require("../assets/css/ComponentStyle");
-export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay, dropdown }) => {
+export default Dropdown = ({ label, data, onSelect, buttonStyle, overlay, dropdown }) => {
     const DropdownButton = useRef();
     const [visible, setVisible] = useState(false);
     const [selected, setSelected] = useState(undefined);
@@ -63,7 +63,7 @@ export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay, dropdo
     return (
         <TouchableOpacity
             ref={DropdownButton}
-            style={ButtonStyle}
+            style={buttonStyle}
             onPress={toggleDropdown}
         >
             {renderDropdown()}

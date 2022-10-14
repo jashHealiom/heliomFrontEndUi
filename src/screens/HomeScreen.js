@@ -6,11 +6,11 @@ const HomeScreen = ({ navigation }) => {
     return (
         <View style={{ flex: 1, backgroundColor: "#E5E5E5", justifyContent: "space-evenly", alignItems: "center", }}>
             <MainButton name='Jash'
-                ButtonText={styles.ButtonText}
+                buttonText={styles.buttonText}
                 styleButton={styles.Button}
                 onPress={() => navigation.navigate('jashScreen')} />
             <MainButton name='Manish'
-                ButtonText={styles.ButtonText}
+                buttonText={styles.buttonText}
                 styleButton={styles.Button}
                 onPress={() => navigation.navigate('ManishScreen')} />
         </View>
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         borderRadius: 5,
     },
-    ButtonText: {
+    buttonText: {
         fontSize: 20,
         fontWeight: '600'
     }

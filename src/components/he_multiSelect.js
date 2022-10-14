@@ -13,7 +13,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 
 const styles = require("../assets/css/ComponentStyle");
-export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
+export default Dropdown = ({ label, data, onSelect, buttonStyle, overlay }) => {
     const DropdownButton = useRef();
     const [visible, setVisible] = useState(false);
     const [selected, setSelected] = useState([]);
@@ -63,7 +63,6 @@ export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
         }
     }
     const onSearch = (text) => {
-        console.log(text, ">>>>>>>>")
         let searchData = data.filter(function (item) {
             return item.value.includes(text.slice(0, 1).toUpperCase() + text.slice(1, text.length));
         })
@@ -96,15 +95,15 @@ export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
                 // onPress={() => setVisible(false)}
                 >
                     <View style={[styles.dropdown, { top: dropdownTop, }]}>
-                        <View style={styles.MultiSelect_SearchContainer}>
-                            <View style={styles.MultiSelect_SearchMainView}>
-                                <Icon name="search-outline" color="#ccc" size={18} style={styles.MultiSelect_SearchIcon} />
+                        <View style={styles.multiSelectSearchContainer}>
+                            <View style={styles.multiSelectSearchMainView}>
+                                <Icon name="search-outline" color="#ccc" size={18} style={styles.multiSelectSearchIcon} />
                                 <TextInput placeholder="Search language..."
-                                    style={styles.MultiSelect_SearchTextInput}
+                                    style={styles.multiSelectSearchTextInput}
                                     onChangeText={(text) => onSearch(text)} />
                             </View>
                             <TouchableOpacity onPress={() => setVisible(false)}>
-                                <Icon name="arrow-back-outline" color="#ccc" size={18} style={styles.MultiSelect_BackIcon} />
+                                <Icon name="arrow-back-outline" color="#ccc" size={18} style={styles.multiSelectBackIcon} />
                             </TouchableOpacity>
                         </View>
                         <FlatList
@@ -116,9 +115,9 @@ export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
 
                     </View>
                 </TouchableOpacity>
-                <View style={styles.SelectedDropDownContainer}>
+                <View style={styles.selectedDropDownContainer}>
                     {selected.map((item, index) => {
-                        return <View key={index} style={styles.SelectedDropDownItem} >
+                        return <View key={index} style={styles.selectedDropDownItem} >
                             <Text style={styles.SelectedDropDownText}>{item.value}</Text>
                             <TouchableOpacity activeOpacity={0.1} onPress={() => DeleteDropDownValue(index)} >
                                 <Icon name="close-outline" color="#24DAC6" size={20} />
@@ -133,7 +132,7 @@ export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
     return (
         <TouchableOpacity
             ref={DropdownButton}
-            style={ButtonStyle}
+            style={buttonStyle}
             onPress={toggleDropdown}
         >
             {renderDropdown()}

@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet, Button } from 'react-native'
 import React, { useState } from 'react'
 import Login from './Login';
-import SignUp from './Patient_SignUp';
-import ProviderSignUp from './Provider_SignUp';
+import SignUp from './PatientSignUp';
+import ProviderSignUp from './ProviderSignUp';
 import DatePickerApp from '../components/he_DatePicker';
-
+import CreatePassword from './CreatePassword';
 const options = [
     {
         key: 'Email',
@@ -22,7 +22,8 @@ const Manish = () => {
             <View style={styles.container}>
                 {/* <Login /> */}
                 {/* <SignUp /> */}
-                <ProviderSignUp />
+                <CreatePassword />
+                {/* <ProviderSignUp /> */}
             </View>
         </>
     )

@@ -4,7 +4,7 @@ const windowHeight = Dimensions.get("window").height;
 const windowWidth = Dimensions.get("window").width;
 
 module.exports = StyleSheet.create({
-    HeadText: {
+    headText: {
         textAlign: "left",
         color: "black",
         fontFamily: "Rubik-Light",
@@ -36,7 +36,7 @@ module.exports = StyleSheet.create({
         backgroundColor: "#fff"
 
     },
-    InputView: {
+    inputView: {
         flexDirection: 'row',
         justifyContent: "space-between",
         alignItems: "center",
@@ -46,7 +46,7 @@ module.exports = StyleSheet.create({
         borderColor: "#000",
 
     },
-    InputView1: {
+    inputView1: {
         width: "80.9%",
         borderBottomWidth: 1,
         justifyContent: "space-between",
@@ -55,13 +55,13 @@ module.exports = StyleSheet.create({
         flexDirection: 'row',
         borderColor: "#000"
     },
-    TitleText: {
+    titleText: {
         textAlign: "left",
         color: "black",
         fontFamily: "Rubik-Regular",
         fontSize: 12,
     },
-    CommanButton: {
+    commanButton: {
         backgroundColor: "#24DAC6",
         height: 40, width: "100%",
         justifyContent: "center",
@@ -69,7 +69,7 @@ module.exports = StyleSheet.create({
         marginVertical: 30,
         borderRadius: 2,
     },
-    Provider_CommanButton: {
+    providerCommanButton: {
         backgroundColor: "#0086C3",
         height: 40, width: "100%",
         justifyContent: "center",
@@ -77,33 +77,33 @@ module.exports = StyleSheet.create({
         marginVertical: 30,
         borderRadius: 2,
     },
-    ButtonText: {
+    buttonText: {
         fontFamily: "Rubik-Regular",
         fontSize: 14,
         fontWeight: "300",
         color: "#1B1E29",
         textAlign: "center",
     },
-    Provider_ButtonText: {
+    providerButtonText: {
         fontFamily: "Rubik-Regular",
         fontSize: 14,
         fontWeight: "300",
         color: "#FFFFFF",
         textAlign: "center",
     },
-    DropDownText: {
+    dropDownText: {
         width: "19%", fontSize: 20, textAlign: "center"
     },
-    MobileInputContainer: {
+    mobileInputContainer: {
         flexDirection: "row", width: "100%",
         justifyContent: 'center',
         alignItems: 'center',
         height: 40
     },
-    EmailInputContainer: {
+    emailInputContainer: {
         marginTop: 10
     },
-    ButtonStyle: {
+    buttonStyle: {
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#FAFAFA',
@@ -113,7 +113,7 @@ module.exports = StyleSheet.create({
         borderBottomColor: "#000",
 
     },
-    ButtonStyleCountry_Code: {
+    buttonStyleCountryCode: {
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 20,
@@ -130,14 +130,14 @@ module.exports = StyleSheet.create({
     icon: {
         marginRight: 10,
     },
-    DropDownoverlay: {
+    dropDownoverlay: {
         width: '90%',
         height: '44%',
         justifyContent: 'center',
         alignItems: 'center',
         marginHorizontal: 20,
     },
-    DropDownoverlayCountry_Code: {
+    dropdownOverlayCountryCode: {
         width: '19%',
         height: '40%',
         justifyContent: 'center',
@@ -154,7 +154,7 @@ module.exports = StyleSheet.create({
         shadowOffset: { height: 4, width: 0 },
         shadowOpacity: 0.5,
     },
-    dropdownSingleSelectCountry_Code: {
+    dropdownSingleSelectCountryCode: {
         position: 'absolute',
         backgroundColor: '#fff',
         width: '100%',
@@ -172,5 +172,20 @@ module.exports = StyleSheet.create({
         borderRightWidth: 1,
         borderColor: "#24DAC6"
     },
+    backArrowContainer: {
+        flexDirection: "row", alignItems: "center"
+    },
+    backArrowImage: {
+        width: 29,
+        height: 24,
+        marginTop: -3,
+    },
+    backArrowText: {
+        fontSize: 14, color: "#1B1E29"
+    },
+    passwordRequireInput: {
+        flexDirection: "row",
+        marginTop: 2,
+    }
 
 })

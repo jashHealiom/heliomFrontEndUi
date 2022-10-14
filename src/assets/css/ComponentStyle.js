@@ -23,20 +23,20 @@ module.exports = StyleSheet.create({
     buttonContainer: {
         flexDirection: 'row'
     },
-    RadioContainer: {
+    radioContainer: {
         flexDirection: "row",
         width: "100%",
         justifyContent: "space-evenly",
         alignItems: "center",
     },
-    RadiobuttonContainer: {
+    radioButtonContainer: {
         width: "50%", height: 30,
         flexDirection: 'row',
         justifyContent: 'flex-start',
         alignItems: 'center',
     },
 
-    Radiocircle: {
+    radiocircle: {
         height: 18,
         width: 18,
         borderRadius: 10,
@@ -46,13 +46,13 @@ module.exports = StyleSheet.create({
         justifyContent: 'center',
     },
 
-    RadiocheckedCircle: {
+    radiocheckedCircle: {
         width: 13,
         height: 13,
         borderRadius: 7,
         backgroundColor: '#24DAC6',
     },
-    RadioButtonItem: {
+    radioButtonItem: {
         marginLeft: 8
     },
     button: {
@@ -75,7 +75,7 @@ module.exports = StyleSheet.create({
         position: 'absolute',
         backgroundColor: '#fff',
         width: '100%',
-        height: 200,
+        height: 205,
         shadowColor: '#000000',
         shadowRadius: 4,
         shadowOffset: { height: 4, width: 0 },
@@ -88,7 +88,7 @@ module.exports = StyleSheet.create({
         alignItems: 'center',
         marginHorizontal: 20,
     },
-    MultiSelect_SearchContainer: {
+    multiSelectSearchContainer: {
         width: "100%",
         flexDirection: "row",
         justifyContent: "space-between",
@@ -98,19 +98,19 @@ module.exports = StyleSheet.create({
         borderRightWidth: 1,
         borderColor: "#24DAC6"
     },
-    MultiSelect_SearchMainView: {
+    multiSelectSearchMainView: {
         flexDirection: "row", alignItems: "center",
     },
-    MultiSelect_SearchIcon: {
+    multiSelectSearchIcon: {
         marginLeft: 5
     },
-    MultiSelect_BackIcon: {
+    multiSelectBackIcon: {
         alignItems: "flex-end", paddingRight: 6,
     },
-    MultiSelect_SearchTextInput: {
+    multiSelectSearchTextInput: {
         marginLeft: 5
     },
-    SelectedDropDownItem: {
+    selectedDropDownItem: {
         flexDirection: 'row',
         borderWidth: 1,
         marginRight: 5,
@@ -122,7 +122,7 @@ module.exports = StyleSheet.create({
         borderColor: "#24DAC6",
         borderRadius: 20
     },
-    SelectedDropDownContainer: {
+    selectedDropDownContainer: {
         flexDirection: "row",
         width: "96%",
         marginTop: 40,
