@@ -32,11 +32,6 @@ export default Dropdown = ({ label, data, onSelect, buttonStyle, overlay }) => {
         setVisible(true);
     };
 
-    // const onItemPress = (item) => {
-    //     setSelected(item);
-    //     onSelect(item);
-    //     setVisible(false);
-    // };
     const InsertDropDownValue = (item) => {
         const isFound = selected.some(element => {
             if (element.label === item.label) {
