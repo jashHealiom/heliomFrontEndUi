@@ -7,6 +7,7 @@ import {
     Modal,
     View,
     SafeAreaView,
+    TextInput,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 
@@ -17,6 +18,7 @@ export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
     const [visible, setVisible] = useState(false);
     const [selected, setSelected] = useState([]);
     const [dropdownTop, setDropdownTop] = useState(0);
+    const [searchResult, setSearchResult] = useState([]);
 
 
     const toggleDropdown = () => {
@@ -60,7 +62,13 @@ export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
             setSelected(newData);
         }
     }
-
+    const onSearch = (text) => {
+        console.log(text, ">>>>>>>>")
+        let searchData = data.filter(function (item) {
+            return item.value.includes(text.slice(0, 1).toUpperCase() + text.slice(1, text.length));
+        })
+        setSearchResult(searchData)
+    }
     const renderItem = ({ item, index }) => {
         const isFound = selected.some(element => {
             if (element.label === item.label) {
@@ -81,14 +89,26 @@ export default Dropdown = ({ label, data, onSelect, ButtonStyle, overlay }) => {
     const renderDropdown = () => {
         return (
             <Modal visible={visible} transparent animationType="none">
+
                 <TouchableOpacity
                     activeOpacity={0.1}
                     style={overlay}
-                    onPress={() => setVisible(false)}
+                // onPress={() => setVisible(false)}
                 >
                     <View style={[styles.dropdown, { top: dropdownTop, }]}>
+                        <View style={styles.MultiSelect_SearchContainer}>
+                            <View style={styles.MultiSelect_SearchMainView}>
+                                <Icon name="search-outline" color="#ccc" size={18} style={styles.MultiSelect_SearchIcon} />
+                                <TextInput placeholder="Search language..."
+                                    style={styles.MultiSelect_SearchTextInput}
+                                    onChangeText={(text) => onSearch(text)} />
+                            </View>
+                            <TouchableOpacity onPress={() => setVisible(false)}>
+                                <Icon name="arrow-back-outline" color="#ccc" size={18} style={styles.MultiSelect_BackIcon} />
+                            </TouchableOpacity>
+                        </View>
                         <FlatList
-                            data={data}
+                            data={searchResult.length == 0 ? data : searchResult}
                             scrollEnabled={true}
                             renderItem={renderItem}
                             keyExtractor={(item, index) => index.toString()}

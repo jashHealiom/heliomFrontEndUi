@@ -75,19 +75,40 @@ module.exports = StyleSheet.create({
         position: 'absolute',
         backgroundColor: '#fff',
         width: '100%',
-        height: 170,
+        height: 200,
         shadowColor: '#000000',
         shadowRadius: 4,
         shadowOffset: { height: 4, width: 0 },
         shadowOpacity: 0.5,
     },
-
     overlay: {
         width: '90%',
         height: '50%',
         justifyContent: 'center',
         alignItems: 'center',
         marginHorizontal: 20,
+    },
+    MultiSelect_SearchContainer: {
+        width: "100%",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        height: 40, borderBottomWidth: 1,
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderColor: "#24DAC6"
+    },
+    MultiSelect_SearchMainView: {
+        flexDirection: "row", alignItems: "center",
+    },
+    MultiSelect_SearchIcon: {
+        marginLeft: 5
+    },
+    MultiSelect_BackIcon: {
+        alignItems: "flex-end", paddingRight: 6,
+    },
+    MultiSelect_SearchTextInput: {
+        marginLeft: 5
     },
     SelectedDropDownItem: {
         flexDirection: 'row',
@@ -104,6 +125,7 @@ module.exports = StyleSheet.create({
     SelectedDropDownContainer: {
         flexDirection: "row",
         width: "96%",
+        marginTop: 40,
         backgroundColor: "#FAFAFA",
         marginHorizontal: 20,
         flexWrap: 'wrap',

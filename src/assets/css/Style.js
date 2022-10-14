@@ -130,15 +130,6 @@ module.exports = StyleSheet.create({
     icon: {
         marginRight: 10,
     },
-    // dropdown: {
-    //     position: 'absolute',
-    //     backgroundColor: '#fff',
-    //     width: '20%',
-    //     shadowColor: '#000000',
-    //     shadowRadius: 4,
-    //     shadowOffset: { height: 4, width: 0 },
-    //     shadowOpacity: 0.5,
-    // },
     DropDownoverlay: {
         width: '90%',
         height: '44%',
