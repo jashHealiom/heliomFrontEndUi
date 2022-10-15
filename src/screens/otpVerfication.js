@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
-import React, { useState, useEffect, useRef, createRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
 import images from '../assets/images/images';
@@ -12,12 +12,12 @@ const OtpVerfication = () => {
     const [otp4, setOtp4] = useState('');
     const [otp5, setOtp5] = useState('');
     const [otp6, setOtp6] = useState('');
-    const ref_input1 = createRef();
-    const ref_input2 = createRef();
-    const ref_input3 = createRef();
-    const ref_input4 = createRef();
-    const ref_input5 = createRef();
-    const ref_input6 = createRef();
+    const ref_input1 = useRef();
+    const ref_input2 = useRef();
+    const ref_input3 = useRef();
+    const ref_input4 = useRef();
+    const ref_input5 = useRef();
+    const ref_input6 = useRef();
 
     const settingOtp = (x,index) =>{
         if(index==0){
@@ -34,7 +34,7 @@ const OtpVerfication = () => {
             setOtp6(x.slice(-1))
         }
         if(index=0){
-            secondTextInput.focus()
+            ref_input2.focus()
         }
     }
     return (
@@ -53,11 +53,11 @@ const OtpVerfication = () => {
                 <View style={{flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', marginBottom: 20, marginTop: 10}}>
                     <He_TextInput
                     // name='Otp'
-                    ref={ref_input1}
+                    ref={(input)=>{ref_input1 = input;}}
                     keyboardType={'numeric'}
                     //caretHidden={true}
                     value={otp1}
-                    onChangeText={(x)=>{settingOtp(x,0)}}
+                    onChangeText={(x)=>{settingOtp(x,0);}}
                     screenName={'login'}
                     style={[styles.inputView, {backgroundColor: '#ffffff', width: '10%'}]}
                     styles={{backGroundColor: '#ffffff'}}
@@ -76,7 +76,7 @@ const OtpVerfication = () => {
                         if (nativeEvent.key === 'Backspace') {
                             ref_input1.focus();
                         }}}
-                    //ref={ref_input2} 
+                    ref={(input)=>{ref_input2 = input; console.log('this is ref', input)}}
                     />   
 
 
@@ -89,7 +89,7 @@ const OtpVerfication = () => {
                     screenName={'login'}
                     style={[styles.inputView, {backgroundColor: '#ffffff', width: '10%'}]}
                     // styles={styles.textInputStyle}
-                    //ref={ref_input3}
+                    ref={(input)=>{ref_input3 = input;}}
                     />   
 
 
@@ -102,7 +102,7 @@ const OtpVerfication = () => {
                     screenName={'login'}
                     style={[styles.inputView, {backgroundColor: '#ffffff', width: '10%'}]}
                     // styles={styles.textInputStyle}
-                    //ref={ref_input4}
+                    ref={(input)=>{ref_input4 = input;}}
                     />
 
 
@@ -115,12 +115,12 @@ const OtpVerfication = () => {
                     screenName={'login'}
                     style={[styles.inputView, {backgroundColor: '#ffffff', width: '10%'}]}
                     // styles={styles.textInputStyle}
-                    //ref={ref_input5}
+                    ref={(input)=>{ref_input5 = input;}}
                     />   
 
 
                     <He_TextInput
-                    //ref={ref_input6}
+                    ref={(input)=>{ref_input6 = input;}}
                     onChangeText={(x)=>{settingOtp(x,5)}}
                     // name='Otp'
                     value={otp6}
