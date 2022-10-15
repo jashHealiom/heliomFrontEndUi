@@ -7,7 +7,7 @@ const He_TextInput = (props) => {
     return (
         <View style={props.style}>
             <TextInput
-            ref={props.ref}
+                ref={props.ref}
                 keyboardType={props.keyboardType}
                 textContentType={props.textContentType}
                 ScreenName={props.screenName}
