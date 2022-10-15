@@ -7,6 +7,8 @@ const He_TextInput = (props) => {
     return (
         <View style={props.style}>
             <TextInput
+            ref={props.ref}
+                keyboardType={props.keyboardType}
                 textContentType={props.textContentType}
                 ScreenName={props.screenName}
                 placeholder={props.name}
@@ -16,6 +18,8 @@ const He_TextInput = (props) => {
                 placeholderTextColor="#98989C"
                 onChangeText={props.onChangeText}
                 value={props.value}
+                caretHidden={props.caretHidden}
+                onKeyPress={props.onKeyPress}
             />
             {props.textContentType == 'emailAddress' ? (<View >
                 <Image
