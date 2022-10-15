@@ -7,24 +7,16 @@ import ProviderSignUp from './ProviderSignUp';
 import DatePickerApp from '../components/he_DatePicker';
 import CreatePassword from './CreatePassword';
 import ChooseSignUp from './ChooseSignUp';
-const options = [
-    {
-        key: 'Email',
-        text: 'Email',
-    },
-    {
-        key: 'Moblie',
-        text: 'Moblie',
-    },
-];
+import Welcome from './Welcome';
 const Manish = () => {
 
     return (
         <>
             <View style={styles.container}>
+                <Welcome />
                 {/* <Login /> */}
                 {/* <SignUp /> */}
-                <OtpVerfication />
+                {/* <OtpVerfication /> */}
                 {/* <ChooseSignUp /> */}
                 {/* <ProviderSignUp /> */}
             </View>
