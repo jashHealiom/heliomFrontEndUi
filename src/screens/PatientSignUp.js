@@ -16,6 +16,13 @@ const styles = require("../assets/css/Style");
 const SignUp = () => {
     //states
     const [selected, setSelected] = useState([]);
+    const [userEmail, setuserEmail] = useState('')
+    const [userFirstName, setuserFirstName] = useState('')
+    const [userMiddleName, setuserMiddleName] = useState('')
+    const [userLastName, setuserLastName] = useState('')
+    const [userNickName, setuserNickName] = useState('')
+    const [userMoblieNo, setuserMoblieNo] = useState('')
+
     return (
         <ScrollView>
             <View style={styles.MainView}>
@@ -31,8 +38,9 @@ const SignUp = () => {
                 <Text style={styles.headText}>SignUp</Text>
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>LANGUAGE</Text>
-                    <MultiSelect label="Select Item" data={language.language} onSelect={(item) => setSelected(item)}
-                        buttonStyle={styles.buttonStyle}
+                    <MultiSelect label="Select Item" data={language.language}
+                        onSelect={(item) => setSelected(item)}
+                        buttonStyle={styles.buttonDropdownStyle}
                         overlay={styles.dropDownoverlay}
                     />
                 </View>
@@ -40,7 +48,9 @@ const SignUp = () => {
                     <Text style={styles.titleText}>EMAIL</Text>
                     <He_TextInput
                         name='Email'
-                        SCreenName={'login'}
+                        value={userEmail}
+                        onChangeText={(text) => setuserEmail(text)}
+                        screenName={'login'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
                     />
@@ -49,6 +59,8 @@ const SignUp = () => {
                     <Text style={styles.titleText}>LEGAL FIRST NAME</Text>
                     <He_TextInput
                         name='LEGAL FIRST NAME'
+                        value={userFirstName}
+                        onChangeText={(text) => setuserFirstName(text)}
                         screenName={'login'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
@@ -59,6 +71,8 @@ const SignUp = () => {
                     <He_TextInput
                         name='MIDDLE NAME'
                         screenName={'login'}
+                        value={userMiddleName}
+                        onChangeText={(text) => setuserMiddleName(text)}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
                     />
@@ -68,6 +82,8 @@ const SignUp = () => {
                     <He_TextInput
                         name='LAST NAME'
                         screenName={'login'}
+                        value={userLastName}
+                        onChangeText={(text) => setuserLastName(text)}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
                     />
@@ -77,6 +93,8 @@ const SignUp = () => {
                     <He_TextInput
                         name='NICK NAME'
                         screenName={'login'}
+                        value={userNickName}
+                        onChangeText={(text) => setuserNickName(text)}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
                     />
@@ -86,9 +104,10 @@ const SignUp = () => {
                     <Dropdown label="Select Item"
                         data={ArrayData.gender}
                         onSelect={setSelected}
-                        buttonStyle={styles.buttonStyle}
+                        buttonStyle={styles.buttonDropdownStyle}
                         overlay={styles.dropDownoverlay}
-                        dropdown={styles.dropdownSingleSelect} />
+                        dropdown={styles.dropdownSingleSelect}
+                    />
                 </View>
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>DATE OF BIRTH</Text>
@@ -104,6 +123,8 @@ const SignUp = () => {
                         <He_TextInput
                             name='Moblie No'
                             screenName={'login'}
+                            value={userMoblieNo}
+                            onChangeText={(text) => setuserMoblieNo(text)}
                             style={styles.inputView1}
                             styles={styles.textInputStyle1}
                         />

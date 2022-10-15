@@ -10,7 +10,10 @@ const styles = require("../assets/css/Style");
 const Login = () => {
     const [selectedOption, setSelectedOption] = useState('Email');
     const [selected, setSelected] = useState(undefined);
-    const [Email, setEmail] = useState('')
+    const [userEmail, setuserEmail] = useState('')
+    const [userPassword, setuserPassword] = useState('')
+    const [userMoblieNo, setuserMoblieNo] = useState("")
+
     const options = [
         {
             key: 'Email',
@@ -47,6 +50,8 @@ const Login = () => {
                             <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
                             <He_TextInput
                                 name='Email'
+                                value={userEmail}
+                                onChangeText={(text) => setuserEmail(text)}
                                 textContentType='emailAddress'
                                 screenName={'login'}
                                 style={[styles.inputView, {}]}
@@ -66,6 +71,8 @@ const Login = () => {
                                         dropdown={styles.dropdownSingleSelectCountryCode} />
                                     <He_TextInput
                                         name='Moblie No'
+                                        value={userMoblieNo}
+                                        onChangeText={(text) => setuserMoblieNo(text)}
                                         textContentType='telephoneNumber'
                                         screenName={'login'}
                                         style={styles.inputView1}
@@ -79,6 +86,8 @@ const Login = () => {
                     <Text style={styles.labelEmailTextLogin}>PASSWORD</Text>
                     <He_TextInput
                         name='PASSWORD'
+                        value={userPassword}
+                        onChangeText={(text) => setuserPassword(text)}
                         textContentType='password'
                         screenName={'login'}
                         style={styles.inputView}

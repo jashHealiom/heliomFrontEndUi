@@ -103,13 +103,14 @@ module.exports = StyleSheet.create({
     emailInputContainer: {
         marginTop: 10
     },
-    buttonStyle: {
+    buttonDropdownStyle: {
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: '#FAFAFA',
         height: 40,
         zIndex: 1,
-        width: '100%', borderBottomWidth: 1,
+        width: '100%',
+        borderBottomWidth: 1,
         borderBottomColor: "#000",
 
     },
@@ -138,8 +139,8 @@ module.exports = StyleSheet.create({
         marginHorizontal: 20,
     },
     dropdownOverlayCountryCode: {
-        width: '19%',
-        height: '40%',
+        width: '17.6%',
+        height: '35%',
         justifyContent: 'center',
         alignItems: 'center',
         marginHorizontal: 20,
@@ -148,7 +149,7 @@ module.exports = StyleSheet.create({
         position: 'absolute',
         backgroundColor: '#fff',
         width: '100%',
-        height: 150,
+        height: "50%",
         shadowColor: '#000000',
         shadowRadius: 4,
         shadowOffset: { height: 4, width: 0 },
@@ -158,7 +159,7 @@ module.exports = StyleSheet.create({
         position: 'absolute',
         backgroundColor: '#fff',
         width: '100%',
-        height: 120,
+        height: "25%",
         shadowColor: '#000000',
         shadowRadius: 4,
         shadowOffset: { height: 4, width: 0 },
@@ -310,10 +311,21 @@ module.exports = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
     },
+    SplashContainer: {
+        backgroundColor: "#FAFAFA",
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+    },
     welcomeLogoImg: {
         width: 100,
         height: 100,
         marginTop: 114,
+    },
+    splashScreenLogo: {
+        width: 100,
+        height: 100,
+        marginTop: 250,
     },
     welcomeLogoText: {
         marginVertical: 0,

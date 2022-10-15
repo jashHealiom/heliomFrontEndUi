@@ -7,6 +7,10 @@ import images from '../assets/images/images';
 const styles = require("../assets/css/Style");
 const CreatePassword = () => {
     const [selected, setSelected] = useState([]);
+    const [userPassword, setuserPassword] = useState('')
+    const [userConfirmPassword, setuserConfirmPassword] = useState('')
+
+
     return (
 
         <ScrollView>
@@ -24,6 +28,8 @@ const CreatePassword = () => {
                     <Text style={styles.titleText}>Password</Text>
                     <He_TextInput
                         name='PASSWORD'
+                        value={userPassword}
+                        onChangeText={(text) => setuserPassword(text)}
                         screenName={'SignUp'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
@@ -33,6 +39,8 @@ const CreatePassword = () => {
                     <Text style={styles.titleText}>Confirm Password</Text>
                     <He_TextInput
                         name='CONFIRM PASSWORD'
+                        value={userConfirmPassword}
+                        onChangeText={(text) => setuserConfirmPassword(text)}
                         screenName={'SignUp'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}

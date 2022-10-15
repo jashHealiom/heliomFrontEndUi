@@ -13,6 +13,12 @@ import images from '../assets/images/images';
 const styles = require("../assets/css/Style");
 const ProviderSignUp = () => {
     const [selected, setSelected] = useState([]);
+    const [userEmail, setuserEmail] = useState('')
+    const [userFirstName, setuserFirstName] = useState('')
+    const [userMiddleName, setuserMiddleName] = useState('')
+    const [userLastName, setuserLastName] = useState('')
+    const [userNickName, setuserNickName] = useState('')
+    const [userMoblieNo, setuserMoblieNo] = useState('')
     return (
 
         <ScrollView>
@@ -39,6 +45,8 @@ const ProviderSignUp = () => {
                     <Text style={styles.titleText}>EMAIL</Text>
                     <He_TextInput
                         name='Email'
+                        value={userEmail}
+                        onChangeText={(text) => setuserEmail(text)}
                         SCreenName={'SignUp'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
@@ -48,6 +56,8 @@ const ProviderSignUp = () => {
                     <Text style={styles.titleText}>LEGAL FIRST NAME</Text>
                     <He_TextInput
                         name='LEGAL FIRST NAME'
+                        value={userFirstName}
+                        onChangeText={(text) => setuserFirstName(text)}
                         screenName={'SignUp'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
@@ -57,6 +67,8 @@ const ProviderSignUp = () => {
                     <Text style={styles.titleText}>MIDDLE NAME</Text>
                     <He_TextInput
                         name='MIDDLE NAME'
+                        value={userMiddleName}
+                        onChangeText={(text) => setuserMiddleName(text)}
                         screenName={'SignUp'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
@@ -66,6 +78,8 @@ const ProviderSignUp = () => {
                     <Text style={styles.titleText}>LAST NAME</Text>
                     <He_TextInput
                         name='LAST NAME'
+                        value={userLastName}
+                        onChangeText={(text) => setuserLastName(text)}
                         screenName={'SignUp'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
@@ -75,6 +89,8 @@ const ProviderSignUp = () => {
                     <Text style={styles.titleText}>NICK NAME</Text>
                     <He_TextInput
                         name='NICK NAME'
+                        value={userNickName}
+                        onChangeText={(text) => setuserNickName(text)}
                         screenName={'SignUp'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
@@ -107,6 +123,8 @@ const ProviderSignUp = () => {
                             dropdown={styles.dropdownSingleSelectCountryCode} />
                         <He_TextInput
                             name='Moblie No'
+                            value={userMoblieNo}
+                            onChangeText={(text) => setuserMoblieNo(text)}
                             screenName={'SignUp'}
                             style={styles.inputView1}
                             styles={styles.textInputStyle1}
