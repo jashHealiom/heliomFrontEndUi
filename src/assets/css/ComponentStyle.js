@@ -131,9 +131,9 @@ module.exports = StyleSheet.create({
         flexWrap: 'wrap',
     },
     SelectedDropDownText: { color: "#24DAC6", fontSize: 18 },
-    item: {
-        paddingHorizontal: 10,
-        paddingVertical: 10,
+    itemStyle: {
+        paddingHorizontal: 5,
+        paddingVertical: 5,
         borderBottomWidth: 1,
         borderLeftWidth: 1,
         borderRightWidth: 1,

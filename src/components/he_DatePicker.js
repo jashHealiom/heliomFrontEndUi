@@ -42,7 +42,7 @@ export default function App() {
                 )}
                 <TextInput value={selectedDate}
                     onChangeText={(text) => setselectedDate(text)}
-                    placeholder="DATE OF BIRTH" style={styleSheet.text}>
+                    placeholder="MM/DD/YYYY" style={styleSheet.text}>
                 </TextInput>
 
 

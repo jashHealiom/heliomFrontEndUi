@@ -8,16 +8,36 @@ module.exports = StyleSheet.create({
         textAlign: "left",
         color: "black",
         fontfamily: 'Rubik',
-        // fontFamily: "Rubik-Light",
+        fontStyle: "normal",
+        fontWeight: '300',
+        lineHeight: 36,
         fontSize: 30,
+        color: '#1B1E29'
+    },
+     signUpHeadText: {
+        textAlign: "left",
+        color: "black",
+        fontfamily: 'Rubik',
+        fontStyle: "normal",
+        fontWeight: '300',
+        lineHeight: 36,
+         fontSize: 30,
+        marginTop:15.5,
+        color: '#1B1E29'
     },
     Container: {
         flex: 1,
         backgroundColor: "#FAFAFA",
     },
-    MainView: {
+    mainView: {
         // flex: 1,
         marginTop: 40,
+        backgroundColor: "#FAFAFA",
+        marginHorizontal: 20
+    },
+    mainLoginView: {
+        // flex: 1,
+        marginTop: 72,
         backgroundColor: "#FAFAFA",
         marginHorizontal: 20
     },
@@ -83,6 +103,7 @@ module.exports = StyleSheet.create({
     inputView1: {
         backgroundColor: "#FFFFFF",
         width: "80.9%",
+        marginLeft: 2,
         borderBottomWidth: 1,
         justifyContent: "space-between",
         alignItems: "center",
@@ -104,8 +125,13 @@ module.exports = StyleSheet.create({
     titleText: {
         textAlign: "left",
         color: "black",
-        fontFamily: "Rubik-Regular",
+        fontFamily: "Rubik",
+        fontStyle: 'normal',
+        fontWeight: '400',
+        lineHeight: 14,
+        letterSpacing:0.02,
         fontSize: 12,
+        textTransform:"uppercase"
     },
     commanButton: {
         backgroundColor: "#24DAC6",
@@ -163,11 +189,11 @@ module.exports = StyleSheet.create({
     buttonStyleCountryCode: {
         flexDirection: 'row',
         alignItems: 'center',
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         backgroundColor: '#ffffff',
         height: 40,
         zIndex: 1,
-        width: '19%', borderBottomWidth: 1,
+        width: '18%', borderBottomWidth: 1,
         borderBottomColor: "#000",
     },
     buttonText1: {
@@ -204,7 +230,7 @@ module.exports = StyleSheet.create({
         position: 'absolute',
         backgroundColor: '#fff',
         width: '100%',
-        height: "25%",
+        height: "23.73%",
         shadowColor: '#000000',
         shadowRadius: 4,
         shadowOffset: { height: 4, width: 0 },
@@ -227,7 +253,14 @@ module.exports = StyleSheet.create({
         marginTop: -3,
     },
     backArrowText: {
-        fontSize: 14, color: "#1B1E29"
+        fontSize: 14,
+        color: "#1B1E29",
+        fontWeight: "300",
+        fontStyle: 'normal',
+        fontFamily: 'Rubik',
+        lineeight: 17,
+        letterSpacing: 0.02,
+        
     },
     passwordRequireInput: {
         flexDirection: "row",
@@ -436,5 +469,13 @@ module.exports = StyleSheet.create({
         paddingVertical: 16,
         flexDirection: "row",
     },
-
+    mobileMainContainer: {
+        marginTop: 10
+    },
+      loginSignUpText: {
+    fontFamily: "Rubik-Regular",
+    color: "#24DAC6",
+    fontSize: 14,
+    marginHorizontal: 1,
+  },
 })

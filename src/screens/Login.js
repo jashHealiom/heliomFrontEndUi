@@ -12,7 +12,7 @@ const Login = () => {
     const [selected, setSelected] = useState(undefined);
     const [userEmail, setuserEmail] = useState('')
     const [userPassword, setuserPassword] = useState('')
-    const [userMoblieNo, setuserMoblieNo] = useState("")
+    const [userMoblieNo, setuserMoblieNo] = useState('')
 
     const options = [
         {
@@ -31,12 +31,9 @@ const Login = () => {
             setSelectedOption(item);
         }
     };
-    // useEffect(() => {
-    //     onSelect(options[0])
-    // }, [])
     return (
         <KeyboardAvoidingView enabled={true} style={styles.Container}>
-            <View style={styles.MainView}>
+            <View style={styles.mainLoginView}>
                 <Text style={styles.headText}>Log In</Text>
                 <RadioButton
                     selectedOption={selectedOption}
@@ -64,7 +61,7 @@ const Login = () => {
                     ) :
                     (
                         <>
-                            <View style={{ marginTop: 20, }}>
+                            <View style={styles.mobileMainContainer}>
                                 <Text style={styles.labelEmailTextLogin}>MOBILE</Text>
                                 <View style={styles.mobileInputContainer}>
                                     <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}

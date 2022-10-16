@@ -40,7 +40,7 @@ const OtpVerfication = () => {
     return (
         <ScrollView>
             {/* <He_Loader color="#24DAC6" /> */}
-            <View style={styles.MainView}>
+            <View style={styles.mainView}>
                 <View style={styles.backArrowContainer}>
                     <TouchableOpacity onPress={() => console.log("Back")}>
                         <Image

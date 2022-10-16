@@ -22,10 +22,11 @@ const SignUp = () => {
     const [userLastName, setuserLastName] = useState('')
     const [userNickName, setuserNickName] = useState('')
     const [userMoblieNo, setuserMoblieNo] = useState('')
-
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const mobileRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
     return (
         <ScrollView>
-            <View style={styles.MainView}>
+            <View style={styles.mainView}>
                 <View style={styles.backArrowContainer}>
                     <TouchableOpacity onPress={() => console.log("Back")}>
                         <Image
@@ -33,12 +34,17 @@ const SignUp = () => {
                             source={images.leftArrow1}
                         ></Image>
                     </TouchableOpacity>
-                    <Text style={styles.backArrowText}>Already a member? Log in</Text>
+                    <Text style={styles.backArrowText}>Already a member?
+                        <Text style={styles.loginSignUpText} >
+                            {' '}
+                             Login
+                        </Text>
+                    </Text>
                 </View>
-                <Text style={styles.headText}>SignUp</Text>
+                <Text style={styles.signUpHeadText}>SignUp</Text>
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>LANGUAGE</Text>
-                    <MultiSelect label="Select Item" data={language.language}
+                    <MultiSelect label="Select Item" data={language.language}
                         onSelect={(item) => setSelected(item)}
                         buttonStyle={styles.buttonDropdownStyle}
                         overlay={styles.dropDownoverlay}
@@ -47,7 +53,7 @@ const SignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>EMAIL</Text>
                     <He_TextInput
-                        icon={userEmail.length > 0 ? true : false}
+                        icon={emailRegex.test(userEmail) ? true : false}
                         imageSrc={images.check}
                         placeholder='Email'
                         value={userEmail}
@@ -114,7 +120,7 @@ const SignUp = () => {
                 </View>
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>GENDER</Text>
-                    <Dropdown label="Select Item"
+                    <Dropdown label="Select Item"
                         data={ArrayData.gender}
                         onSelect={setSelected}
                         buttonStyle={styles.buttonDropdownStyle}
@@ -134,7 +140,7 @@ const SignUp = () => {
                             overlay={styles.dropdownOverlayCountryCode}
                             dropdown={styles.dropdownSingleSelectCountryCode} />
                         <He_TextInput
-                            icon={userMoblieNo.length > 0 ? true : false}
+                            icon={mobileRegex.test(userMoblieNo) ? true : false}
                             imageSrc={images.check}
                             placeholder='Moblie No'
                             screenName={'signUp'}
