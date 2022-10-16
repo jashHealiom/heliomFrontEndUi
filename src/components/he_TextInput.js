@@ -21,6 +21,7 @@ const He_TextInput = (props) => {
                 caretHidden={props.caretHidden}
                 onKeyPress={props.onKeyPress}
             />
+
             {props.textContentType == 'emailAddress' ? (<View >
                 <Image
                     source={images.faceIdIc}
@@ -30,6 +31,7 @@ const He_TextInput = (props) => {
                     source={images.eyeClosed}
                 ></Image>
             </View>) : null}
+
         </View>
     )
 }

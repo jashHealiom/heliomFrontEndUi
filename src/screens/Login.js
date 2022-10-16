@@ -49,7 +49,7 @@ const Login = () => {
                         <View style={[styles.emailInputContainer, {}]}>
                             <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
                             <He_TextInput
-                                name='Email'
+                                name='EMAIL'
                                 value={userEmail}
                                 onChangeText={(text) => setuserEmail(text)}
                                 textContentType='emailAddress'
@@ -100,21 +100,25 @@ const Login = () => {
                     buttonText={styles.buttonText}
                     styleButton={styles.commanButton}
                     onPress={() => navigation.navigate(console.log("Login"))} />
-
-
+            </View>
+            <View style={styles.loginFootercontainer}>
+                <Text style={styles.loginNotAccountText}>No account yet?</Text>
+                <Text onPress={() => this.signup()} style={styles.loginSignUpText}>
+                    {" "}
+                    Sign up now{" "}
+                </Text>
+                <Image
+                    style={styles.loginSignInArrowImg}
+                    source={images.arrowRight}
+                />
             </View>
             <View
-                style={{
-                    flexGrow: 1,
-                    alignItems: "flex-end",
-                    justifyContent: "center",
-                    paddingVertical: 16,
-                    flexDirection: "row",
-                    marginBottom: 30,
-                }}
+                style={
+                    styles.loginImageContainer
+                }
             >
                 <Image
-                    style={{ width: "100%", height: "60%" }}
+                    style={styles.loginImage}
                     source={images.illustrationLeft}
                 />
             </View>

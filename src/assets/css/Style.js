@@ -7,7 +7,8 @@ module.exports = StyleSheet.create({
     headText: {
         textAlign: "left",
         color: "black",
-        fontFamily: "Rubik-Light",
+        fontfamily: 'Rubik',
+        // fontFamily: "Rubik-Light",
         fontSize: 30,
     },
     Container: {
@@ -25,18 +26,51 @@ module.exports = StyleSheet.create({
         width: "88%",
         fontSize: 16,
         paddingLeft: 0,
-        backgroundColor: "#fff"
+        backgroundColor: "#FFFFFF"
 
+    },
+    labelEmailTextLogin: {
+        fontFamily: "Rubik-Regular",
+        fontWeight: "300",
+        textAlign: "left",
+        color: "#1B1E29",
+        fontSize: 14,
+    },
+    loginFootercontainer: {
+        flexDirection: "row",
+        marginHorizontal: 0,
+        marginTop: 22.5,
+        alignItems: "center",
+        justifyContent: "center",
+    },
+    loginNotAccountText: {
+        //fontFamily:'Rubik',
+        fontFamily: "Rubik-Regular",
+        color: "#1B1E29",
+        fontSize: 14,
+    },
+    loginSignUpText: {
+        fontFamily: "Rubik-Regular",
+        color: "#24DAC6",
+        fontSize: 14,
+        marginHorizontal: 1,
+    },
+    loginSignInArrowImg: {
+        width: 18,
+        height: 8,
+        marginTop: 0,
+        tintColor: "#24DAC6",
     },
     textInputStyle1: {
         height: 40,
         width: "88%",
         fontSize: 16,
         paddingLeft: 5,
-        backgroundColor: "#fff"
+        backgroundColor: "#FFFFFF"
 
     },
     inputView: {
+        backgroundColor: "#FFFFFF",
         flexDirection: 'row',
         justifyContent: "space-between",
         alignItems: "center",
@@ -47,6 +81,7 @@ module.exports = StyleSheet.create({
 
     },
     inputView1: {
+        backgroundColor: "#FFFFFF",
         width: "80.9%",
         borderBottomWidth: 1,
         justifyContent: "space-between",
@@ -54,6 +89,17 @@ module.exports = StyleSheet.create({
         borderRadius: 5,
         flexDirection: 'row',
         borderColor: "#000"
+    },
+    loginImageContainer: {
+        flexGrow: 1,
+        alignItems: "flex-end",
+        justifyContent: "center",
+        paddingVertical: 16,
+        flexDirection: "row",
+        marginBottom: 30,
+    },
+    loginImage: {
+        width: "100%", height: "60%"
     },
     titleText: {
         textAlign: "left",
