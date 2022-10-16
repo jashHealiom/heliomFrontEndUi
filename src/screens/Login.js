@@ -8,7 +8,7 @@ import RadioButton from '../components/he_RadioButton';
 import Country_Code from '../constants/Country_Code.json';
 const styles = require("../assets/css/Style");
 const Login = () => {
-    const [selectedOption, setSelectedOption] = useState('Email');
+    const [selectedOption, setSelectedOption] = useState({"key": "Email", "text": "EMAIL"});
     const [selected, setSelected] = useState(undefined);
     const [userEmail, setuserEmail] = useState('')
     const [userPassword, setuserPassword] = useState('')
@@ -31,9 +31,9 @@ const Login = () => {
             setSelectedOption(item);
         }
     };
-    useEffect(() => {
-        onSelect(options[0])
-    }, [])
+    // useEffect(() => {
+    //     onSelect(options[0])
+    // }, [])
     return (
         <KeyboardAvoidingView enabled={true} style={styles.Container}>
             <View style={styles.MainView}>
@@ -49,13 +49,15 @@ const Login = () => {
                         <View style={[styles.emailInputContainer, {}]}>
                             <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
                             <He_TextInput
-                                name='Email'
+                                icon={true}
+                                placeholder='Email'
                                 value={userEmail}
                                 onChangeText={(text) => setuserEmail(text)}
                                 textContentType='emailAddress'
                                 screenName={'login'}
                                 style={[styles.inputView, {}]}
                                 styles={styles.textInputStyle}
+                                imageSrc={images.faceId}
                             />
                         </View>
                     </>
@@ -70,7 +72,8 @@ const Login = () => {
                                         overlay={styles.dropdownOverlayCountryCode}
                                         dropdown={styles.dropdownSingleSelectCountryCode} />
                                     <He_TextInput
-                                        name='Moblie No'
+                                        icon={true}
+                                        placeholder='Moblie No'
                                         value={userMoblieNo}
                                         onChangeText={(text) => setuserMoblieNo(text)}
                                         textContentType='telephoneNumber'
@@ -85,14 +88,15 @@ const Login = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.labelEmailTextLogin}>PASSWORD</Text>
                     <He_TextInput
-                        name='PASSWORD'
+                        icon={true}
+                        placeholder='Password'
                         value={userPassword}
                         onChangeText={(text) => setuserPassword(text)}
                         textContentType='password'
                         screenName={'login'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
-
+                        imageSrc={images.eye_opened}
                     />
                 </View>
                 <MainButton

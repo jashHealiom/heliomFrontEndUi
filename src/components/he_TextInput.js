@@ -1,37 +1,49 @@
-import { View, Text, TextInput, Image } from 'react-native'
+import {View, Text, TextInput, Image} from 'react-native';
 import React from 'react';
-import images from "../assets/images/images";
+import images from '../assets/images/images';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-const He_TextInput = (props) => {
-    return (
-        <View style={props.style}>
-            <TextInput
-                ref={props.ref}
-                keyboardType={props.keyboardType}
-                textContentType={props.textContentType}
-                ScreenName={props.screenName}
-                placeholder={props.name}
-                style={props.styles}
-                underlineColorAndroid="transparent"
-                autoCapitalize="none"
-                placeholderTextColor="#98989C"
-                onChangeText={props.onChangeText}
-                value={props.value}
-                caretHidden={props.caretHidden}
-                onKeyPress={props.onKeyPress}
-            />
-            {props.textContentType == 'emailAddress' ? (<View >
-                <Image
-                    source={images.faceIdIc}
-                ></Image>
-            </View>) : props.textContentType == 'password' ? (<View >
-                <Image
-                    source={images.eyeClosed}
-                ></Image>
-            </View>) : null}
-        </View>
-    )
-}
+const He_TextInput = props => {
+  const {
+    style,
+    ref,
+    keyboardType,
+    placeholder,
+    screenName,
+    textContentType,
+    styles,
+    onChangeText,
+    value,
+    caretHidden,
+    onKeyPress,
+    icon,
+    imageSrc,
+  } = props;
 
-export default He_TextInput
+  return (
+    <View style={style}>
+      <TextInput
+        ref={ref}
+        keyboardType={keyboardType}
+        textContentType={textContentType}
+        ScreenName={screenName}
+        placeholder={placeholder}
+        style={styles}
+        underlineColorAndroid="transparent"
+        autoCapitalize="none"
+        placeholderTextColor="#98989C"
+        onChangeText={onChangeText}
+        value={value}
+        caretHidden={caretHidden}
+        onKeyPress={onKeyPress}
+      />
+      {icon ? (
+        <View style={{position: 'absolute', right: 10}}>
+          <Image source={imageSrc} style={{width: 25, height: 25}}/> 
+        </View>
+      ) : null}
+    </View>
+  );
+};
+
+export default He_TextInput;

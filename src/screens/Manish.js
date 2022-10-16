@@ -9,6 +9,7 @@ import CreatePassword from './CreatePassword';
 import ChooseSignUp from './ChooseSignUp';
 import Welcome from './Welcome';
 import SplashScreen from './SplashScreen';
+
 const Manish = () => {
 
     return (

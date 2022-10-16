@@ -44,7 +44,7 @@ const ProviderSignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>EMAIL</Text>
                     <He_TextInput
-                        name='Email'
+                        placeholder='Email'
                         value={userEmail}
                         onChangeText={(text) => setuserEmail(text)}
                         SCreenName={'SignUp'}
@@ -55,7 +55,7 @@ const ProviderSignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>LEGAL FIRST NAME</Text>
                     <He_TextInput
-                        name='LEGAL FIRST NAME'
+                        placeholder='LEGAL FIRST NAME'
                         value={userFirstName}
                         onChangeText={(text) => setuserFirstName(text)}
                         screenName={'SignUp'}
@@ -66,7 +66,7 @@ const ProviderSignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>MIDDLE NAME</Text>
                     <He_TextInput
-                        name='MIDDLE NAME'
+                        placeholder='MIDDLE NAME'
                         value={userMiddleName}
                         onChangeText={(text) => setuserMiddleName(text)}
                         screenName={'SignUp'}
@@ -77,7 +77,7 @@ const ProviderSignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>LAST NAME</Text>
                     <He_TextInput
-                        name='LAST NAME'
+                        placeholder='LAST NAME'
                         value={userLastName}
                         onChangeText={(text) => setuserLastName(text)}
                         screenName={'SignUp'}
@@ -88,7 +88,7 @@ const ProviderSignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>NICK NAME</Text>
                     <He_TextInput
-                        name='NICK NAME'
+                        placeholder='NICK NAME'
                         value={userNickName}
                         onChangeText={(text) => setuserNickName(text)}
                         screenName={'SignUp'}
@@ -108,7 +108,7 @@ const ProviderSignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>NPI/Medical license identification number</Text>
                     <He_TextInput
-                        name='11-Digit No.'
+                        placeholder='11-Digit No.'
                         screenName={'SignUp'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
@@ -122,7 +122,7 @@ const ProviderSignUp = () => {
                             overlay={styles.dropdownOverlayCountryCode}
                             dropdown={styles.dropdownSingleSelectCountryCode} />
                         <He_TextInput
-                            name='Moblie No'
+                            placeholder='Moblie No'
                             value={userMoblieNo}
                             onChangeText={(text) => setuserMoblieNo(text)}
                             screenName={'SignUp'}

@@ -1,5 +1,5 @@
 import { View, Text, TouchableOpacity, Image, ScrollView } from 'react-native'
-import React, { useState, useEffect, useRef, createRef } from 'react'
+import React, { useState, useEffect, useRef} from 'react'
 import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
 import images from '../assets/images/images';
@@ -12,12 +12,12 @@ const OtpVerfication = () => {
     const [otp4, setOtp4] = useState('');
     const [otp5, setOtp5] = useState('');
     const [otp6, setOtp6] = useState('');
-    const ref_input1 = createRef();
-    const ref_input2 = createRef();
-    const ref_input3 = createRef();
-    const ref_input4 = createRef();
-    const ref_input5 = createRef();
-    const ref_input6 = createRef();
+    const ref_input1 = useRef();
+    const ref_input2 = useRef();
+    const ref_input3 = useRef();
+    const ref_input4 = useRef();
+    const ref_input5 = useRef();
+    const ref_input6 = useRef();
 
     const settingOtp = (x, index) => {
         if (index == 0) {
