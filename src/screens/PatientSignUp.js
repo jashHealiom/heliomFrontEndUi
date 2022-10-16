@@ -47,21 +47,28 @@ const SignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>EMAIL</Text>
                     <He_TextInput
+                        icon={userEmail.length > 0 ? true : false}
+                        imageSrc={images.check}
                         placeholder='Email'
                         value={userEmail}
+                        keyboardType={"email-address"}
                         onChangeText={(text) => setuserEmail(text)}
-                        screenName={'login'}
-                        style={styles.inputView}
+                        textContentType='emailAddress'
+                        screenName={'signUp'}
+                        style={[styles.inputView, {}]}
                         styles={styles.textInputStyle}
+
                     />
                 </View>
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>LEGAL FIRST NAME</Text>
                     <He_TextInput
+                        icon={userFirstName.length > 0 ? true : false}
+                        imageSrc={images.check}
                         placeholder='LEGAL FIRST NAME'
                         value={userFirstName}
                         onChangeText={(text) => setuserFirstName(text)}
-                        screenName={'login'}
+                        screenName={'signUp'}
                         style={styles.inputView}
                         styles={styles.textInputStyle}
                     />
@@ -69,8 +76,10 @@ const SignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>MIDDLE NAME</Text>
                     <He_TextInput
+                        icon={userMiddleName.length > 0 ? true : false}
+                        imageSrc={images.check}
                         placeholder='MIDDLE NAME'
-                        screenName={'login'}
+                        screenName={'signUp'}
                         value={userMiddleName}
                         onChangeText={(text) => setuserMiddleName(text)}
                         style={styles.inputView}
@@ -80,8 +89,10 @@ const SignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>LAST NAME</Text>
                     <He_TextInput
+                        icon={userLastName.length > 0 ? true : false}
+                        imageSrc={images.check}
                         placeholder='LAST NAME'
-                        screenName={'login'}
+                        screenName={'signUp'}
                         value={userLastName}
                         onChangeText={(text) => setuserLastName(text)}
                         style={styles.inputView}
@@ -91,8 +102,10 @@ const SignUp = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>NICK NAME</Text>
                     <He_TextInput
+                        icon={userNickName.length > 0 ? true : false}
+                        imageSrc={images.check}
                         placeholder='NICK NAME'
-                        screenName={'login'}
+                        screenName={'signUp'}
                         value={userNickName}
                         onChangeText={(text) => setuserNickName(text)}
                         style={styles.inputView}
@@ -121,9 +134,12 @@ const SignUp = () => {
                             overlay={styles.dropdownOverlayCountryCode}
                             dropdown={styles.dropdownSingleSelectCountryCode} />
                         <He_TextInput
+                            icon={userMoblieNo.length > 0 ? true : false}
+                            imageSrc={images.check}
                             placeholder='Moblie No'
-                            screenName={'login'}
+                            screenName={'signUp'}
                             value={userMoblieNo}
+                            keyboardType={"numeric"}
                             onChangeText={(text) => setuserMoblieNo(text)}
                             style={styles.inputView1}
                             styles={styles.textInputStyle1}
