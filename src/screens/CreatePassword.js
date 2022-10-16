@@ -27,7 +27,7 @@ const CreatePassword = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>Password</Text>
                     <He_TextInput
-                        name='PASSWORD'
+                        placeholder='PASSWORD'
                         value={userPassword}
                         onChangeText={(text) => setuserPassword(text)}
                         screenName={'SignUp'}
@@ -38,7 +38,7 @@ const CreatePassword = () => {
                 <View style={styles.emailInputContainer}>
                     <Text style={styles.titleText}>Confirm Password</Text>
                     <He_TextInput
-                        name='CONFIRM PASSWORD'
+                        placeholder='CONFIRM PASSWORD'
                         value={userConfirmPassword}
                         onChangeText={(text) => setuserConfirmPassword(text)}
                         screenName={'SignUp'}

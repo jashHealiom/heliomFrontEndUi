@@ -36,20 +36,20 @@ module.exports = StyleSheet.create({
         color: "#1B1E29",
         fontSize: 14,
     },
-    loginFootercontainer: {
+    moreOptionContainer: {
         flexDirection: "row",
         marginHorizontal: 0,
-        marginTop: 22.5,
+        marginTop: 15.5,
         alignItems: "center",
         justifyContent: "center",
     },
-    loginNotAccountText: {
+    moreOptionText: {
         //fontFamily:'Rubik',
         fontFamily: "Rubik-Regular",
         color: "#1B1E29",
         fontSize: 14,
     },
-    loginSignUpText: {
+    OptionText: {
         fontFamily: "Rubik-Regular",
         color: "#24DAC6",
         fontSize: 14,
@@ -164,12 +164,11 @@ module.exports = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         paddingHorizontal: 20,
-        // backgroundColor: '#FAFAFA',
+        backgroundColor: '#ffffff',
         height: 40,
         zIndex: 1,
         width: '19%', borderBottomWidth: 1,
         borderBottomColor: "#000",
-
     },
     buttonText1: {
         flex: 1,
