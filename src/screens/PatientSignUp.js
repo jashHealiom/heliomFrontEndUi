@@ -1,5 +1,13 @@
-import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
-import React, {useState} from 'react';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Image,
+  ScrollView,
+  Modal,
+  FlatList,
+} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
 import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
 import Dropdown from '../components/he_DropDown';
@@ -11,10 +19,12 @@ import ArrayData from '../constants/ArrayData.json';
 import language from '../constants/language.json';
 import Country_Code from '../constants/Country_Code.json';
 import images from '../assets/images/images';
-
 const styles = require('../assets/css/Style');
+const componentStyles = require('../assets/css/ComponentStyle');
 const SignUp = () => {
   //states
+  const {buttonText} = styles;
+  const {itemStyle} = componentStyles;
   const [selected, setSelected] = useState([]);
   const [userEmail, setuserEmail] = useState('');
   const [userFirstName, setuserFirstName] = useState('');
@@ -22,6 +32,25 @@ const SignUp = () => {
   const [userLastName, setuserLastName] = useState('');
   const [userNickName, setuserNickName] = useState('');
   const [userMoblieNo, setuserMoblieNo] = useState('');
+  const [countryCode, setContryCode] = useState('+1');
+  const [countryCodevisible, setCountryCodeVisible] = useState(false);
+  const [dropdownTop, setDropdownTop] = useState(0);
+
+  // const openDropdown = () => {
+  //   // console.log('TGIS IS SOMETHING', DropdownButton);
+  //   // DropdownButton.current.measure((_fx, _fy, _w, h, _px, py) => {
+  //   //   setDropdownTop(py + h);
+  //   // });
+  //   toggleCountryCodeDropdown();
+  // };
+  const toggleCountryCodeDropdown = () => {
+    console.log('countryCode', countryCodevisible);
+    if (countryCodevisible) {
+      setCountryCodeVisible(false);
+    } else {
+      setCountryCodeVisible(true);
+    }
+  };
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const mobileRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   return (
@@ -116,7 +145,7 @@ const SignUp = () => {
             styles={styles.textInputStyle}
           />
         </View>
-        <View style={styles.emailInputContainer}>
+        {/* <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>GENDER</Text>
           <Dropdown
             label="Please Select"
@@ -125,22 +154,78 @@ const SignUp = () => {
             overlay={styles.dropDownoverlay}
             dropdown={styles.dropdownSingleSelect}
           />
-        </View>
+        </View> */}
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>DATE OF BIRTH</Text>
           <DatePickerApp />
         </View>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>MOBLIE</Text>
-          <View style={styles.mobileInputContainer}>
+          <View
+            style={styles.mobileInputContainer}
+            // onLayout={event => {
+            //   const layout = event.nativeEvent.layout;
+            //   setDropdownTop(layout.y + layout.height);
+            //   console.log(
+            //     'height:',
+            //     layout.height,
+            //     'width',
+            //     layout.width,
+            //     'x',
+            //     layout.x,
+            //     'y',
+            //     layout.y,
+            //     'event',
+            //     layout,
+            //     // .natiiveEvent.target.childNodes[0].offsetTop,
+            //   );
+            // }}
+          >
             <Dropdown
-              label="+1"
-              data={Country_Code.country_code}
-              onSelect={setSelected}
+              // ref={el => {
+              //   console.log('agdhkashdjasj', el.getBoundingClientRect());
+              // }}
+              visible={countryCodevisible}
+              label={countryCode}
+              onPress={() => toggleCountryCodeDropdown()}
+              // data={Country_Code.country_code}
+              // onSelect={setSelected}
               buttonStyle={styles.buttonStyleCountryCode}
-              overlay={styles.dropdownOverlayCountryCode}
-              dropdown={styles.dropdownSingleSelectCountryCode}
+              // overlay={}
+              // dropdown={}
             />
+            {/* dropdown */}
+            <Modal
+              visible={countryCodevisible}
+              transparent
+              animationType="none"
+              style={{overflow: 'hidden'}}>
+              <View style={styles.dropdownOverlayCountryCode}>
+                <FlatList
+                  style={[
+                    styles.dropdownSingleSelectCountryCode,
+                    {
+                      zIndex: 1,
+                      top: 628,
+                    },
+                  ]}
+                  data={Country_Code.country_code}
+                  scrollEnabled={true}
+                  renderItem={({item}) => (
+                    <TouchableOpacity
+                      style={itemStyle}
+                      onPress={() => {
+                        setContryCode(item.label);
+                        toggleCountryCodeDropdown();
+                      }}>
+                      <Text>{item.label}</Text>
+                    </TouchableOpacity>
+                  )}
+                  keyExtractor={(item, index) => index.toString()}
+                />
+              </View>
+            </Modal>
+            {/* dropdown */}
             <He_TextInput
               icon={mobileRegex.test(userMoblieNo) ? true : false}
               imageSrc={images.check}

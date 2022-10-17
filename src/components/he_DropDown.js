@@ -13,59 +13,79 @@ import Icon from 'react-native-vector-icons/Ionicons';
 const styles = require('../assets/css/ComponentStyle');
 
 export default Dropdown = props => {
-  const {label, data, onSelect, buttonStyle, overlay, dropdown} = props;
+  const {
+    label,
+    data,
+    buttonStyle,
+    overlay,
+    dropdown,
+    onPress,
+    onItemSelect,
+    visible,
+    ref,
+    onLayout,
+  } = props;
   const {buttonText, itemStyle} = styles;
-  const DropdownButton = useRef();
-  const [visible, setVisible] = useState(false);
-  const [selected, setSelected] = useState(undefined);
+  // const DropdownButton = useRef();
   const [dropdownTop, setDropdownTop] = useState(0);
 
-  const toggleDropdown = () => {
-    visible ? setVisible(false) : openDropdown();
-  };
+  // useEffect(
+  //   Dropdown.measure((_fx, _fy, _w, h, _px, py) => {
+  //     setDropdownTop(py + h);
+  //   }),
+  //   [],
+  // );
+  // const toggleDropdown = () => {
+  //   visible ? setVisible(false) : openDropdown();
+  // };
 
-  const openDropdown = () => {
-    DropdownButton.current.measure((_fx, _fy, _w, h, _px, py) => {
-      setDropdownTop(py + h);
-    });
-    setVisible(true);
-  };
+  // const openDropdown = () => {
+  //   console.log('BRO THIS IS A CLICKs');
+  //   DropdownButton.current.measure((_fx, _fy, _w, h, _px, py) => {
+  //     setDropdownTop(py + h);
+  //   });
+  //   onPress();
+  // };
 
-  const onItemPress = item => {
-    setSelected(item);
-    onSelect(item);
-    setVisible(false);
-  };
+  // const onItemPress = item => {
+  //   // setSelected(item);
+  //   // onSelect(item);
+  //   setVisible(false);
+  // };
+  // () => onItemPress(item)
+  // const renderItem =
+  // );
 
-  const renderItem = ({item}) => (
-    <TouchableOpacity style={itemStyle} onPress={() => onItemPress(item)}>
-      <Text>{item.label}</Text>
-    </TouchableOpacity>
-  );
-
-  const renderDropdown = () => {
-    return (
-      <Modal visible={visible} transparent animationType="none">
-        <View style={overlay}>
-          <FlatList
-            style={[dropdown, {top: dropdownTop}]}
-            data={data}
-            scrollEnabled={true}
-            renderItem={renderItem}
-            keyExtractor={(item, index) => index.toString()}
-          />
-        </View>
-      </Modal>
-    );
-  };
+  // const renderDropdown = () => {
+  //   return (
+  //     <Modal visible={visible} transparent animationType="none">
+  //       <View style={overlay}>
+  //         <FlatList
+  //           style={[dropdown, {top: dropdownTop}]}
+  //           data={data}
+  //           scrollEnabled={true}
+  //           renderItem={({item}) => (
+  //             <TouchableOpacity style={itemStyle} onPress={onItemSelect}>
+  //               <Text>{item.label}</Text>
+  //             </TouchableOpacity>
+  //           )}
+  //           keyExtractor={(item, index) => index.toString()}
+  //         />
+  //       </View>
+  //     </Modal>
+  //   );
+  // };
 
   return (
     <TouchableOpacity
-      ref={DropdownButton}
+      ref={ref}
       style={buttonStyle}
-      onPress={toggleDropdown}>
-      {renderDropdown()}
-      <Text style={buttonText}>{(selected && selected.label) || label}</Text>
+      onPress={() => {
+        onPress();
+        // openDropdown();
+      }}>
+      {/* {props.children} */}
+      <Text style={buttonText}>{label}</Text>
       {visible === true ? (
         <Icon name="caret-back-outline" color="#24DAC6" size={15} />
       ) : (

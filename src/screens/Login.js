@@ -1,148 +1,188 @@
-import { View, Text, StyleSheet, Image, KeyboardAvoidingView } from 'react-native'
-import React, { useEffect, useState } from 'react'
+import {
+  View,
+  Text,
+  StyleSheet,
+  Image,
+  KeyboardAvoidingView,
+  LogBox,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
-import images from "../assets/images/images";
+import images from '../assets/images/images';
 import Dropdown from '../components/he_DropDown';
 import RadioButton from '../components/he_RadioButton';
 import Country_Code from '../constants/Country_Code.json';
-const styles = require("../assets/css/Style");
+const styles = require('../assets/css/Style');
 const Login = () => {
-    const [selectedOption, setSelectedOption] = useState({ "key": "Email", "text": "EMAIL" });
-    const [selected, setSelected] = useState(undefined);
-    const [userEmail, setuserEmail] = useState('')
-    const [userPassword, setuserPassword] = useState('')
-    const [userMoblieNo, setuserMoblieNo] = useState('')
+  const [selectedOption, setSelectedOption] = useState({
+    key: 'Email',
+    text: 'EMAIL',
+  });
+  const [selected, setSelected] = useState(undefined);
+  const [userEmail, setuserEmail] = useState('');
+  const [userPassword, setuserPassword] = useState('');
+  const [userMoblieNo, setuserMoblieNo] = useState('');
+  const [inputError, setInputErrors] = useState({
+    emailOrMobileError: false, //email id error when empty
+    passwordError: false,
+    invalidEmailError: false, //email id error when email Id is not empty but invalid
+  });
 
-    const options = [
-        {
-            key: 'Email',
-            text: 'EMAIL',
-        },
-        {
-            key: 'Moblie',
-            text: 'MOBLIE',
-        },
-    ];
-    const onSelect = (item) => {
-        if (selectedOption && selectedOption.key === item.key) {
-            setSelectedOption(null);
-        } else {
-            setSelectedOption(item);
-        }
-    };
-    return (
-        <KeyboardAvoidingView enabled={true} style={styles.Container}>
-            <View style={styles.mainLoginView}>
-                <Text style={styles.headText}>Log In</Text>
-                <RadioButton
-                    selectedOption={selectedOption}
-                    onSelect={(item) => onSelect(item)}
-                    options={options}
-                    type={options.text}
-                />
-                {selectedOption.key === 'Email' ?
-                    (<>
-                        <View style={[styles.emailInputContainer, {}]}>
-                            <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
-                            <He_TextInput
-                                icon={true}
-                                placeholder='Email'
-                                value={userEmail}
-                                onChangeText={(text) => setuserEmail(text)}
-                                textContentType='emailAddress'
-                                screenName={'login'}
-                                style={[styles.inputView, {}]}
-                                styles={styles.textInputStyle}
-                                imageSrc={images.faceId}
-                            />
-                        </View>
-                    </>
-                    ) :
-                    (
-                        <>
-                            <View style={styles.mobileMainContainer}>
-                                <Text style={styles.labelEmailTextLogin}>MOBILE</Text>
-                                <View style={styles.mobileInputContainer}>
-                                    <Dropdown label="+1" data={Country_Code.country_code} onSelect={setSelected}
-                                        buttonStyle={styles.buttonStyleCountryCode}
-                                        overlay={styles.dropdownOverlayCountryCode}
-                                        dropdown={styles.dropdownSingleSelectCountryCode} />
-                                    <He_TextInput
-                                        icon={true}
-                                        placeholder='Moblie No'
-                                        value={userMoblieNo}
-                                        onChangeText={(text) => setuserMoblieNo(text)}
-                                        textContentType='telephoneNumber'
-                                        screenName={'login'}
-                                        style={styles.inputView1}
-                                        styles={styles.textInputStyle1}
-                                    />
-                                </View>
-                            </View>
-                        </>
-                    )}
-                <View style={styles.emailInputContainer}>
-                    <Text style={styles.labelEmailTextLogin}>PASSWORD</Text>
-                    <He_TextInput
-                        icon={true}
-                        placeholder='Password'
-                        value={userPassword}
-                        onChangeText={(text) => setuserPassword(text)}
-                        textContentType='password'
-                        screenName={'login'}
-                        style={styles.inputView}
-                        styles={styles.textInputStyle}
-                        imageSrc={images.eye_opened}
-                    />
-                </View>
-                <MainButton
-                    name='Login'
-                    buttonText={styles.buttonText}
-                    styleButton={styles.commanButton}
-                    onPress={() => navigation.navigate(console.log("Login"))} />
+  const options = [
+    {
+      key: 'Email',
+      text: 'EMAIL',
+    },
+    {
+      key: 'Moblie',
+      text: 'MOBLIE',
+    },
+  ];
+  const onSelect = item => {
+    if (selectedOption && selectedOption.key === item.key) {
+      setSelectedOption(null);
+    } else {
+      setSelectedOption(item);
+    }
+  };
+  const checkLogin = () => {
+    if (
+      !'regex'.test(userEmail) ||
+      userPassword.length == 0 ||
+      !'regex'.test(userMoblieNo)
+    ) {
+      userEmail.length == 0
+        ? setInputErrors({...data, emailOrMobileError: true})
+        : null;
+      !'regex'.test(userEmail)
+        ? setInputErrors({...data, invalidEmailError: true})
+        : null;
+      userPassword.length == 0
+        ? setInputErrors({...data, passwordError: true})
+        : null;
+      !'mobilenumberregex'.test(userMoblieNo)
+        ? setInputErrors({...data, emailOrMobileError: true})
+        : null;
+    } else {
+      //   fucntion call
+      navigation.navigate(console.log('Login'));
+    }
+  };
+  return (
+    <KeyboardAvoidingView enabled={true} style={styles.Container}>
+      <View style={styles.mainLoginView}>
+        <Text style={styles.headText}>Log In</Text>
+        <RadioButton
+          selectedOption={selectedOption}
+          onSelect={item => onSelect(item)}
+          options={options}
+          type={options.text}
+        />
+        {selectedOption.key === 'Email' ? (
+          <>
+            <View style={[styles.emailInputContainer, {}]}>
+              <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
+              <He_TextInput
+                icon={true}
+                placeholder="Email"
+                value={userEmail}
+                onChangeText={text => setuserEmail(text)}
+                textContentType="emailAddress"
+                screenName={'login'}
+                style={[styles.inputView, {}]}
+                styles={styles.textInputStyle}
+                imageSrc={images.faceId}
+              />
+              {inputError.emailOrMobileError ? (
+                <Text>This field cannot be empty</Text>
+              ) : null}
+              {inputError.invalidEmailError ? (
+                <Text>Invalid EmailId!</Text>
+              ) : null}
             </View>
-            <View style={styles.moreOptionContainer}>
-                <Text style={styles.moreOptionText}>No account yet?</Text>
-                <Text onPress={() => ''} style={styles.OptionText}>
-                    {" "}
-                    Sign up now{" "}
-                </Text>
-                <Image
-                    style={styles.loginSignInArrowImg}
-                    source={images.arrowRight}
+          </>
+        ) : (
+          <>
+            <View style={styles.mobileMainContainer}>
+              <Text style={styles.labelEmailTextLogin}>MOBILE</Text>
+              <View style={styles.mobileInputContainer}>
+                <Dropdown
+                  label="+1"
+                  data={Country_Code.country_code}
+                  onSelect={setSelected}
+                  buttonStyle={styles.buttonStyleCountryCode}
+                  overlay={styles.dropdownOverlayCountryCode}
+                  dropdown={styles.dropdownSingleSelectCountryCode}
                 />
-            </View>
-            <View style={styles.moreOptionContainer}>
-                <Text style={styles.moreOptionText}>Forgot Password?</Text>
-                <Text
-                    onPress={() => ''}
-                    style={styles.OptionText}
-                >
-                    {" "}
-                    Click here{" "}
-                </Text>
-                <Image
-                    style={styles.loginSignInArrowImg}
-                    source={images.arrowRight}
+                <He_TextInput
+                  icon={true}
+                  placeholder="Moblie No"
+                  value={userMoblieNo}
+                  onChangeText={text => {
+                    setuserMoblieNo(text);
+                    // setInputErrors(...state, {passwordError: false});
+                  }}
+                  textContentType="telephoneNumber"
+                  screenName={'login'}
+                  style={styles.inputView1}
+                  styles={styles.textInputStyle1}
                 />
+                {inputError.passwordError ? (
+                  <Text>This field cannot be empty</Text>
+                ) : null}
+              </View>
             </View>
-            <View
-                style={
-                    styles.loginImageContainer
-                }
-            >
-                <Image
-                    style={styles.loginImage}
-                    source={images.illustrationLeft}
-                />
-            </View>
-        </KeyboardAvoidingView>
+          </>
+        )}
+        <View style={styles.emailInputContainer}>
+          <Text style={styles.labelEmailTextLogin}>PASSWORD</Text>
+          <He_TextInput
+            icon={true}
+            placeholder="Password"
+            value={userPassword}
+            onChangeText={text => {
+              setuserPassword(text);
+              setInputErrors({...data, passwordError: false});
+            }}
+            textContentType="password"
+            screenName={'login'}
+            style={styles.inputView}
+            styles={styles.textInputStyle}
+            imageSrc={images.eye_opened}
+          />
+          {inputError.passwordError ? (
+            <Text>This field cannot be empty</Text>
+          ) : null}
+        </View>
+        <MainButton
+          name="Login"
+          buttonText={styles.buttonText}
+          styleButton={styles.commanButton}
+          onPress={() => checkLogin()}
+        />
+      </View>
+      <View style={styles.moreOptionContainer}>
+        <Text style={styles.moreOptionText}>No account yet?</Text>
+        <Text onPress={() => ''} style={styles.OptionText}>
+          {' '}
+          Sign up now{' '}
+        </Text>
+        <Image style={styles.loginSignInArrowImg} source={images.arrowRight} />
+      </View>
+      <View style={styles.moreOptionContainer}>
+        <Text style={styles.moreOptionText}>Forgot Password?</Text>
+        <Text onPress={() => ''} style={styles.OptionText}>
+          {' '}
+          Click here{' '}
+        </Text>
+        <Image style={styles.loginSignInArrowImg} source={images.arrowRight} />
+      </View>
+      <View style={styles.loginImageContainer}>
+        <Image style={styles.loginImage} source={images.illustrationLeft} />
+      </View>
+    </KeyboardAvoidingView>
+  );
+};
 
-    )
-}
-
-export default Login
-
-
-
+export default Login;

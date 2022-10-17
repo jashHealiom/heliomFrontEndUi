@@ -228,7 +228,7 @@ module.exports = StyleSheet.create({
     marginHorizontal: 20,
   },
   dropdownOverlayCountryCode: {
-    width: '17.6%',
+    width: '17%',
     height: '35%',
     justifyContent: 'center',
     alignItems: 'center',
