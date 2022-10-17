@@ -222,7 +222,7 @@ module.exports = StyleSheet.create({
   },
   dropDownoverlay: {
     width: '90%',
-    height: '44%',
+    height: '42.5%',
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 20,

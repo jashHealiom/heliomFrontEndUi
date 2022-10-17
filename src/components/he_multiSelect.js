@@ -111,7 +111,7 @@ export default Dropdown = ({label, data, onSelect, buttonStyle, overlay}) => {
                   onChangeText={text => onSearch(text)}
                 />
               </View>
-              <TouchableOpacity onPress={() => setVisible(false)}>
+              <TouchableOpacity>
                 <Icon
                   name="arrow-back-outline"
                   color="#ccc"
@@ -127,6 +127,19 @@ export default Dropdown = ({label, data, onSelect, buttonStyle, overlay}) => {
               keyExtractor={(item, index) => index.toString()}
             />
           </View>
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => setVisible(false)}
+          style={{
+            backgroundColor: '#24DAC6',
+            height: 40,
+            marginHorizontal: 20,
+            width: '90%',
+            justifyContent: 'center',
+            alignItems: 'center',
+            borderRadius: 2,
+          }}>
+          <Text>Submit</Text>
         </TouchableOpacity>
         <View style={styles.selectedDropDownContainer}>
           {selected.map((item, index) => {
@@ -156,7 +169,11 @@ export default Dropdown = ({label, data, onSelect, buttonStyle, overlay}) => {
         {(selected && selected.label) || label}{' '}
         {(selected && selected.length) || null}
       </Text>
-      {/* <Icon style={styles.icon} type="font-awesome" name="chevron-down" /> */}
+      {visible === true ? (
+        <Icon name="caret-back-outline" color="#24DAC6" size={15} />
+      ) : (
+        <Icon name="caret-down-outline" color="#24DAC6" size={15} />
+      )}
     </TouchableOpacity>
   );
 };

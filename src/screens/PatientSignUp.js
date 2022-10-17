@@ -121,7 +121,6 @@ const SignUp = () => {
           <Dropdown
             label="Please Select"
             data={ArrayData.gender}
-            onSelect={setSelected}
             buttonStyle={styles.buttonDropdownStyle}
             overlay={styles.dropDownoverlay}
             dropdown={styles.dropdownSingleSelect}

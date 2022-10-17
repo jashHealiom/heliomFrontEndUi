@@ -8,12 +8,7 @@ const Welcome = () => {
   return (
     <View style={styles.WelcomeContainer}>
       <Image style={styles.welcomeLogoImg} source={images.logo} />
-      <View
-        style={{
-          justifyContent: 'center',
-          alignItems: 'center',
-          lineHeight: 106.6,
-        }}>
+      <View style={styles.welcomeTextContainer}>
         <Text style={styles.welcomeLogoText}>Welcome to </Text>
         <Text style={styles.welcomeLogoWelcomeText}>Healiom</Text>
       </View>

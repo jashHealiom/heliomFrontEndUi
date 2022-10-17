@@ -14,9 +14,9 @@ const Manish = () => {
   return (
     <>
       <View style={styles.container}>
-        <Welcome />
+        {/* <Welcome /> */}
         {/* <Login /> */}
-        {/* <SignUp /> */}
+        <SignUp />
         {/* <SplashScreen /> */}
         {/* <OtpVerfication /> */}
         {/* <ChooseSignUp /> */}
