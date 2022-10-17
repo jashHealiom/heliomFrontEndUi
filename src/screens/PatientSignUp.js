@@ -25,7 +25,6 @@ const SignUp = () => {
   //states
   const {buttonText} = styles;
   const {itemStyle} = componentStyles;
-  const [selected, setSelected] = useState([]);
   const [userEmail, setuserEmail] = useState('');
   const [userFirstName, setuserFirstName] = useState('');
   const [userMiddleName, setuserMiddleName] = useState('');
@@ -185,7 +184,7 @@ const SignUp = () => {
               // ref={el => {
               //   console.log('agdhkashdjasj', el.getBoundingClientRect());
               // }}
-              visible={countryCodevisible}
+              // visible={countryCodevisible}
               label={countryCode}
               onPress={() => toggleCountryCodeDropdown()}
               // data={Country_Code.country_code}

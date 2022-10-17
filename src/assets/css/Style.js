@@ -362,7 +362,7 @@ module.exports = StyleSheet.create({
   leftArrow1: {
     width: 24,
     height: 24,
-    marginTop: -3,
+    marginTop: 15,
   },
   textChooseTitle: {
     marginVertical: 5,
@@ -425,6 +425,11 @@ module.exports = StyleSheet.create({
   },
   buttonStyle: {
     marginBottom: 20,
+  },
+  genderDropDownButtonStyle: {
+    marginBottom: 8,
+    marginTop: 10,
+    flexDirection: 'row',
   },
   otpViewStyle: {
     flexDirection: 'row',
