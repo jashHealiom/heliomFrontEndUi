@@ -24,11 +24,14 @@ const Login = () => {
   const [userPassword, setuserPassword] = useState('');
   const [userMoblieNo, setuserMoblieNo] = useState('');
   const [inputError, setInputErrors] = useState({
-    emailOrMobileError: false, //email id error when empty
+    mobileError: false,
+    emailError: false,
     passwordError: false,
-    invalidEmailError: false, //email id error when email Id is not empty but invalid
+    invalidEmailError: false,
+    invalidMoblieError: false,
   });
-
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const mobileRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   const options = [
     {
       key: 'Email',
@@ -47,22 +50,41 @@ const Login = () => {
     }
   };
   const checkLogin = () => {
+    console.log(emailRegex.test(userEmail), userEmail);
     if (
-      !'regex'.test(userEmail) ||
+      !emailRegex.test(userEmail) ||
       userPassword.length == 0 ||
-      !'regex'.test(userMoblieNo)
+      !mobileRegex.test(userMoblieNo)
     ) {
       userEmail.length == 0
-        ? setInputErrors({...data, emailOrMobileError: true})
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            emailError: true,
+          }))
         : null;
-      !'regex'.test(userEmail)
-        ? setInputErrors({...data, invalidEmailError: true})
+      userMoblieNo.length == 0
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            mobileError: true,
+          }))
+        : null;
+      !emailRegex.test(userEmail)
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            invalidEmailError: true,
+          }))
         : null;
       userPassword.length == 0
-        ? setInputErrors({...data, passwordError: true})
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            passwordError: true,
+          }))
         : null;
-      !'mobilenumberregex'.test(userMoblieNo)
-        ? setInputErrors({...data, emailOrMobileError: true})
+      !mobileRegex.test(userMoblieNo)
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            invalidMoblieError: true,
+          }))
         : null;
     } else {
       //   fucntion call
@@ -87,18 +109,25 @@ const Login = () => {
                 icon={true}
                 placeholder="Email"
                 value={userEmail}
-                onChangeText={text => setuserEmail(text)}
+                onChangeText={text => {
+                  setuserEmail(text);
+                  setInputErrors(prevState => ({
+                    ...prevState,
+                    emailError: false,
+                    invalidEmailError: false,
+                  }));
+                }}
                 textContentType="emailAddress"
                 screenName={'login'}
                 style={[styles.inputView, {}]}
                 styles={styles.textInputStyle}
                 imageSrc={images.faceId}
               />
-              {inputError.emailOrMobileError ? (
-                <Text>This field cannot be empty</Text>
+              {inputError.emailError ? (
+                <Text style={styles.errorText}>This field cannot be empty</Text>
               ) : null}
-              {inputError.invalidEmailError ? (
-                <Text>Invalid EmailId!</Text>
+              {inputError.invalidEmailError && !inputError.emailError ? (
+                <Text style={styles.errorText}>Invalid EmailId!</Text>
               ) : null}
             </View>
           </>
@@ -121,17 +150,21 @@ const Login = () => {
                   value={userMoblieNo}
                   onChangeText={text => {
                     setuserMoblieNo(text);
-                    // setInputErrors(...state, {passwordError: false});
+                    setInputErrors(prevState => ({
+                      ...prevState,
+                      mobileError: false,
+                      invalidMobileError: false,
+                    }));
                   }}
                   textContentType="telephoneNumber"
                   screenName={'login'}
                   style={styles.inputView1}
                   styles={styles.textInputStyle1}
                 />
-                {inputError.passwordError ? (
-                  <Text>This field cannot be empty</Text>
-                ) : null}
               </View>
+              {inputError.mobileError ? (
+                <Text style={styles.errorText}>This field cannot be empty</Text>
+              ) : null}
             </View>
           </>
         )}
@@ -143,7 +176,10 @@ const Login = () => {
             value={userPassword}
             onChangeText={text => {
               setuserPassword(text);
-              setInputErrors({...data, passwordError: false});
+              setInputErrors(prevState => ({
+                ...prevState,
+                passwordError: false,
+              }));
             }}
             textContentType="password"
             screenName={'login'}
@@ -152,7 +188,7 @@ const Login = () => {
             imageSrc={images.eye_opened}
           />
           {inputError.passwordError ? (
-            <Text>This field cannot be empty</Text>
+            <Text style={styles.errorText}>This field cannot be empty</Text>
           ) : null}
         </View>
         <MainButton

@@ -35,7 +35,18 @@ const SignUp = () => {
   const [countryCode, setContryCode] = useState('+1');
   const [countryCodevisible, setCountryCodeVisible] = useState(false);
   const [dropdownTop, setDropdownTop] = useState(0);
-
+  const [inputError, setInputErrors] = useState({
+    mobileError: false,
+    emailError: false,
+    firstNameError: false,
+    middleNameError: false,
+    lastNameError: false,
+    nickNameError: false,
+    dateError: false,
+    countryCodeError: false,
+    invalidEmailError: false,
+    invalidMoblieError: false,
+  });
   // const openDropdown = () => {
   //   // console.log('TGIS IS SOMETHING', DropdownButton);
   //   // DropdownButton.current.measure((_fx, _fy, _w, h, _px, py) => {
@@ -53,6 +64,72 @@ const SignUp = () => {
   };
   const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
   const mobileRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  const checkSignUp = () => {
+    console.log(emailRegex.test(userEmail), userEmail);
+    if (
+      !emailRegex.test(userEmail) ||
+      userPassword.length == 0 ||
+      !mobileRegex.test(userMoblieNo)
+    ) {
+      userEmail.length == 0
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            emailError: true,
+          }))
+        : null;
+      userMoblieNo.length == 0
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            mobileError: true,
+          }))
+        : null;
+      userFirstName.length == 0
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            firstNameError: true,
+          }))
+        : null;
+      userMiddleName.length == 0
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            middleNameError: true,
+          }))
+        : null;
+      userLastName.length == 0
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            lastNameError: true,
+          }))
+        : null;
+      userNickName.length == 0
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            nickNameError: true,
+          }))
+        : null;
+      countryCode.length == 0
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            countryCodeError: true,
+          }))
+        : null;
+      !emailRegex.test(userEmail)
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            invalidEmailError: true,
+          }))
+        : null;
+      !mobileRegex.test(userMoblieNo)
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            invalidMoblieError: true,
+          }))
+        : null;
+    } else {
+      //   fucntion call
+      navigation.navigate(console.log('Login'));
+    }
+  };
   return (
     <ScrollView>
       <View style={styles.mainView}>
@@ -86,12 +163,25 @@ const SignUp = () => {
             placeholder="Email"
             value={userEmail}
             keyboardType={'email-address'}
-            onChangeText={text => setuserEmail(text)}
+            onChangeText={text => {
+              setuserEmail(text);
+              setInputErrors(prevState => ({
+                ...prevState,
+                emailError: false,
+                invalidEmailError: false,
+              }));
+            }}
             textContentType="emailAddress"
             screenName={'signUp'}
             style={[styles.inputView, {}]}
             styles={styles.textInputStyle}
           />
+          {inputError.emailError ? (
+            <Text style={styles.errorText}>This field cannot be empty</Text>
+          ) : null}
+          {inputError.invalidEmailError && !inputError.emailError ? (
+            <Text style={styles.errorText}>Invalid EmailId!</Text>
+          ) : null}
         </View>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>LEGAL FIRST NAME</Text>
@@ -100,11 +190,20 @@ const SignUp = () => {
             imageSrc={images.check}
             placeholder="LEGAL FIRST NAME"
             value={userFirstName}
-            onChangeText={text => setuserFirstName(text)}
+            onChangeText={text => {
+              setuserFirstName(text);
+              setInputErrors(prevState => ({
+                ...prevState,
+                firstNameError: false,
+              }));
+            }}
             screenName={'signUp'}
             style={styles.inputView}
             styles={styles.textInputStyle}
           />
+          {inputError.firstNameError ? (
+            <Text style={styles.errorText}>This field cannot be empty</Text>
+          ) : null}
         </View>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>MIDDLE NAME</Text>
@@ -114,10 +213,19 @@ const SignUp = () => {
             placeholder="MIDDLE NAME"
             screenName={'signUp'}
             value={userMiddleName}
-            onChangeText={text => setuserMiddleName(text)}
+            onChangeText={text => {
+              setuserMiddleName(text);
+              setInputErrors(prevState => ({
+                ...prevState,
+                middleNameError: false,
+              }));
+            }}
             style={styles.inputView}
             styles={styles.textInputStyle}
           />
+          {inputError.middleNameError ? (
+            <Text style={styles.errorText}>This field cannot be empty</Text>
+          ) : null}
         </View>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>LAST NAME</Text>
@@ -127,10 +235,19 @@ const SignUp = () => {
             placeholder="LAST NAME"
             screenName={'signUp'}
             value={userLastName}
-            onChangeText={text => setuserLastName(text)}
+            onChangeText={text => {
+              setuserLastName(text);
+              setInputErrors(prevState => ({
+                ...prevState,
+                lastNameError: false,
+              }));
+            }}
             style={styles.inputView}
             styles={styles.textInputStyle}
           />
+          {inputError.lastNameError ? (
+            <Text style={styles.errorText}>This field cannot be empty</Text>
+          ) : null}
         </View>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>NICK NAME</Text>
@@ -140,10 +257,19 @@ const SignUp = () => {
             placeholder="NICK NAME"
             screenName={'signUp'}
             value={userNickName}
-            onChangeText={text => setuserNickName(text)}
+            onChangeText={text => {
+              setuserNickName(text);
+              setInputErrors(prevState => ({
+                ...prevState,
+                nickNameError: false,
+              }));
+            }}
             style={styles.inputView}
             styles={styles.textInputStyle}
           />
+          {inputError.nickNameError ? (
+            <Text style={styles.errorText}>This field cannot be empty</Text>
+          ) : null}
         </View>
         {/* <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>GENDER</Text>
@@ -233,17 +359,27 @@ const SignUp = () => {
               screenName={'signUp'}
               value={userMoblieNo}
               keyboardType={'numeric'}
-              onChangeText={text => setuserMoblieNo(text)}
+              onChangeText={text => {
+                setuserMoblieNo(text);
+                setInputErrors(prevState => ({
+                  ...prevState,
+                  mobileError: false,
+                  invalidMobileError: false,
+                }));
+              }}
               style={styles.inputView1}
               styles={styles.textInputStyle1}
             />
           </View>
+          {inputError.mobileError ? (
+            <Text style={styles.errorText}>This field cannot be empty</Text>
+          ) : null}
         </View>
         <MainButton
           name="Signup"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}
-          onPress={() => console.log('Done')}
+          onPress={() => checkSignUp()}
         />
       </View>
     </ScrollView>

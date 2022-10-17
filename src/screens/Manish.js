@@ -11,12 +11,15 @@ import Welcome from './Welcome';
 import SplashScreen from './SplashScreen';
 import ProviderIdentification from '../screens/providerIdentification';
 import PatientHome from '../screens/PatientHome';
+import forgotPassword from '../screens/forgotPassword';
+import ForgotPassword from '../screens/forgotPassword';
 const Manish = () => {
   return (
     <>
       <View style={styles.container}>
         {/* <Welcome /> */}
         {/* <Login /> */}
+        {/* <ForgotPassword /> */}
         {/* <PatientHome /> */}
         <SignUp />
         {/* <ProviderIdentification /> */}

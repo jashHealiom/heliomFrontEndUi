@@ -42,6 +42,12 @@ module.exports = StyleSheet.create({
     fontSize: 14,
     marginHorizontal: 1,
   },
+  ProvideersignUpLoginText: {
+    fontFamily: 'Rubik-Regular',
+    color: '#0086C3',
+    fontSize: 14,
+    marginHorizontal: 1,
+  },
   textSignupStyle: {
     marginLeft: '15%',
     fontSize: 18,
@@ -81,7 +87,7 @@ module.exports = StyleSheet.create({
   moreOptionContainer: {
     flexDirection: 'row',
     marginHorizontal: 0,
-    marginTop: 15.5,
+    marginTop: 10,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -151,7 +157,7 @@ module.exports = StyleSheet.create({
     width: '100%',
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 30,
+    marginVertical: 20,
     borderRadius: 2,
   },
   providerCommanButton: {
@@ -634,5 +640,12 @@ module.exports = StyleSheet.create({
 
   mobileMainContainer: {
     marginTop: 10,
+  },
+  errorText: {
+    textAlign: 'left',
+    color: '#FF3333',
+    fontFamily: 'Rubik-Regular',
+    fontSize: 12,
+    marginTop: 5,
   },
 });

@@ -26,7 +26,7 @@ const ProviderIdentification = () => {
           </TouchableOpacity>
         </View>
         <Text style={styles.signUpHeadText}>Provider Identification</Text>
-        {/* <View style={styles.emailInputContainer}>
+        <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>COUNTRY</Text>
           <Dropdown
             label="Please Select"
@@ -35,7 +35,7 @@ const ProviderIdentification = () => {
             overlay={styles.dropDownoverlay}
             dropdown={styles.dropdownSingleSelect}
           />
-        </View> */}
+        </View>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>
             {' '}

@@ -30,7 +30,8 @@ const ProviderSignUp = () => {
               source={images.leftArrow1}></Image>
           </TouchableOpacity>
           <Text style={styles.signUpBackArrowText}>
-            Already a member? <Text style={styles.signUpLoginText}> Login</Text>
+            Already a member?{' '}
+            <Text style={styles.ProvideersignUpLoginText}> Login</Text>
           </Text>
         </View>
         <Text style={styles.signUpHeadText}>SignUp</Text>
@@ -40,7 +41,7 @@ const ProviderSignUp = () => {
             label="Select Item"
             data={language.language}
             onSelect={item => setSelected(item)}
-            buttonStyle={styles.buttonStyle}
+            buttonStyle={styles.buttonDropdownStyle}
             overlay={styles.dropDownoverlay}
           />
         </View>
@@ -105,7 +106,7 @@ const ProviderSignUp = () => {
             label="Select Item"
             data={ArrayData.gender}
             onSelect={setSelected}
-            buttonStyle={styles.buttonStyle}
+            buttonStyle={styles.buttonDropdownStyle}
             overlay={styles.dropDownoverlay}
             dropdown={styles.dropdownSingleSelect}
           />
