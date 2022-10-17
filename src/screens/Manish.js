@@ -9,14 +9,17 @@ import CreatePassword from './CreatePassword';
 import ChooseSignUp from './ChooseSignUp';
 import Welcome from './Welcome';
 import SplashScreen from './SplashScreen';
-
+import ProviderIdentification from '../screens/providerIdentification';
+import PatientHome from '../screens/PatientHome';
 const Manish = () => {
   return (
     <>
       <View style={styles.container}>
         {/* <Welcome /> */}
         {/* <Login /> */}
+        {/* <PatientHome /> */}
         <SignUp />
+        {/* <ProviderIdentification /> */}
         {/* <SplashScreen /> */}
         {/* <OtpVerfication /> */}
         {/* <ChooseSignUp /> */}
