@@ -39,6 +39,8 @@ const SignUp = () => {
   const [countryCode, setContryCode] = useState('+1');
   const [countryCodevisible, setCountryCodeVisible] = useState(false);
   const [dropdownTop, setDropdownTop] = useState(0);
+  const [genderVisible, setGenderVisible] = useState(false);
+  const [gender, setGender] = useState('Gender');
   const [inputError, setInputErrors] = useState({
     mobileError: false,
     emailError: false,
@@ -66,6 +68,14 @@ const SignUp = () => {
       setCountryCodeVisible(false);
     } else {
       setCountryCodeVisible(true);
+    }
+  };
+
+  const toggleSetGenderVisible = () => {
+    if (genderVisible) {
+      setGenderVisible(false);
+    } else {
+      setGenderVisible(true);
     }
   };
 
@@ -300,16 +310,52 @@ const SignUp = () => {
             <Text style={styles.errorText}>This field cannot be empty</Text>
           ) : null}
         </View>
-        {/* <View style={styles.emailInputContainer}>
+        <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>GENDER</Text>
           <Dropdown
-            label="Please Select"
+            label={gender}
             data={ArrayData.gender}
-            buttonStyle={styles.buttonDropdownStyle}
-            overlay={styles.dropDownoverlay}
-            dropdown={styles.dropdownSingleSelect}
+            // visible={genderVisible}
+            onPress={() => toggleSetGenderVisible()}
+            // onSelect={setSelected}
+            buttonStyle={styles.genderDropDownButtonStyle}
+            // overlay={styles.dropDownoverlay}
+            // dropdown={styles.dropdownSingleSelect}
           />
-        </View> */}
+          {/* dropdown */}
+          <Modal
+            visible={genderVisible}
+            transparent
+            animationType="none"
+            style={{overflow: 'hidden'}}>
+            <View style={styles.dropDownoverlay}>
+              <FlatList
+                style={[
+                  styles.dropdownSingleSelect,
+                  {
+                    zIndex: 1,
+                    top: 542,
+                    maxHeight: 120,
+                  },
+                ]}
+                data={ArrayData.gender}
+                scrollEnabled={true}
+                renderItem={({item}) => (
+                  <TouchableOpacity
+                    style={itemStyle}
+                    onPress={() => {
+                      setGender(item.label);
+                      toggleSetGenderVisible();
+                    }}>
+                    <Text>{item.label}</Text>
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item, index) => index.toString()}
+              />
+            </View>
+          </Modal>
+          {/* dropdown */}
+        </View>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>DATE OF BIRTH</Text>
           <DatePickerApp
@@ -424,7 +470,7 @@ const SignUp = () => {
                     styles.dropdownSingleSelectCountryCode,
                     {
                       zIndex: 1,
-                      top: 628,
+                      top: 688,
                     },
                   ]}
                   data={Country_Code.country_code}

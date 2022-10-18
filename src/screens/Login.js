@@ -5,16 +5,22 @@ import {
   Image,
   KeyboardAvoidingView,
   LogBox,
+  Modal,
+  FlatList,
+  TouchableOpacity,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
 import images from '../assets/images/images';
 import Dropdown from '../components/he_DropDown';
-import RadioButton from '../components/he_RadioButton';
+import {RadioButton} from '../components/he_RadioButton';
 import Country_Code from '../constants/Country_Code.json';
 const styles = require('../assets/css/Style');
+const ComponentStyle = require('../assets/css/ComponentStyle');
+
 const Login = () => {
+  const {itemStyle} = ComponentStyle;
   const [selectedOption, setSelectedOption] = useState({
     key: 'Email',
     text: 'EMAIL',
@@ -23,6 +29,8 @@ const Login = () => {
   const [userEmail, setuserEmail] = useState('');
   const [userPassword, setuserPassword] = useState('');
   const [userMoblieNo, setuserMoblieNo] = useState('');
+  const [countryCode, setContryCode] = useState('+1');
+  const [countryCodevisible, setCountryCodeVisible] = useState(false);
   const [inputError, setInputErrors] = useState({
     mobileError: false,
     emailError: false,
@@ -91,6 +99,13 @@ const Login = () => {
       navigation.navigate(console.log('Login'));
     }
   };
+  const toggleCountryCodeDropdown = () => {
+    if (countryCodevisible) {
+      setCountryCodeVisible(false);
+    } else {
+      setCountryCodeVisible(true);
+    }
+  };
   return (
     <KeyboardAvoidingView enabled={true} style={styles.Container}>
       <View style={styles.mainLoginView}>
@@ -101,7 +116,7 @@ const Login = () => {
           options={options}
           type={options.text}
         />
-        {selectedOption.key === 'Email' ? (
+        {selectedOption.key == 'Email' ? (
           <>
             <View style={[styles.emailInputContainer, {}]}>
               <Text style={styles.labelEmailTextLogin}>EMAIL</Text>
@@ -136,14 +151,60 @@ const Login = () => {
             <View style={styles.mobileMainContainer}>
               <Text style={styles.labelEmailTextLogin}>MOBILE</Text>
               <View style={styles.mobileInputContainer}>
-                <Dropdown
+                {/* <Dropdown
                   label="+1"
                   data={Country_Code.country_code}
                   onSelect={setSelected}
                   buttonStyle={styles.buttonStyleCountryCode}
                   overlay={styles.dropdownOverlayCountryCode}
                   dropdown={styles.dropdownSingleSelectCountryCode}
+                /> */}
+
+                <Dropdown
+                  // ref={el => {
+                  //   console.log('agdhkashdjasj', el.getBoundingClientRect());
+                  // }}
+                  // visible={countryCodevisible}
+                  label={countryCode}
+                  onPress={() => toggleCountryCodeDropdown()}
+                  // data={Country_Code.country_code}
+                  // onSelect={setSelected}
+                  buttonStyle={styles.buttonStyleCountryCode}
+                  // overlay={}
+                  // dropdown={}
                 />
+                {/* dropdown */}
+                <Modal
+                  visible={countryCodevisible}
+                  transparent
+                  animationType="none"
+                  style={{overflow: 'hidden'}}>
+                  <View style={styles.dropdownOverlayCountryCode}>
+                    <FlatList
+                      style={[
+                        styles.dropdownSingleSelectCountryCode,
+                        {
+                          zIndex: 1,
+                          top: 202,
+                        },
+                      ]}
+                      data={Country_Code.country_code}
+                      scrollEnabled={true}
+                      renderItem={({item}) => (
+                        <TouchableOpacity
+                          style={itemStyle}
+                          onPress={() => {
+                            setContryCode(item.label);
+                            toggleCountryCodeDropdown();
+                          }}>
+                          <Text>{item.label}</Text>
+                        </TouchableOpacity>
+                      )}
+                      keyExtractor={(item, index) => index.toString()}
+                    />
+                  </View>
+                </Modal>
+                {/* dropdown */}
                 <He_TextInput
                   icon={true}
                   placeholder="Moblie No"

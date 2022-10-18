@@ -161,16 +161,63 @@ const ProviderSignUp = () => {
         </View>
         <Text style={styles.signUpHeadText}>SignUp</Text>
         <View style={styles.emailInputContainer}>
-          <Text style={styles.titleText}>LANGUAGE</Text>
-          <MultiSelect
-            label="Select Item"
-            data={language.language}
-            onSelect={item => setSelected(item)}
-            buttonStyle={styles.buttonDropdownStyle}
-            overlay={styles.dropDownoverlay}
-          />
+          <Text style={styles.titleText}>MOBLIE</Text>
+          <View style={styles.mobileInputContainer}>
+            <Dropdown
+              // ref={el => {
+              //   console.log('agdhkashdjasj', el.getBoundingClientRect());
+              // }}
+              // visible={countryCodevisible}
+              label={countryCode}
+              onPress={() => toggleCountryCodeDropdown()}
+              // data={Country_Code.country_code}
+              // onSelect={setSelected}
+              buttonStyle={styles.buttonStyleCountryCode}
+              // overlay={}
+              // dropdown={}
+            />
+            {/* dropdown */}
+            <Modal
+              visible={countryCodevisible}
+              transparent
+              animationType="none"
+              style={{overflow: 'hidden'}}>
+              <View style={styles.dropdownOverlayCountryCode}>
+                <FlatList
+                  style={[
+                    styles.dropdownSingleSelectCountryCode,
+                    {
+                      zIndex: 1,
+                      top: 672,
+                    },
+                  ]}
+                  data={Country_Code.country_code}
+                  scrollEnabled={true}
+                  renderItem={({item}) => (
+                    <TouchableOpacity
+                      style={itemStyle}
+                      onPress={() => {
+                        setContryCode(item.label);
+                        toggleCountryCodeDropdown();
+                      }}>
+                      <Text>{item.label}</Text>
+                    </TouchableOpacity>
+                  )}
+                  keyExtractor={(item, index) => index.toString()}
+                />
+              </View>
+            </Modal>
+            {/* dropdown */}
+            <He_TextInput
+              placeholder="Moblie No"
+              value={userMoblieNo}
+              onChangeText={text => setuserMoblieNo(text)}
+              screenName={'SignUp'}
+              style={styles.inputView1}
+              styles={styles.textInputStyle1}
+            />
+          </View>
         </View>
-
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>LEGAL FIRST NAME</Text>
           <He_TextInput
@@ -322,62 +369,14 @@ const ProviderSignUp = () => {
           {/* dropdown */}
         </View>
         <View style={styles.emailInputContainer}>
-          <Text style={styles.titleText}>MOBLIE</Text>
-          <View style={styles.mobileInputContainer}>
-            <Dropdown
-              // ref={el => {
-              //   console.log('agdhkashdjasj', el.getBoundingClientRect());
-              // }}
-              // visible={countryCodevisible}
-              label={countryCode}
-              onPress={() => toggleCountryCodeDropdown()}
-              // data={Country_Code.country_code}
-              // onSelect={setSelected}
-              buttonStyle={styles.buttonStyleCountryCode}
-              // overlay={}
-              // dropdown={}
-            />
-            {/* dropdown */}
-            <Modal
-              visible={countryCodevisible}
-              transparent
-              animationType="none"
-              style={{overflow: 'hidden'}}>
-              <View style={styles.dropdownOverlayCountryCode}>
-                <FlatList
-                  style={[
-                    styles.dropdownSingleSelectCountryCode,
-                    {
-                      zIndex: 1,
-                      top: 672,
-                    },
-                  ]}
-                  data={Country_Code.country_code}
-                  scrollEnabled={true}
-                  renderItem={({item}) => (
-                    <TouchableOpacity
-                      style={itemStyle}
-                      onPress={() => {
-                        setContryCode(item.label);
-                        toggleCountryCodeDropdown();
-                      }}>
-                      <Text>{item.label}</Text>
-                    </TouchableOpacity>
-                  )}
-                  keyExtractor={(item, index) => index.toString()}
-                />
-              </View>
-            </Modal>
-            {/* dropdown */}
-            <He_TextInput
-              placeholder="Moblie No"
-              value={userMoblieNo}
-              onChangeText={text => setuserMoblieNo(text)}
-              screenName={'SignUp'}
-              style={styles.inputView1}
-              styles={styles.textInputStyle1}
-            />
-          </View>
+          <Text style={styles.titleText}>LANGUAGE</Text>
+          <MultiSelect
+            label="Select Item"
+            data={language.language}
+            onSelect={item => setSelected(item)}
+            buttonStyle={styles.buttonDropdownStyle}
+            overlay={styles.dropDownoverlay}
+          />
         </View>
         <MainButton
           name="Next"
