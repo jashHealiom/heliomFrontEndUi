@@ -13,18 +13,23 @@ import MainButton from '../components/he_Button';
 import Dropdown from '../components/he_DropDown';
 import MultiSelect from '../components/he_multiSelect';
 import DatePickerApp from '../components/he_DatePicker';
-import Icon from 'react-native-vector-icons/Ionicons';
 //Import constants
 import ArrayData from '../constants/ArrayData.json';
 import language from '../constants/language.json';
 import Country_Code from '../constants/Country_Code.json';
 import images from '../assets/images/images';
+
 const styles = require('../assets/css/Style');
 const componentStyles = require('../assets/css/ComponentStyle');
 const SignUp = () => {
   //states
   const {buttonText} = styles;
   const {itemStyle} = componentStyles;
+  // date picker start
+  const [datePicker, setDatePicker] = useState(false);
+  const [date, setDate] = useState(new Date());
+  const [selectedDate, setselectedDate] = useState('');
+  // date picker end
   const [userEmail, setuserEmail] = useState('');
   const [userFirstName, setuserFirstName] = useState('');
   const [userMiddleName, setuserMiddleName] = useState('');
@@ -67,8 +72,15 @@ const SignUp = () => {
     console.log(emailRegex.test(userEmail), userEmail);
     if (
       !emailRegex.test(userEmail) ||
-      userPassword.length == 0 ||
-      !mobileRegex.test(userMoblieNo)
+      !mobileRegex.test(userMoblieNo) ||
+      userEmail.length != 0 ||
+      userMoblieNo.length != 0 ||
+      userFirstName.length != 0 ||
+      userMiddleName.length != 0 ||
+      userLastName.length != 0 ||
+      userNickName.length != 0 ||
+      countryCode.length != 0 ||
+      selectedDate.length != 0
     ) {
       userEmail.length == 0
         ? setInputErrors(prevState => ({
@@ -124,11 +136,28 @@ const SignUp = () => {
             invalidMoblieError: true,
           }))
         : null;
+      selectedDate == ''
+        ? setInputErrors(prevState => ({
+            ...prevState,
+            dateError: true,
+          }))
+        : null;
     } else {
       //   fucntion call
       navigation.navigate(console.log('Login'));
     }
   };
+  // date picker functions
+  const formatDate = date => {
+    var month = '' + (date.getMonth() + 1),
+      day = '' + date.getDate(),
+      year = date.getFullYear();
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [month, day, year].join('/');
+  };
+  // date picker functions end
   return (
     <ScrollView>
       <View style={styles.mainView}>
@@ -282,7 +311,70 @@ const SignUp = () => {
         </View> */}
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>DATE OF BIRTH</Text>
-          <DatePickerApp />
+          <DatePickerApp
+            value={date}
+            onChange={(event, selectedDate) => {
+              setselectedDate(formatDate(selectedDate));
+              setDatePicker(false);
+              setInputErrors(prevState => ({
+                ...prevState,
+                dateError: false,
+              }));
+            }}
+            selectedDate={selectedDate}
+            // style={datePickerStyle}
+            onPress={() => {
+              // showDatePicker();
+              setDatePicker(true);
+              console.log('whats the problem bitch');
+            }}
+            datePicker={datePicker}
+          />
+          {/* date picker */}
+          {/* <View style={datePickerContainer}>
+            {datePicker && (
+              <DateTimePicker
+                value={date}
+                mode={'date'}
+                dateFormat={'day month year'}
+                display={Platform.OS === 'ios' ? 'spinner' : 'default'}
+                is24Hour={true}
+                // onChange={onDateSelected}
+                onChange={(event, selectedDate) => {
+                  setselectedDate(formatDate(selectedDate));
+                  setDatePicker(false);
+                  setInputErrors(prevState => ({
+                    ...prevState,
+                    dateError: false,
+                  }));
+                }}
+                selectedDate={selectedDate}
+                style={datePickerStyle}
+                onPress={showDatePicker}
+              />
+            )}
+            <He_TextInput
+              value={selectedDate}
+              onChangeText={text => setselectedDate(text)}
+              placeholder="MM/DD/YYYY"
+              style={datePickerTextStyle}
+              editable={false}
+            />
+            {!datePicker && (
+              <View style={{margin: 10}}>
+                <TouchableOpacity
+                  onPress={showDatePicker}
+                  activeOpacity={0.7}
+                  style={touchableSizeIncreaseStyle}>
+                  <Icon name="calendar-outline" color="#24DAC6" size={20} />
+                </TouchableOpacity>
+              </View>
+            )}
+          </View> */}
+          {/* end date picker */}
+          {inputError.dateError ? (
+            <Text style={styles.errorText}>This field cannot be empty</Text>
+          ) : null}
         </View>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>MOBLIE</Text>

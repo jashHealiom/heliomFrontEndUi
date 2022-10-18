@@ -153,4 +153,39 @@ module.exports = StyleSheet.create({
     borderRightWidth: 1,
     borderColor: '#24DAC6',
   },
+
+  // date picker styles
+  datePickerContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: 'white',
+    // width: "100%",
+    borderBottomWidth: 1,
+    backgroundColor: '#FAFAFA',
+    height: 50,
+  },
+
+  datePickerTextStyle: {
+    fontSize: 14,
+    fontWeight: '400',
+    alignSelf: 'center',
+  },
+
+  // Style for iOS ONLY...
+  datePickerStyle: {
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    width: 320,
+    height: 260,
+    display: 'flex',
+  },
+  touchableSizeIncreaseStyle: {
+    //   backgroundColor: 'black',
+    padding: 10,
+    position: 'absolute',
+    right: -8,
+    bottom: -28,
+  },
+  // date picker styles end
 });

@@ -60,14 +60,12 @@ const ProviderSignUp = () => {
               style={styles.backArrowImage}
               source={images.leftArrow1}></Image>
           </TouchableOpacity>
-          <Text style={styles.signUpBackArrowText}>
-            Already a member?{' '}
-            <TouchableOpacity
-              activeOpacity={0.7}
-              onPress={console.log('navigation.navigate')}>
-              <Text style={styles.signUpLoginText}> Login</Text>
-            </TouchableOpacity>
-          </Text>
+          <Text style={styles.signUpBackArrowText}>Already a member? </Text>
+          <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={console.log('navigation.navigate')}>
+            <Text style={styles.signUpLoginText}> Login</Text>
+          </TouchableOpacity>
         </View>
         <Text style={styles.signUpHeadText}>SignUp</Text>
         <View style={styles.emailInputContainer}>
@@ -186,6 +184,7 @@ const ProviderSignUp = () => {
             NPI/Medical license identification number
           </Text>
           <He_TextInput
+            keyboardType={'number-pad'}
             placeholder="11-Digit No."
             screenName={'SignUp'}
             style={styles.inputView}

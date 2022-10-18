@@ -31,7 +31,7 @@ const OtpVerfication = () => {
     var newVal = '';
     var o = val.slice(-1);
     if (o != '.' && o != ',' && o != ' ' && o != '-') {
-      console.log('valllll', o == '.', o == ',', o == ' ', o == '-');
+      // console.log('valllll', o == '.', o == ',', o == ' ', o == '-');
       newVal = o;
     }
     if (key == '' || key == null) {
