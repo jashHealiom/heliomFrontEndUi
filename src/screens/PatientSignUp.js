@@ -51,6 +51,8 @@ const SignUp = () => {
     invalidEmailError: false,
     invalidMoblieError: false,
   });
+  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const mobileRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   // const openDropdown = () => {
   //   // console.log('TGIS IS SOMETHING', DropdownButton);
   //   // DropdownButton.current.measure((_fx, _fy, _w, h, _px, py) => {
@@ -66,8 +68,7 @@ const SignUp = () => {
       setCountryCodeVisible(true);
     }
   };
-  const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-  const mobileRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
   const checkSignUp = () => {
     console.log(emailRegex.test(userEmail), userEmail);
     if (

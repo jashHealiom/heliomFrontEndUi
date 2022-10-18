@@ -4,6 +4,7 @@ import Card from '../components/he_Card';
 import MainButton from '../components/he_Button';
 import CallScreenTimer from '../components/he_CallScreenTimer';
 import StarRating from '../components/he_StarRating';
+import {heCheckbox} from '../components/heCheckbox';
 const styles = require('../assets/css/Style');
 import {Switch} from 'react-native'; // copy paste where ever using a switch
 
@@ -14,6 +15,13 @@ const Jash = () => {
     setOnOff(value);
   };
   // copy paste where ever using a switch
+
+  // for checkbox
+  const [checked, setChecked] = useState(false);
+  const toggleCheckBox = () => {
+    checked ? setChecked(false) : setChecked(true);
+  };
+  //end checkbox
 
   return (
     <View style={{marginHorizontal: 20, marginTop: 10}}>
@@ -68,6 +76,7 @@ const Jash = () => {
         </View>
         <CallScreenTimer />
         <StarRating />
+        <heCheckbox onPress={() => toggleCheckBox()} checked={checked} />
         {/* // copy paste where ever using a switch */}
       </Card>
     </View>
