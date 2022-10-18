@@ -75,12 +75,13 @@ module.exports = StyleSheet.create({
   dropdown: {
     position: 'absolute',
     backgroundColor: '#fff',
-    width: '100%',
+    width: '90%',
     height: 205,
     shadowColor: '#000000',
     shadowRadius: 4,
     shadowOffset: {height: 4, width: 0},
     shadowOpacity: 0.5,
+    marginHorizontal: 20,
   },
   overlay: {
     width: '90%',

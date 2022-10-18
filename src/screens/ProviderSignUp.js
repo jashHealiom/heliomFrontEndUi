@@ -188,7 +188,7 @@ const ProviderSignUp = () => {
                     styles.dropdownSingleSelectCountryCode,
                     {
                       zIndex: 1,
-                      top: 672,
+                      top: 172,
                     },
                   ]}
                   data={Country_Code.country_code}

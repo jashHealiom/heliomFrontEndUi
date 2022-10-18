@@ -23,8 +23,8 @@ const Manish = () => {
         {/* <SplashScreen /> */}
         {/* <OtpVerfication /> */}
         {/* <ChooseSignUp /> */}
-        <ProviderSignUp />
-        {/* <ProviderIdentification /> */}
+        {/* <ProviderSignUp /> */}
+        <ProviderIdentification />
       </View>
     </>
   );

@@ -235,6 +235,13 @@ module.exports = StyleSheet.create({
   },
   dropdownOverlayCountryCode: {
     width: '17%',
+    height: '40%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 20,
+  },
+  dropdownOverlayCountry: {
+    width: '90%',
     height: '35%',
     justifyContent: 'center',
     alignItems: 'center',
@@ -251,6 +258,16 @@ module.exports = StyleSheet.create({
     shadowOpacity: 0.5,
   },
   dropdownSingleSelectCountryCode: {
+    position: 'absolute',
+    backgroundColor: '#fff',
+    width: '100%',
+    height: '23.73%',
+    shadowColor: '#000000',
+    shadowRadius: 4,
+    shadowOffset: {height: 4, width: 0},
+    shadowOpacity: 0.5,
+  },
+  dropdownSingleSelectCountry: {
     position: 'absolute',
     backgroundColor: '#fff',
     width: '100%',
