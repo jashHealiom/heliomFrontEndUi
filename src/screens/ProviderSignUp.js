@@ -76,7 +76,7 @@ const ProviderSignUp = () => {
             label="Select Item"
             data={language.language}
             onSelect={item => setSelected(item)}
-            buttonStyle={styles.genderDropDownButtonStyle}
+            buttonStyle={styles.buttonDropdownStyle}
             overlay={styles.dropDownoverlay}
           />
         </View>

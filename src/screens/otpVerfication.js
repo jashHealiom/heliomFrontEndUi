@@ -26,30 +26,78 @@ const OtpVerfication = () => {
     five: '',
     six: '',
   });
-  const settingOtp = (x, index) => {
-    // if (index == 0) {
-    //   setOtp1(x.slice(-1));
-    // }
-    // if (index == 1) {
-    //   setOtp2(x.slice(-1));
-    // }
-    // if (index == 2) {
-    //   setOtp3(x.slice(-1));
-    // }
-    // if (index == 3) {
-    //   setOtp4(x.slice(-1));
-    // }
-    // if (index == 4) {
-    //   setOtp5(x.slice(-1));
-    // }
-    // if (index == 5) {
-    //   setOtp6(x.slice(-1));
-    // }
-    // if ((index = 0)) {
-    //   secondTextInput.focus();
-    // }
+  const settingOtp = (val, key) => {
+    var newVal = val.slice(-1);
+    if (key == '' || key == null) {
+      // console.log('val', val, otp);
+      if (otp.one == '') {
+        setOtp(prevState => ({
+          ...prevState,
+          one: newVal,
+        }));
+      } else if (otp.two == '') {
+        setOtp(prevState => ({
+          ...prevState,
+          two: newVal,
+        }));
+      } else if (otp.three == '') {
+        setOtp(prevState => ({
+          ...prevState,
+          three: newVal,
+        }));
+      } else if (otp.four == '') {
+        setOtp(prevState => ({
+          ...prevState,
+          four: newVal,
+        }));
+      } else if (otp.five == '') {
+        setOtp(prevState => ({
+          ...prevState,
+          five: newVal,
+        }));
+      } else if (otp.six == '') {
+        setOtp(prevState => ({
+          ...prevState,
+          six: newVal,
+        }));
+      }
+    } else {
+      if (key == 'backspace') {
+        if (otp.six != '') {
+          setOtp(prevState => ({
+            ...prevState,
+            six: '',
+          }));
+        } else if (otp.five != '') {
+          setOtp(prevState => ({
+            ...prevState,
+            five: '',
+          }));
+        } else if (otp.four != '') {
+          setOtp(prevState => ({
+            ...prevState,
+            four: '',
+          }));
+        } else if (otp.three != '') {
+          setOtp(prevState => ({
+            ...prevState,
+            three: val,
+          }));
+        } else if (otp.two != '') {
+          setOtp(prevState => ({
+            ...prevState,
+            two: val,
+          }));
+        } else if (otp.one != '') {
+          setOtp(prevState => ({
+            ...prevState,
+            one: val,
+          }));
+        }
+      }
+    }
   };
-  console.log('otp otp otp', otp.one);
+
   return (
     <ScrollView>
       {/* <He_Loader color="#24DAC6" /> */}
@@ -67,71 +115,102 @@ const OtpVerfication = () => {
           <He_TextInput
             keyboardType={'numeric'}
             caretHidden={true}
-            value={otp}
+            value={otp.one}
             onChangeText={x => {
-              settingOtp(x, 0);
+              console.log('i want to see this', typeof x, x);
+              settingOtp(x);
             }}
             screenName={'login'}
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace') {
+                settingOtp('', 'backspace');
+              }
+            }}
             style={[styles.verifyInputView, {}]}
             styles={{backGroundColor: '#ffffff'}}
           />
 
           <He_TextInput
             onChangeText={x => {
-              settingOtp(x, 1);
+              settingOtp(x);
             }}
             //name='Otp'
             keyboardType={'numeric'}
             caretHidden={true}
-            value={otp}
+            value={otp.two}
             screenName={'login'}
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace') {
+                settingOtp('', 'backspace');
+              }
+            }}
             style={[styles.verifyInputView, {}]}
           />
 
           <He_TextInput
             onChangeText={x => {
-              settingOtp(x, 2);
+              settingOtp(x);
             }}
             //name='Otp'
-            value={otp}
+            value={otp.three}
             keyboardType={'numeric'}
             caretHidden={true}
             screenName={'login'}
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace') {
+                settingOtp('', 'backspace');
+              }
+            }}
             style={[styles.verifyInputView, {}]}
           />
 
           <He_TextInput
             onChangeText={x => {
-              settingOtp(x, 3);
+              settingOtp(x);
             }}
             //caretHidden={true}
             //name='Otp'
-            value={otp}
+            value={otp.four}
             keyboardType={'numeric'}
             screenName={'login'}
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace') {
+                settingOtp('', 'backspace');
+              }
+            }}
             style={[styles.verifyInputView, {}]}
           />
 
           <He_TextInput
             onChangeText={x => {
-              settingOtp(x, 4);
+              settingOtp(x);
             }}
             //name='Otp'
-            value={otp}
+            value={otp.five}
             keyboardType={'numeric'}
             caretHidden={true}
             screenName={'login'}
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace') {
+                settingOtp('', 'backspace');
+              }
+            }}
             style={[styles.verifyInputView, {}]}
           />
 
           <He_TextInput
             onChangeText={x => {
-              settingOtp(x, 5);
+              settingOtp(x);
             }}
-            value={otp}
+            value={otp.six}
             keyboardType={'numeric'}
             caretHidden={true}
             screenName={'login'}
+            onKeyPress={({nativeEvent}) => {
+              if (nativeEvent.key === 'Backspace') {
+                settingOtp('', 'backspace');
+              }
+            }}
             style={[styles.verifyInputView, {}]}
           />
         </View>
