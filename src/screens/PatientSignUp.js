@@ -18,6 +18,7 @@ import ArrayData from '../constants/ArrayData.json';
 import language from '../constants/language.json';
 import Country_Code from '../constants/Country_Code.json';
 import images from '../assets/images/images';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const styles = require('../assets/css/Style');
 const componentStyles = require('../assets/css/ComponentStyle');
@@ -41,6 +42,10 @@ const SignUp = () => {
   const [dropdownTop, setDropdownTop] = useState(0);
   const [genderVisible, setGenderVisible] = useState(false);
   const [gender, setGender] = useState('Gender');
+  const [searchResult, setSearchResult] = useState({});
+  const [selected, setSelected] = useState([]);
+  const [multiDropDownMulti, setMultiDropDownMulti] = useState(false);
+
   const [inputError, setInputErrors] = useState({
     mobileError: false,
     emailError: false,
@@ -78,6 +83,52 @@ const SignUp = () => {
       setGenderVisible(true);
     }
   };
+
+  // dropdown multi end
+
+  const toggleMultiDropdown = () => {
+    multiDropDownMulti
+      ? setMultiDropDownMulti(false)
+      : setMultiDropDownMulti(true);
+  };
+  //insert Dropdown value
+  const InsertDropDownValue = item => {
+    const isFound = selected.some(element => {
+      if (element.label === item.label) {
+        return true;
+      }
+      return false;
+    });
+    if (!isFound) {
+      let selectedItem = selected;
+      var obj = {};
+      obj['label'] = item.label;
+      obj['value'] = item.value;
+      selectedItem.push(obj);
+      setSelected(selectedItem);
+      onSelect(item);
+      // setMultiDropDownMulti(false);
+    }
+  };
+  //Delete Dropdown Value
+  const DeleteDropDownValue = index => {
+    var newData = [...selected];
+    if (index > -1) {
+      newData.splice(index, 1);
+      setSelected(newData);
+    }
+  };
+  // Dropdown Search function
+  const onSearch = text => {
+    let searchData = language.language.filter(function (item) {
+      return item.value.includes(
+        text.slice(0, 1).toUpperCase() + text.slice(1, text.length),
+      );
+    });
+    setSearchResult(searchData);
+  };
+
+  // dropdown multi end
 
   const checkSignUp = () => {
     console.log(emailRegex.test(userEmail), userEmail);
@@ -188,11 +239,118 @@ const SignUp = () => {
           <Text style={styles.titleText}>LANGUAGE</Text>
           <MultiSelect
             label="Please Select"
-            data={language.language}
+            // data={language.language}
             onSelect={item => setSelected(item)}
             buttonStyle={styles.buttonDropdownStyle}
-            overlay={styles.dropDownoverlay}
+            // overlay={styles.dropDownoverlay}
+            onPress={() => toggleMultiDropdown()}
+            visible={multiDropDownMulti}
           />
+          {/* dropdown multi */}
+          <Modal visible={multiDropDownMulti} transparent animationType="none">
+            {/* <TouchableOpacity
+              activeOpacity={0.1}
+              style={styles.dropDownoverlay}
+              // onPress={() => setVisible(false)}
+            > */}
+            <View style={styles.dropDownoverlay}>
+              <View
+                style={[componentStyles.dropdown, {top: 175, width: '100%'}]}>
+                <View style={componentStyles.multiSelectSearchContainer}>
+                  <View style={componentStyles.multiSelectSearchMainView}>
+                    <Icon
+                      name="search-outline"
+                      color="#ccc"
+                      size={18}
+                      style={componentStyles.multiSelectSearchIcon}
+                    />
+                    <He_TextInput
+                      placeholder="Search language..."
+                      style={
+                        (componentStyles.multiSelectSearchTextInput,
+                        {width: '87%'})
+                      }
+                      onChangeText={text => onSearch(text)}
+                    />
+                  </View>
+                  <TouchableOpacity onPress={() => toggleMultiDropdown()}>
+                    <Icon
+                      name="arrow-back-outline"
+                      color="#ccc"
+                      size={18}
+                      style={componentStyles.multiSelectBackIcon}
+                    />
+                  </TouchableOpacity>
+                </View>
+                <FlatList
+                  data={
+                    Object.keys(searchResult).length == 0
+                      ? language.language
+                      : searchResult
+                  }
+                  scrollEnabled={true}
+                  renderItem={({item, index}) => {
+                    const isFound = selected.some(element => {
+                      if (element.label === item.label) {
+                        return true;
+                      }
+                      return false;
+                    });
+                    return (
+                      <TouchableOpacity
+                        key={index}
+                        style={componentStyles.itemMultiSelect}
+                        onPress={() => InsertDropDownValue(item)}>
+                        {console.log('item hai re tu?', item)}
+                        <Text>{item.label}</Text>
+                        {isFound ? (
+                          <Icon
+                            name="checkmark-outline"
+                            color="#24DAC6"
+                            size={16}
+                          />
+                        ) : null}
+                      </TouchableOpacity>
+                    );
+                  }}
+                  keyExtractor={(item, index) => index.toString()}
+                />
+              </View>
+            </View>
+            {/* </TouchableOpacity> */}
+            <TouchableOpacity
+              onPress={() => toggleMultiDropdown()}
+              style={{
+                backgroundColor: '#24DAC6',
+                height: 40,
+                marginHorizontal: 20,
+                width: '90%',
+                justifyContent: 'center',
+                alignItems: 'center',
+                borderRadius: 2,
+              }}>
+              <Text>Submit</Text>
+            </TouchableOpacity>
+            <View style={componentStyles.selectedDropDownContainer}>
+              {selected.map((item, index) => {
+                return (
+                  <View
+                    key={index}
+                    style={componentStyles.selectedDropDownItem}>
+                    <Text style={componentStyles.SelectedDropDownText}>
+                      {item.value}
+                    </Text>
+                    <TouchableOpacity
+                      activeOpacity={0.1}
+                      onPress={() => DeleteDropDownValue(index)}>
+                      <Icon name="close-outline" color="#24DAC6" size={20} />
+                    </TouchableOpacity>
+                  </View>
+                );
+              })}
+            </View>
+          </Modal>
+          {/* dropdown multi end */}
         </View>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>EMAIL</Text>

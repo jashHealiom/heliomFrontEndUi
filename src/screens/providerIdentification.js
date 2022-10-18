@@ -25,7 +25,7 @@ const ProviderIdentification = () => {
   const [userSocialSecurity, setuserSocialSecurity] = useState('');
   const [userCAHQNumber, setuserCAHQNumber] = useState('');
 
-  const [countryCode, setContryCode] = useState('+1');
+  const [countryCode, setContryCode] = useState('Country');
   const [countryCodevisible, setCountryCodeVisible] = useState(false);
   const toggleCountryCodeDropdown = () => {
     if (countryCodevisible) {
