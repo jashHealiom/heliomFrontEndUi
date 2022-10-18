@@ -18,6 +18,7 @@ const OtpVerfication = () => {
   // const ref_input4 = useRef();
   // const ref_input5 = useRef();
   // const ref_input6 = useRef();
+  const [otpError, setOtpError] = useState(false);
   const [otp, setOtp] = useState({
     one: '',
     two: '',
@@ -27,7 +28,12 @@ const OtpVerfication = () => {
     six: '',
   });
   const settingOtp = (val, key) => {
-    var newVal = val.slice(-1);
+    var newVal = '';
+    var o = val.slice(-1);
+    if (o != '.' && o != ',' && o != ' ' && o != '-') {
+      console.log('valllll', o == '.', o == ',', o == ' ', o == '-');
+      newVal = o;
+    }
     if (key == '' || key == null) {
       // console.log('val', val, otp);
       if (otp.one == '') {
@@ -96,8 +102,30 @@ const OtpVerfication = () => {
         }
       }
     }
+    setOtpError(false);
   };
+  const verifyCheck = () => {
+    var flag = 0;
+    if (otp.one == '') {
+      flag = 1;
+    } else if (otp.two == '') {
+      flag = 1;
+    } else if (otp.three == '') {
+      flag = 1;
+    } else if (otp.four == '') {
+      flag = 1;
+    } else if (otp.five == '') {
+      flag = 1;
+    } else if (otp.six == '') {
+      flag = 1;
+    }
 
+    if (flag == 1) {
+      setOtpError(true);
+    } else {
+      // call the function here
+    }
+  };
   return (
     <ScrollView>
       {/* <He_Loader color="#24DAC6" /> */}
@@ -214,6 +242,11 @@ const OtpVerfication = () => {
             style={[styles.verifyInputView, {}]}
           />
         </View>
+        {otpError ? (
+          <Text style={[{top: -10}, styles.errorText]}>
+            One or more fields are empty!
+          </Text>
+        ) : null}
         <View>
           <Text style={styles.verifyInputContainer}>
             Didn’t receive code?{' '}
@@ -226,7 +259,7 @@ const OtpVerfication = () => {
             name="Verify and continue"
             buttonText={styles.buttonText}
             styleButton={styles.commanButton}
-            onPress={() => console.log('Done')}
+            onPress={() => verifyCheck()}
           />
         </View>
       </View>
