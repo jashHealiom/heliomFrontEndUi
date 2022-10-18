@@ -19,11 +19,11 @@ const Manish = () => {
       <View style={styles.container}>
         {/* <Welcome /> */}
         {/* <Login /> */}
-        {/* <SignUp /> */}
+        <SignUp />
         {/* <SplashScreen /> */}
         {/* <OtpVerfication /> */}
         {/* <ChooseSignUp /> */}
-        <ProviderSignUp />
+        {/* <ProviderSignUp /> */}
       </View>
     </>
   );
