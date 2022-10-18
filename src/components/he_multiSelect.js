@@ -12,89 +12,96 @@ import {
 import Icon from 'react-native-vector-icons/Ionicons';
 
 const styles = require('../assets/css/ComponentStyle');
-export default Dropdown = ({label, data, onSelect, buttonStyle, overlay}) => {
+export default Dropdown = ({
+  label,
+  data,
+  onSelect,
+  buttonStyle,
+  overlay,
+  onPress,
+}) => {
   const DropdownButton = useRef();
-  const [visible, setVisible] = useState(false);
-  const [selected, setSelected] = useState([]);
   const [dropdownTop, setDropdownTop] = useState(0);
-  const [searchResult, setSearchResult] = useState([]);
 
+  const [multiDropDownMulti, setMultiDropDownMulti] = useState(false);
+  const [searchResult, setSearchResult] = useState([]);
+  const [selected, setSelected] = useState([]);
   const toggleDropdown = () => {
-    visible ? setVisible(false) : openDropdown();
+    multiDropDownMulti ? setMultiDropDownMulti(false) : openDropdown();
   };
 
   const openDropdown = () => {
     DropdownButton.current.measure((_fx, _fy, _w, h, _px, py) => {
       setDropdownTop(py + h);
     });
-    setVisible(true);
+    setMultiDropDownMulti(true);
   };
 
   //insert Dropdown value
-  const InsertDropDownValue = item => {
-    const isFound = selected.some(element => {
-      if (element.label === item.label) {
-        return true;
-      }
-      return false;
-    });
-    if (!isFound) {
-      let selectedItem = selected;
-      var obj = {};
-      obj['label'] = item.label;
-      obj['value'] = item.value;
-      selectedItem.push(obj);
-      setSelected(selectedItem);
-      onSelect(item);
-      // setVisible(false);
-    }
-  };
+  // const InsertDropDownValue = item => {
+  //   const isFound = selected.some(element => {
+  //     if (element.label === item.label) {
+  //       return true;
+  //     }
+  //     return false;
+  //   });
+  //   if (!isFound) {
+  //     let selectedItem = selected;
+  //     var obj = {};
+  //     obj['label'] = item.label;
+  //     obj['value'] = item.value;
+  //     selectedItem.push(obj);
+  //     setSelected(selectedItem);
+  //     onSelect(item);
+  //     // setMultiDropDownMulti(false);
+  //   }
+  // };
   //Delete Dropdown Value
-  const DeleteDropDownValue = index => {
-    var newData = [...selected];
-    if (index > -1) {
-      newData.splice(index, 1);
-      setSelected(newData);
-    }
-  };
-  // Dropdown Search function
-  const onSearch = text => {
-    let searchData = data.filter(function (item) {
-      return item.value.includes(
-        text.slice(0, 1).toUpperCase() + text.slice(1, text.length),
-      );
-    });
-    setSearchResult(searchData);
-  };
+  // const DeleteDropDownValue = index => {
+  //   var newData = [...selected];
+  //   if (index > -1) {
+  //     newData.splice(index, 1);
+  //     setSelected(newData);
+  //   }
+  // };
+  // // Dropdown Search function
+  // const onSearch = text => {
+  //   let searchData = data.filter(function (item) {
+  //     return item.value.includes(
+  //       text.slice(0, 1).toUpperCase() + text.slice(1, text.length),
+  //     );
+  //   });
+  //   setSearchResult(searchData);
+  // };
 
-  //render values
-  const renderItem = ({item, index}) => {
-    const isFound = selected.some(element => {
-      if (element.label === item.label) {
-        return true;
-      }
-      return false;
-    });
-    return (
-      <TouchableOpacity
-        key={index}
-        style={styles.itemMultiSelect}
-        onPress={() => InsertDropDownValue(item)}>
-        <Text>{item.label}</Text>
-        {isFound ? (
-          <Icon name="checkmark-outline" color="#24DAC6" size={16} />
-        ) : null}
-      </TouchableOpacity>
-    );
-  };
+  // //render values
+  // const renderItem = ({item, index}) => {
+  //   const isFound = selected.some(element => {
+  //     if (element.label === item.label) {
+  //       return true;
+  //     }
+  //     return false;
+  //   });
+  //   return (
+  //     <TouchableOpacity
+  //       key={index}
+  //       style={styles.itemMultiSelect}
+  //       onPress={() => InsertDropDownValue(item)}>
+  //       <Text>{item.label}</Text>
+  //       {isFound ? (
+  //         <Icon name="checkmark-outline" color="#24DAC6" size={16} />
+  //       ) : null}
+  //     </TouchableOpacity>
+  //   );
+  // };
 
   const renderDropdown = () => {
     return (
-      <Modal visible={visible} transparent animationType="none">
+      <Modal visible={multiDropDownMulti} transparent animationType="none">
         <TouchableOpacity
           activeOpacity={0.1}
           style={overlay}
-          // onPress={() => setVisible(false)}
+          // onPress={() => setMultiDropDownMulti(false)}
         >
           <View style={[styles.dropdown, {top: dropdownTop}]}>
             <View style={styles.multiSelectSearchContainer}>
@@ -129,7 +136,7 @@ export default Dropdown = ({label, data, onSelect, buttonStyle, overlay}) => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => setVisible(false)}
+          onPress={() => setMultiDropDownMulti(false)}
           style={{
             backgroundColor: '#24DAC6',
             height: 40,
@@ -163,13 +170,13 @@ export default Dropdown = ({label, data, onSelect, buttonStyle, overlay}) => {
     <TouchableOpacity
       ref={DropdownButton}
       style={buttonStyle}
-      onPress={toggleDropdown}>
-      {renderDropdown()}
+      onPress={onPress}>
+      {/* {renderDropdown()} */}
       <Text style={styles.buttonText}>
         {(selected && selected.label) || label}{' '}
         {(selected && selected.length) || null}
       </Text>
-      {visible === true ? (
+      {multiDropDownMulti === true ? (
         <Icon name="caret-back-outline" color="#24DAC6" size={15} />
       ) : (
         <Icon name="caret-down-outline" color="#24DAC6" size={15} />
