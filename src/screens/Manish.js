@@ -1,6 +1,6 @@
 import {View, Text, StyleSheet, Button} from 'react-native';
 import React, {useState} from 'react';
-import Login from './Login';
+import {Login} from './Login';
 import SignUp from './PatientSignUp';
 import OtpVerfication from './otpVerfication';
 import ProviderSignUp from './ProviderSignUp';
@@ -24,6 +24,7 @@ const Manish = () => {
         {/* <OtpVerfication /> */}
         {/* <ChooseSignUp /> */}
         <ProviderSignUp />
+        {/* <ProviderIdentification /> */}
       </View>
     </>
   );
