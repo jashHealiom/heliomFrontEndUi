@@ -4,7 +4,7 @@ import Card from '../components/he_Card';
 import MainButton from '../components/he_Button';
 import CallScreenTimer from '../components/he_CallScreenTimer';
 import StarRating from '../components/he_StarRating';
-import {HeCheckbox} from '../components/HeCheckbox';
+// import {HeCheckbox} from '../components/HeCheckbox';
 const styles = require('../assets/css/Style');
 import {Switch} from 'react-native'; // copy paste where ever using a switch
 

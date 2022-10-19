@@ -6,6 +6,7 @@ import {
   ScrollView,
   Modal,
   FlatList,
+  KeyboardAvoidingView,
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import He_TextInput from '../components/he_TextInput';
@@ -119,7 +120,8 @@ const SignUp = () => {
     }
   };
   // Dropdown Search function
-  const onSearch = text => {
+  const onSearch = (text, item) => {
+    console.log(text, item, 'this is Text');
     let searchData = language.language.filter(function (item) {
       return item.value.includes(
         text.slice(0, 1).toUpperCase() + text.slice(1, text.length),
@@ -253,7 +255,7 @@ const SignUp = () => {
               style={styles.dropDownoverlay}
               // onPress={() => setVisible(false)}
             > */}
-            <View style={styles.dropDownoverlay}>
+            <KeyboardAvoidingView style={styles.dropDownoverlay}>
               <View
                 style={[componentStyles.dropdown, {top: 175, width: '100%'}]}>
                 <View style={componentStyles.multiSelectSearchContainer}>
@@ -301,7 +303,6 @@ const SignUp = () => {
                         key={index}
                         style={componentStyles.itemMultiSelect}
                         onPress={() => InsertDropDownValue(item)}>
-                        {console.log('item hai re tu?', item)}
                         <Text>{item.label}</Text>
                         {isFound ? (
                           <Icon
@@ -316,21 +317,24 @@ const SignUp = () => {
                   keyExtractor={(item, index) => index.toString()}
                 />
               </View>
-            </View>
+            </KeyboardAvoidingView>
             {/* </TouchableOpacity> */}
-            <TouchableOpacity
-              onPress={() => toggleMultiDropdown()}
+            <KeyboardAvoidingView
               style={{
-                backgroundColor: '#24DAC6',
                 height: 40,
-                marginHorizontal: 20,
                 width: '90%',
+                backgroundColor: '#24DAC6',
+                backgroundColor: '#24DAC6',
+                marginHorizontal: 20,
+                marginTop: '17%',
                 justifyContent: 'center',
                 alignItems: 'center',
                 borderRadius: 2,
               }}>
-              <Text>Submit</Text>
-            </TouchableOpacity>
+              <TouchableOpacity onPress={() => toggleMultiDropdown()}>
+                <Text>Submit</Text>
+              </TouchableOpacity>
+            </KeyboardAvoidingView>
             <View style={componentStyles.selectedDropDownContainer}>
               {selected.map((item, index) => {
                 return (
