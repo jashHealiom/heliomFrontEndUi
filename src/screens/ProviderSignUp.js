@@ -146,20 +146,6 @@ const ProviderSignUp = () => {
     <ScrollView>
       {/* <He_Loader color="#0086C3" /> */}
       <View style={styles.mainView}>
-        <View style={styles.backArrowContainer}>
-          <TouchableOpacity onPress={() => console.log('Back')}>
-            <Image
-              style={styles.backArrowImage}
-              source={images.leftArrow1}></Image>
-          </TouchableOpacity>
-          <Text style={styles.signUpBackArrowText}>Already a member? </Text>
-          <TouchableOpacity
-            activeOpacity={0.7}
-            onPress={console.log('navigation.navigate')}>
-            <Text style={styles.signUpLoginText}> Login</Text>
-          </TouchableOpacity>
-        </View>
-        <Text style={styles.signUpHeadText}>SignUp</Text>
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>MOBLIE</Text>
           <View style={styles.mobileInputContainer}>
@@ -298,76 +284,7 @@ const ProviderSignUp = () => {
             <Text style={styles.errorText}>This field cannot be empty</Text>
           ) : null}
         </View>
-        <View style={styles.emailInputContainer}>
-          <Text style={styles.titleText}>EMAIL</Text>
-          <He_TextInput
-            placeholder="Email"
-            value={userEmail}
-            onChangeText={text => {
-              setuserEmail(text);
-              setInputErrors(prevState => ({
-                ...prevState,
-                emailError: false,
-                invalidEmailError: false,
-              }));
-            }}
-            SCreenName={'SignUp'}
-            style={styles.inputView}
-            styles={styles.textInputStyle}
-          />
-          {inputError.emailError ? (
-            <Text style={styles.errorText}>This field cannot be empty</Text>
-          ) : null}
-          {inputError.invalidEmailError && !inputError.emailError ? (
-            <Text style={styles.errorText}>Invalid EmailId!</Text>
-          ) : null}
-        </View>
-        <View style={styles.emailInputContainer}>
-          <Text style={styles.titleText}>GENDER</Text>
-          <Dropdown
-            label={gender}
-            data={ArrayData.gender}
-            // visible={genderVisible}
-            onPress={() => toggleSetGenderVisible()}
-            // onSelect={setSelected}
-            buttonStyle={styles.genderDropDownButtonStyle}
-            // overlay={styles.dropDownoverlay}
-            // dropdown={styles.dropdownSingleSelect}
-          />
-          {/* dropdown */}
-          <Modal
-            visible={genderVisible}
-            transparent
-            animationType="none"
-            style={{overflow: 'hidden'}}>
-            <View style={styles.dropDownoverlay}>
-              <FlatList
-                style={[
-                  styles.dropdownSingleSelect,
-                  {
-                    zIndex: 1,
-                    top: 542,
-                    maxHeight: 120,
-                  },
-                ]}
-                data={ArrayData.gender}
-                scrollEnabled={true}
-                renderItem={({item}) => (
-                  <TouchableOpacity
-                    style={itemStyle}
-                    onPress={() => {
-                      setGender(item.label);
-                      toggleSetGenderVisible();
-                    }}>
-                    <Text>{item.label}</Text>
-                  </TouchableOpacity>
-                )}
-                keyExtractor={(item, index) => index.toString()}
-              />
-            </View>
-          </Modal>
-          {/* dropdown */}
-        </View>
+
         <View style={styles.emailInputContainer}>
           <Text style={styles.titleText}>LANGUAGE</Text>
           <MultiSelect

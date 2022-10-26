@@ -4,7 +4,12 @@ import Card from '../components/he_Card';
 import MainButton from '../components/he_Button';
 import CallScreenTimer from '../components/he_CallScreenTimer';
 import StarRating from '../components/he_StarRating';
+<<<<<<< HEAD
 // import {HeCheckbox} from '../components/HeCheckbox';
+=======
+import {HeCheckbox} from '../components/HeCheckbox';
+import PatientSignUpInfo from './ProviderSignUp';
+>>>>>>> 91164b4a5f4407d73d22bf962a20eb9cd931d7fc
 const styles = require('../assets/css/Style');
 import {Switch} from 'react-native'; // copy paste where ever using a switch
 
@@ -79,6 +84,7 @@ const Jash = () => {
         <HeCheckbox onPress={() => toggleCheckBox()} checked={checked} />
         {/* // copy paste where ever using a switch */}
       </Card>
+      <PatientSignUpInfo />
     </View>
   );
 };
