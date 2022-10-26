@@ -1,30 +1,20 @@
 import {View, Text, StyleSheet, Button} from 'react-native';
 import React, {useState} from 'react';
-import {Login} from './Login';
-import SignUp from './PatientSignUp';
-import OtpVerfication from './otpVerfication';
-import ProviderSignUp from './ProviderSignUp';
-import DatePickerApp from '../components/he_DatePicker';
-import CreatePassword from './CreatePassword';
-import ChooseSignUp from './ChooseSignUp';
-import Welcome from './Welcome';
-import SplashScreen from './SplashScreen';
-import ProviderIdentification from '../screens/providerIdentification';
-import PatientHome from '../screens/PatientHome';
-import forgotPassword from '../screens/forgotPassword';
-import ForgotPassword from '../screens/forgotPassword';
+
+import PatientEnableFaceID from './PatientEnableFaceID';
+import PatientEnableTouchID from './PatientEnableTouchID';
+import ProviderEnableTouchId from './ProviderEnableTouchId';
+import ProviderEnableFaceId from './ProviderEnableFaceId';
+import HeProgressiveBar from '../components/HeProgressiveBar';
 const Manish = () => {
   return (
     <>
       <View style={styles.container}>
-        {/* <Welcome /> */}
-        {/* <Login /> */}
-        <SignUp />
-        {/* <SplashScreen /> */}
-        {/* <OtpVerfication /> */}
-        {/* <ChooseSignUp /> */}
-        {/* <ProviderSignUp /> */}
-        {/* <ProviderIdentification /> */}
+        {/* <PatientEnableFaceID /> */}
+        {/* <PatientEnableTouchID /> */}
+        {/* <ProviderEnableTouchId /> */}
+        {/* <ProviderEnableFaceId /> */}
+        <HeProgressiveBar />
       </View>
     </>
   );

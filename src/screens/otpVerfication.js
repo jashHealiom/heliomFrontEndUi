@@ -3,7 +3,6 @@ import React, {useState, useEffect, useRef} from 'react';
 import He_TextInput from '../components/he_TextInput';
 import MainButton from '../components/he_Button';
 import images from '../assets/images/images';
-import He_Loader from '../components/he_Loader';
 const styles = require('../assets/css/Style');
 const OtpVerfication = () => {
   // const [otp1, setOtp1] = useState('');
