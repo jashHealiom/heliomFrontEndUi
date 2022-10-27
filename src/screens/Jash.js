@@ -1,16 +1,13 @@
-import {View, Text} from 'react-native';
+import {View, Text, ScrollView, Image} from 'react-native';
 import React, {useState} from 'react';
 import Card from '../components/he_Card';
 import MainButton from '../components/he_Button';
 import CallScreenTimer from '../components/he_CallScreenTimer';
 import StarRating from '../components/he_StarRating';
-<<<<<<< HEAD
-// import {HeCheckbox} from '../components/HeCheckbox';
-=======
 import {HeCheckbox} from '../components/HeCheckbox';
 import PatientSignUpInfo from './ProviderSignUp';
->>>>>>> 91164b4a5f4407d73d22bf962a20eb9cd931d7fc
 const styles = require('../assets/css/Style');
+import {VitalBox} from '../components/he_VitalBox';
 import {Switch} from 'react-native'; // copy paste where ever using a switch
 
 const Jash = () => {
@@ -29,7 +26,7 @@ const Jash = () => {
   //end checkbox
 
   return (
-    <View style={{marginHorizontal: 20, marginTop: 10}}>
+    <ScrollView style={{marginHorizontal: 20, marginTop: 10}}>
       <Card>
         <Text>Hi this is Jash.</Text>
         <MainButton
@@ -84,8 +81,26 @@ const Jash = () => {
         <HeCheckbox onPress={() => toggleCheckBox()} checked={checked} />
         {/* // copy paste where ever using a switch */}
       </Card>
-      <PatientSignUpInfo />
-    </View>
+      <VitalBox
+        title={'HEART RATE'}
+        iconSource={require('../assets/images/signup/ic_heart_beat.png')}
+        metric={'bmp'}
+        value={'92'}
+      />
+      <VitalBox
+        title={'RESPIRATION'}
+        iconSource={require('../assets/images/signup/ic_activity.png')}
+        metric={'rpm'}
+        value={'98'}
+      />
+      <VitalBox
+        title={'STRESS'}
+        iconSource={require('../assets/images/signup/ic_smiley_shaded.png')}
+        // metric={'bmp'}
+        value={'Low'}
+      />
+      {/* <PatientSignUpInfo /> */}
+    </ScrollView>
   );
 };
 
