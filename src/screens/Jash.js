@@ -3,21 +3,28 @@ import React, {useState} from 'react';
 import Card from '../components/he_Card';
 import MainButton from '../components/he_Button';
 import CallScreenTimer from '../components/he_CallScreenTimer';
-import StarRating from '../components/he_StarRating';
+import {StarRating} from '../components/he_StarRating';
 import {HeCheckbox} from '../components/HeCheckbox';
 import PatientSignUpInfo from './ProviderSignUp';
 const styles = require('../assets/css/Style');
 import {VitalBox} from '../components/he_VitalBox';
 import {Switch} from 'react-native'; // copy paste where ever using a switch
+import {InfoButton} from '../components/he_InfoButton';
 
 const Jash = () => {
+  // infoButton
+  const [informationIconTextVisible, setInformationIconTextVisible] =
+    useState(false);
+  // infoButton end
+
   // copy paste where ever using a switch
   const [onOff, setOnOff] = useState(false);
+  const [rating, setRating] = useState(0); // rating component
   const toggleSwitch = value => {
     setOnOff(value);
   };
   // copy paste where ever using a switch
-
+  let items = ['', '', '', '', '']; // add with star component
   // for checkbox
   const [checked, setChecked] = useState(false);
   const toggleCheckBox = () => {
@@ -77,7 +84,27 @@ const Jash = () => {
           {onOff ? <Text>ON</Text> : <Text>OFF</Text>}
         </View>
         <CallScreenTimer />
-        <StarRating />
+
+        {/* star rating */}
+        <View style={[{width: '100%', marginTop: 12}]}>
+          <View
+            style={{
+              flexDirection: 'row',
+              // justifyContent: 'space-between',
+              justifyContent: 'space-evenly',
+              alignItems: 'center',
+            }}>
+            {items.map((item, index) => (
+              <StarRating
+                onPress={() => setRating(index)}
+                ratedIndex={rating} //add the data value from api or update onPress in state
+                index={index}
+              />
+            ))}
+          </View>
+        </View>
+        {/* star rating end*/}
+
         <HeCheckbox onPress={() => toggleCheckBox()} checked={checked} />
         {/* // copy paste where ever using a switch */}
       </Card>
@@ -98,6 +125,18 @@ const Jash = () => {
         iconSource={require('../assets/images/signup/ic_smiley_shaded.png')}
         // metric={'bmp'}
         value={'Low'}
+      />
+      <View
+        style={{
+          marginBottom: 10,
+        }}
+      />
+      <InfoButton
+        onPress={() =>
+          setInformationIconTextVisible(!informationIconTextVisible)
+        }
+        visible={informationIconTextVisible}
+        text={'Obstetrics and gynaecology'}
       />
       {/* <PatientSignUpInfo /> */}
     </ScrollView>
