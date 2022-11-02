@@ -138,6 +138,7 @@ const Jash = () => {
         visible={informationIconTextVisible}
         text={'Obstetrics and gynaecology'}
       />
+
       {/* <PatientSignUpInfo /> */}
     </ScrollView>
   );
