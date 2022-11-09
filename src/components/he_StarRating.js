@@ -1,24 +1,87 @@
 import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
 import React from 'react';
-
+// star rating would be better on screen component
 const StarRating = props => {
-  const {style, ratedIndex} = props;
+  const {
+    style,
+    ratedIndex,
+    onPress,
+    index,
+    onPress1,
+    onPress2,
+    onPress3,
+    onPress4,
+    onPress5,
+  } = props;
   return (
-    <View style={[{width: '100%'}, style]}>
-      <View
-        style={{
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-        }}>
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-        <Image />
-      </View>
+    <View style={style}>
+      {ratedIndex >= index ? (
+        <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
+          <Image
+            source={require('../assets/images/signup/vectorfilled_star.png')}
+          />
+        </TouchableOpacity>
+      ) : (
+        <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
+          <Image
+            source={require('../assets/images/signup/vectorunfilled_star.png')}
+          />
+        </TouchableOpacity>
+      )}
+      {/* {ratedIndex > 2 ? (
+          <TouchableOpacity onPress={onPress1} activeOpacity={0.7}>
+            <Image
+              source={require('../assets/images/signup/vectorfilled_star.png')}
+            />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={onPress1} activeOpacity={0.7}>
+            <Image
+              source={require('../assets/images/signup/vectorunfilled_star.png')}
+            />
+          </TouchableOpacity>
+        )}
+        {ratedIndex > 3 ? (
+          <TouchableOpacity onPress={onPress1} activeOpacity={0.7}>
+            <Image
+              source={require('../assets/images/signup/vectorfilled_star.png')}
+            />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={onPress1} activeOpacity={0.7}>
+            <Image
+              source={require('../assets/images/signup/vectorunfilled_star.png')}
+            />
+          </TouchableOpacity>
+        )}
+        {ratedIndex > 4 ? (
+          <TouchableOpacity onPress={onPress1} activeOpacity={0.7}>
+            <Image
+              source={require('../assets/images/signup/vectorfilled_star.png')}
+            />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={onPress1} activeOpacity={0.7}>
+            <Image
+              source={require('../assets/images/signup/vectorunfilled_star.png')}
+            />
+          </TouchableOpacity>
+        )}
+        {ratedIndex > 5 ? (
+          <TouchableOpacity onPress={onPress1} activeOpacity={0.7}>
+            <Image
+              source={require('../assets/images/signup/vectorfilled_star.png')}
+            />
+          </TouchableOpacity>
+        ) : (
+          <TouchableOpacity onPress={onPress1} activeOpacity={0.7}>
+            <Image
+              source={require('../assets/images/signup/vectorunfilled_star.png')}
+            />
+          </TouchableOpacity>
+        )} */}
     </View>
   );
 };
 
-export default StarRating;
+export {StarRating};
