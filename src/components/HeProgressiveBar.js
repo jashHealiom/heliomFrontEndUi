@@ -19,42 +19,56 @@ const Progress = ({step, steps, height}) => {
   }, [step, width]);
   return (
     <>
-      <Text
-        style={{
-          fontFamily: 'Menlo',
-          fontSize: 12,
-          fontWeight: '900',
-          marginBottom: 10,
-        }}>
-        {step}/{steps}
-      </Text>
       <View
-        onLayout={e => {
-          const newWidth = e.nativeEvent.layout.width;
-          setWidth(newWidth);
-        }}
         style={{
-          height,
-          backgroundColor: '#EAEAEA',
-          borderRadius: height,
-          overflow: 'hidden',
+          flexDirection: 'row',
+          justifyContent: 'center',
+          alignItems: 'center',
+          width: '100%',
         }}>
-        <Animated.View
-          style={{
-            height,
-            width: '100%',
-            borderRadius: height,
-            backgroundColor: '#24DAC6',
-            position: 'absolute',
-            left: 0,
-            top: 0,
-            transform: [
-              {
-                translateX: animatedValue,
-              },
-            ],
+        <View
+          onLayout={e => {
+            const newWidth = e.nativeEvent.layout.width;
+            setWidth(newWidth);
           }}
-        />
+          style={{
+            height: 7,
+            borderWidth: 0.2,
+            borderColor: '#ccc',
+            width: '100%',
+            backgroundColor: '#EAEAEA',
+            borderRadius: height,
+            alignItems: 'center',
+            justifyContent: 'center',
+            overflow: 'hidden',
+          }}>
+          <Animated.View
+            style={{
+              height: 5,
+              width: '100%',
+              borderRadius: height,
+              backgroundColor: '#24DAC6',
+              position: 'absolute',
+
+              // left: 0,
+              // top: 0,
+              transform: [
+                {
+                  translateX: animatedValue,
+                },
+              ],
+            }}
+          />
+        </View>
+        <Text
+          style={{
+            fontFamily: 'Menlo',
+            fontSize: 12,
+            fontWeight: '900',
+            marginLeft: 3,
+          }}>
+          {step}%
+        </Text>
       </View>
     </>
   );
@@ -72,7 +86,7 @@ const HeProgressiveBar = () => {
   return (
     <View style={styles.container}>
       <StatusBar hidden />
-      <Progress step={index} steps={100} height={10} />
+      <Progress step={68} steps={100} height={10} />
     </View>
   );
 };
@@ -84,6 +98,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
-    padding: 20,
+    paddingVertical: 20,
+    paddingHorizontal: 15,
   },
 });

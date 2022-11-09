@@ -6,15 +6,28 @@ import PatientEnableTouchID from './PatientEnableTouchID';
 import ProviderEnableTouchId from './ProviderEnableTouchId';
 import ProviderEnableFaceId from './ProviderEnableFaceId';
 import HeProgressiveBar from '../components/HeProgressiveBar';
+import ClinicalInformationSettings from './ClinicalInformationSettings';
+import PatientAddRxDelivery from './PatientAddRxDelivery';
+import PatientAddExistingProvider from './PatientAddExistingProvider';
+import PatientAddPreviousFacility from './PatientAddPreviousFacility';
+import PatientCareCircle from './PatientCareCircle';
+import PatientProfilePaymentInput from './PatientProfilePaymentInput';
 const Manish = () => {
   return (
     <>
       <View style={styles.container}>
+        <PatientProfilePaymentInput />
+        {/* <PatientCareCircle /> */}
         {/* <PatientEnableFaceID /> */}
         {/* <PatientEnableTouchID /> */}
         {/* <ProviderEnableTouchId /> */}
         {/* <ProviderEnableFaceId /> */}
-        <HeProgressiveBar />
+        {/* <HeProgressiveBar /> */}
+        {/* <ClinicalInformationSettings /> */}
+        {/* <PatientAddRxDelivery /> */}
+        {/* <PatientAddExistingProvider /> */}
+        {/* <PatientAddPreviousFacility /> */}
+        {/* <PatientSubscription /> */}
       </View>
     </>
   );

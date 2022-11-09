@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import He_TextInput from '../components/he_TextInput';
-import MainButton from '../components/he_Button';
+import HeButton from '../components/HeButton';
 import Dropdown from '../components/he_DropDown';
 import MultiSelect from '../components/he_multiSelect';
 import DatePickerApp from '../components/he_DatePicker';
@@ -675,7 +675,7 @@ const SignUp = () => {
             <Text style={styles.errorText}>This field cannot be empty</Text>
           ) : null}
         </View>
-        <MainButton
+        <HeButton
           name="Signup"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}

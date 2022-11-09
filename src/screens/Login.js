@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
 import He_TextInput from '../components/he_TextInput';
-import MainButton from '../components/he_Button';
+import HeButton from '../components/he_Button';
 import images from '../assets/images/images';
 import Dropdown from '../components/he_DropDown';
 import {RadioButton} from '../components/he_RadioButton';
@@ -252,7 +252,7 @@ const Login = () => {
             <Text style={styles.errorText}>This field cannot be empty</Text>
           ) : null}
         </View>
-        <MainButton
+        <HeButton
           name="Login"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}

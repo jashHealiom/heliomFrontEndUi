@@ -1,15 +1,11 @@
 import {View, Text} from 'react-native';
 import React, {useState} from 'react';
 import Card from '../components/he_Card';
-import MainButton from '../components/he_Button';
+import HeButton from '../components/HeButton';
 import CallScreenTimer from '../components/he_CallScreenTimer';
 import StarRating from '../components/he_StarRating';
-<<<<<<< HEAD
-// import {HeCheckbox} from '../components/HeCheckbox';
-=======
-import {HeCheckbox} from '../components/HeCheckbox';
+import {HeCheckbox} from '../components/heCheckbox';
 import PatientSignUpInfo from './ProviderSignUp';
->>>>>>> 91164b4a5f4407d73d22bf962a20eb9cd931d7fc
 const styles = require('../assets/css/Style');
 import {Switch} from 'react-native'; // copy paste where ever using a switch
 
@@ -32,31 +28,31 @@ const Jash = () => {
     <View style={{marginHorizontal: 20, marginTop: 10}}>
       <Card>
         <Text>Hi this is Jash.</Text>
-        <MainButton
+        <HeButton
           name="Login"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}
           onPress={() => navigation.navigate(console.log('Login'))}
         />
-        <MainButton
+        <HeButton
           name="Login"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}
           onPress={() => navigation.navigate(console.log('Login'))}
         />
-        <MainButton
+        <HeButton
           name="Login"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}
           onPress={() => navigation.navigate(console.log('Login'))}
         />
-        <MainButton
+        <HeButton
           name="Login"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}
           onPress={() => navigation.navigate(console.log('Login'))}
         />
-        <MainButton
+        <HeButton
           name="Login"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}

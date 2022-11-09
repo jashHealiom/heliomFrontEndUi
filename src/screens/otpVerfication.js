@@ -1,7 +1,7 @@
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import React, {useState, useEffect, useRef} from 'react';
 import He_TextInput from '../components/he_TextInput';
-import MainButton from '../components/he_Button';
+import HeButton from '../components/he_Button';
 import images from '../assets/images/images';
 const styles = require('../assets/css/Style');
 const OtpVerfication = () => {
@@ -254,7 +254,7 @@ const OtpVerfication = () => {
               Request again.
             </Text>
           </Text>
-          <MainButton
+          <HeButton
             name="Verify and continue"
             buttonText={styles.buttonText}
             styleButton={styles.commanButton}

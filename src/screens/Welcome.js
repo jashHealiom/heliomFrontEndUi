@@ -1,7 +1,7 @@
 import {View, Text, Image, TouchableOpacity, Alert} from 'react-native';
 import React from 'react';
 import images from '../assets/images/images';
-import MainButton from '../components/he_Button';
+import HeButton from '../components/he_Button';
 
 const styles = require('../assets/css/Style');
 const Welcome = () => {
@@ -13,7 +13,7 @@ const Welcome = () => {
         <Text style={styles.welcomeLogoWelcomeText}>Healiom</Text>
       </View>
 
-      <MainButton
+      <HeButton
         name="Sign Up"
         buttonText={styles.welcomeButtonText}
         styleButton={styles.welcomeButton}

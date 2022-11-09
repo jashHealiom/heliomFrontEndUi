@@ -1,6 +1,6 @@
 import {View, Text} from 'react-native';
 import React from 'react';
-import MainButton from '../components/he_Button';
+import HeButton from '../components/he_Button';
 
 const styles = require('../assets/css/Style');
 const PatientHome = () => {
@@ -8,26 +8,26 @@ const PatientHome = () => {
     <View style={styles.homeContainer}>
       <Text style={styles.homeTitleText}>How can we help you today?</Text>
       <View style={{marginTop: 25}}>
-        <MainButton
+        <HeButton
           name="Connect with the right Specialist"
           buttonText={styles.homeButtonText}
           styleButton={styles.homeButton}
           onPress={() => ''}
         />
-        <MainButton
+        <HeButton
           name="Connect ASAP
 With an ER Doctor or for urgent care"
           buttonText={styles.homeLightButtonText}
           styleButton={styles.homeLightButton}
           onPress={() => ''}
         />
-        <MainButton
+        <HeButton
           name="Guest Connect with a Specialist"
           buttonText={styles.homeLightButtonText}
           styleButton={styles.homeLightButton}
           onPress={() => ''}
         />
-        <MainButton
+        <HeButton
           name="Quick Assessment (AI Only)"
           buttonText={styles.homeLightButtonText}
           styleButton={styles.homeLightButton}

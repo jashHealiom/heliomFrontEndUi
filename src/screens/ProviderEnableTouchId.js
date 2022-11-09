@@ -43,7 +43,7 @@ import {
 /* End React Native Packages */
 
 /* Start Components */
-import MainButton from '../components/he_Button';
+import HeButton from '../components/HeButton';
 import images from '../assets/images/images';
 /* End Components */
 
@@ -96,7 +96,7 @@ const ProviderEnableTouchId = props => {
           Login with a touch of your finger or your face, instead of typing your
           password everytime.
         </Text>
-        <MainButton
+        <HeButton
           name="Enable Now"
           buttonText={styles.buttonText}
           styleButton={styles.providerCommanButton}

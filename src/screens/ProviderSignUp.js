@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import React, {useState} from 'react';
 import He_TextInput from '../components/he_TextInput';
-import MainButton from '../components/he_Button';
+import HeButton from '../components/HeButton';
 import Dropdown from '../components/he_DropDown';
 import MultiSelect from '../components/he_multiSelect';
 import He_Loader from '../components/he_Loader';
@@ -295,7 +295,7 @@ const ProviderSignUp = () => {
             overlay={styles.dropDownoverlay}
           />
         </View>
-        <MainButton
+        <HeButton
           name="Next"
           buttonText={styles.providerButtonText}
           styleButton={styles.providerCommanButton}

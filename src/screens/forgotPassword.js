@@ -1,7 +1,7 @@
 import {View, Text, TouchableOpacity, Image, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import He_TextInput from '../components/he_TextInput';
-import MainButton from '../components/he_Button';
+import HeButton from '../components/he_Button';
 import images from '../assets/images/images';
 
 const styles = require('../assets/css/Style');
@@ -44,7 +44,7 @@ const ForgotPassword = () => {
           />
         </View>
 
-        <MainButton
+        <HeButton
           name="Create account"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}

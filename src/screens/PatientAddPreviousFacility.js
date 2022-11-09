@@ -30,19 +30,20 @@
 ======COMPONENT COMMENT ENDS======*/
 
 /* Start React Native Packages */
-import React, {Component} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {
-  Alert,
-  Image,
-  ScrollView,
+  View,
   Text,
   TouchableOpacity,
-  View,
+  Image,
+  ScrollView,
+  Modal,
 } from 'react-native';
 
 /* End React Native Packages */
 
 /* Start Components */
+import HeProgressiveBar from '../components/HeProgressiveBar';
 import HeButton from '../components/HeButton';
 import images from '../assets/images/images';
 /* End Components */
@@ -51,14 +52,20 @@ import images from '../assets/images/images';
 
 /* End Redux Functions */
 const styles = require('../assets/css/Style');
-
-const PatientEnableFaceID = props => {
+const PatientAddPreviousFacility = props => {
+  const {navigation} = props;
+  const {
+    headContainer,
+    settingsTitleText,
+    settingsTitleContainer,
+    backArrowImage,
+  } = styles;
   /* Start Use Selector */
 
   /* End Use Selector */
 
   /* Start Use State */
-
+  const [Show, setShow] = useState(false);
   /* End Use State */
 
   /* Start Use Ref */
@@ -79,39 +86,62 @@ const PatientEnableFaceID = props => {
 
   /* Final JSX Start */
   return (
-    <ScrollView style={{backgroundColor: '#FAFAFA', flex: 1}}>
-      <View style={{marginHorizontal: 20}}>
+    <View style={headContainer}>
+      <ScrollView
+        style={settingsTitleContainer}
+        showsVerticalScrollIndicator={false}>
         <TouchableOpacity
-          style={styles.FaceTouchIdArrow}
-          onPress={() => this.backFun()}>
-          <Image style={styles.leftArrow1} source={images.arrowLeft} />
+          onPress={() => backFun()}
+          style={{backgroundColor: '#FAFAFA'}}>
+          <Image style={backArrowImage} source={images.arrowLeft} />
         </TouchableOpacity>
-        <Text style={styles.headText}>Enable Face ID</Text>
-        <View style={{alignItems: 'center'}}>
-          <Image
-            style={{width: 80, height: 80, marginTop: 30}}
-            source={images.faceId}
-          />
-        </View>
-        <Text style={styles.FaceTouchIdText}>
-          Login with a touch of your finger or your face, instead of typing your
-          password everytime.
+        <HeProgressiveBar />
+        <Text style={settingsTitleText}>Previous Facilities</Text>
+        <Text
+          style={{
+            textAlign: 'left',
+            color: '#1B1E29',
+            fontFamily: 'Rubik-Regular',
+            fontSize: 16,
+          }}>
+          Add Previous healthcare Facilities you have used.
         </Text>
+        <TouchableOpacity
+          onPress={() =>
+            navigation.navigate('PatientOnboardingInsuranceManual')
+          }
+          style={{flexDirection: 'row', alignItems: 'center', marginTop: 10}}>
+          <Image source={images.plus} />
+          <Text
+            onPress={() => setShow(true)}
+            style={{
+              fontFamily: 'Rubik-Regular',
+              fontWeight: '300',
+              textAlign: 'right',
+              color: '#00A896',
+              fontSize: 16,
+              marginTop: 0,
+              marginHorizontal: 5,
+            }}>
+            Add Insurance
+          </Text>
+        </TouchableOpacity>
+        <Modal visible={Show} backgroundColor="#ccc">
+          <View>
+            <Text onPress={() => setShow(false)}>Close</Text>
+          </View>
+        </Modal>
         <HeButton
-          name="Enable Now"
+          name="Save"
           buttonText={styles.buttonText}
           styleButton={styles.commanButton}
-          onPress={() => ''}
+          //   onPress={() => }
         />
-
-        <TouchableOpacity onPress={() => this.demoFlow()}>
-          <Text style={styles.FaceTouchIdMaybeLaterText}>Maybe Later</Text>
-        </TouchableOpacity>
-      </View>
-    </ScrollView>
+      </ScrollView>
+    </View>
   );
 
   /* Final JSX End */
 };
 
-export default PatientEnableFaceID;
+export default PatientAddPreviousFacility;
