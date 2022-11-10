@@ -1,8 +1,8 @@
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import React from 'react';
 import HeButton from '../components/HeButton';
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   return (
     <View
       style={{
@@ -16,6 +16,12 @@ const HomeScreen = ({navigation}) => {
         buttonText={styles.buttonText}
         styleButton={styles.Button}
         onPress={() => navigation.navigate('jashScreen')}
+      />
+      <HeButton
+        name="CallScreen"
+        buttonText={styles.buttonText}
+        styleButton={styles.Button}
+        onPress={() => navigation.navigate('callScreen')}
       />
       <HeButton
         name="Manish"

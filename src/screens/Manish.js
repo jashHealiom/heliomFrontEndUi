@@ -12,12 +12,13 @@ import PatientAddExistingProvider from './PatientAddExistingProvider';
 import PatientAddPreviousFacility from './PatientAddPreviousFacility';
 import PatientCareCircle from './PatientCareCircle';
 import PatientProfilePaymentInput from './PatientProfilePaymentInput';
+import PatientSubscription from './PatientSubscription';
 const Manish = () => {
   return (
     <>
       <View style={styles.container}>
-        <PatientProfilePaymentInput />
-        {/* <PatientCareCircle /> */}
+        {/* <PatientProfilePaymentInput /> */}
+        <PatientCareCircle />
         {/* <PatientEnableFaceID /> */}
         {/* <PatientEnableTouchID /> */}
         {/* <ProviderEnableTouchId /> */}

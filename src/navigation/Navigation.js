@@ -6,12 +6,15 @@ import Jash from '../screens/Jash';
 import Manish from '../screens/Manish';
 import SignUp from '../screens/PatientSignUp'
 import ProviderSignUp from '../screens/ProviderSignUp';
+import CallScreen from '../screens/CallScreen';
+
 const Stack = createNativeStackNavigator();
 const Navigation = () => {
     return (
         <NavigationContainer>
             <Stack.Navigator initialRouteName="Home">
                 <Stack.Screen name="Home" component={HomeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="callScreen" component={CallScreen} options={{ headerShown: false }} />
                 <Stack.Screen name="jashScreen" component={Jash} options={{ headerShown: false }} />
                 <Stack.Screen name="ManishScreen" component={Manish} options={{ headerShown: false }} />
                 <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }} />
