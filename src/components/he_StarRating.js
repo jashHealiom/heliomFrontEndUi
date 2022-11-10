@@ -1,4 +1,4 @@
-import {View, Text, TouchableOpacity, StyleSheet, Image} from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import React from 'react';
 // star rating would be better on screen component
 const StarRating = props => {
@@ -7,11 +7,6 @@ const StarRating = props => {
     ratedIndex,
     onPress,
     index,
-    onPress1,
-    onPress2,
-    onPress3,
-    onPress4,
-    onPress5,
   } = props;
   return (
     <View style={style}>
@@ -84,4 +79,4 @@ const StarRating = props => {
   );
 };
 
-export {StarRating};
+export { StarRating };

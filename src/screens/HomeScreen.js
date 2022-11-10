@@ -24,6 +24,12 @@ const HomeScreen = ({ navigation }) => {
         onPress={() => navigation.navigate('callScreen')}
       />
       <HeButton
+        name="ChooseDoctor"
+        buttonText={styles.buttonText}
+        styleButton={styles.Button}
+        onPress={() => navigation.navigate('chooseDoctor')}
+      />
+      <HeButton
         name="Manish"
         buttonText={styles.buttonText}
         styleButton={styles.Button}
