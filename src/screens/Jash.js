@@ -1,20 +1,15 @@
-import {View, Text, ScrollView, Image} from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, ScrollView, Image } from 'react-native';
+import React, { useState } from 'react';
 import Card from '../components/he_Card';
 import HeButton from '../components/HeButton';
 import CallScreenTimer from '../components/he_CallScreenTimer';
-<<<<<<< HEAD
-import StarRating from '../components/he_StarRating';
-import {HeCheckbox} from '../components/heCheckbox';
-=======
-import {StarRating} from '../components/he_StarRating';
-import {HeCheckbox} from '../components/HeCheckbox';
->>>>>>> 0f5a94f5efca07b40b459c01a7e486a6c5a076ec
+import { StarRating } from '../components/he_StarRating';
+import { HeCheckbox } from '../components/HeCheckbox';
 import PatientSignUpInfo from './ProviderSignUp';
 const styles = require('../assets/css/Style');
-import {VitalBox} from '../components/he_VitalBox';
-import {Switch} from 'react-native'; // copy paste where ever using a switch
-import {InfoButton} from '../components/he_InfoButton';
+import { VitalBox } from '../components/he_VitalBox';
+import { Switch } from 'react-native'; // copy paste where ever using a switch
+import { InfoButton } from '../components/he_InfoButton';
 
 const Jash = () => {
   // infoButton
@@ -38,7 +33,7 @@ const Jash = () => {
   //end checkbox
 
   return (
-    <ScrollView style={{marginHorizontal: 20, marginTop: 10}}>
+    <ScrollView style={{ marginHorizontal: 20, marginTop: 10 }}>
       <Card>
         <Text>Hi this is Jash.</Text>
         <HeButton
@@ -81,7 +76,7 @@ const Jash = () => {
           }}>
           <Switch
             //   style={{ marginLeft: 16, marginRight: 2 }}
-            trackColor={{false: '#767577', true: '#0086C3'}}
+            trackColor={{ false: '#767577', true: '#0086C3' }}
             thumbColor={onOff ? '#0086C3' : '#0086C3'}
             value={onOff}
             onValueChange={value => toggleSwitch(value)}
@@ -91,7 +86,7 @@ const Jash = () => {
         <CallScreenTimer />
 
         {/* star rating */}
-        <View style={[{width: '100%', marginTop: 12}]}>
+        <View style={[{ width: '100%', marginTop: 12 }]}>
           <View
             style={{
               flexDirection: 'row',
