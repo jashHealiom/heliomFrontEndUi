@@ -3,13 +3,8 @@ import React, {useState} from 'react';
 import Card from '../components/he_Card';
 import HeButton from '../components/HeButton';
 import CallScreenTimer from '../components/he_CallScreenTimer';
-<<<<<<< HEAD
-import StarRating from '../components/he_StarRating';
-import {HeCheckbox} from '../components/heCheckbox';
-=======
 import {StarRating} from '../components/he_StarRating';
-import {HeCheckbox} from '../components/HeCheckbox';
->>>>>>> 0f5a94f5efca07b40b459c01a7e486a6c5a076ec
+// import {HeCheckbox} from '../components/HeCheckbox';
 import PatientSignUpInfo from './ProviderSignUp';
 const styles = require('../assets/css/Style');
 import {VitalBox} from '../components/he_VitalBox';

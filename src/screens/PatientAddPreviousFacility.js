@@ -46,6 +46,8 @@ import {
 import HeProgressiveBar from '../components/HeProgressiveBar';
 import HeButton from '../components/HeButton';
 import images from '../assets/images/images';
+import {HeCard} from '../components/HeCard';
+import He_TextInput from '../components/he_TextInput';
 /* End Components */
 
 /* Start Redux Functions */
@@ -59,6 +61,7 @@ const PatientAddPreviousFacility = props => {
     settingsTitleText,
     settingsTitleContainer,
     backArrowImage,
+    mainCardContainer,
   } = styles;
   /* Start Use Selector */
 
@@ -87,6 +90,64 @@ const PatientAddPreviousFacility = props => {
   /* Final JSX Start */
   return (
     <View style={headContainer}>
+      <Modal visible={Show} animationType="slide">
+        <HeCard
+          style={[
+            mainCardContainer,
+            {backgroundColor: '#FFFFFF', marginHorizontal: 20},
+          ]}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+            }}>
+            <Text onPress={() => setShow(false)} style={{width: '50%'}}>
+              Cancel
+            </Text>
+            <View
+              style={{
+                flexDirection: 'row',
+                width: '70%',
+                alignItems: 'center',
+              }}>
+              <Text style={{width: '50%'}}>Facility Details</Text>
+              <HeButton
+                name="Add"
+                buttonText={styles.addMoreButtonText}
+                styleButton={styles.addMoreButton}
+              />
+            </View>
+          </View>
+          <View style={styles.emailInputContainer}>
+            <Text style={styles.titleText}>Facility Name</Text>
+            <He_TextInput
+              placeholder="Facility Name"
+              screenName={'SignUp'}
+              style={styles.inputView}
+              styles={styles.textInputStyle}
+            />
+          </View>
+          <View style={styles.emailInputContainer}>
+            <Text style={styles.titleText}>ADDRESS</Text>
+            <He_TextInput
+              placeholder="auto complete Address"
+              screenName={'SignUp'}
+              style={styles.inputView}
+              styles={styles.textInputStyle}
+            />
+          </View>
+          <View style={styles.emailInputContainer}>
+            <Text style={styles.titleText}>Phone</Text>
+            <He_TextInput
+              placeholder="Phone"
+              screenName={'SignUp'}
+              style={styles.inputView}
+              styles={styles.textInputStyle}
+            />
+          </View>
+        </HeCard>
+      </Modal>
       <ScrollView
         style={settingsTitleContainer}
         showsVerticalScrollIndicator={false}>
@@ -126,11 +187,7 @@ const PatientAddPreviousFacility = props => {
             Add Insurance
           </Text>
         </TouchableOpacity>
-        <Modal visible={Show} backgroundColor="#ccc">
-          <View>
-            <Text onPress={() => setShow(false)}>Close</Text>
-          </View>
-        </Modal>
+
         <HeButton
           name="Save"
           buttonText={styles.buttonText}

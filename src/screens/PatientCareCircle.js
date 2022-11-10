@@ -37,7 +37,9 @@ import {
   TouchableOpacity,
   Image,
   ScrollView,
+  Dimensions,
   Modal,
+  FlatList,
 } from 'react-native';
 
 /* End React Native Packages */
@@ -47,11 +49,18 @@ import {
 import HeProgressiveBar from '../components/HeProgressiveBar';
 import HeButton from '../components/HeButton';
 import images from '../assets/images/images';
+import {HeCard} from '../components/HeCard';
+import He_TextInput from '../components/he_TextInput';
+import Dropdown from '../components/he_DropDown';
+import Country_Code from '../constants/Country_Code.json';
+import he_multiSelect from '../components/he_multiSelect';
 /* End Components */
 
 /* Start Redux Functions */
 
 /* End Redux Functions */
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 const styles = require('../assets/css/Style');
 const PatientCareCircle = props => {
   const {navigation} = props;
@@ -60,12 +69,16 @@ const PatientCareCircle = props => {
     settingsTitleText,
     settingsTitleContainer,
     backArrowImage,
+    mainCardContainer,
   } = styles;
   /* Start Use Selector */
 
   /* End Use Selector */
 
   /* Start Use State */
+  const [countryCode, setContryCode] = useState('+1');
+  const [userMoblieNo, setuserMoblieNo] = useState('');
+  const [countryCodevisible, setCountryCodeVisible] = useState(false);
   const [Show, setShow] = useState(false);
   /* End Use State */
 
@@ -88,6 +101,129 @@ const PatientCareCircle = props => {
   /* Final JSX Start */
   return (
     <View style={headContainer}>
+      <Modal visible={Show}>
+        <View
+          style={[
+            {
+              width: windowWidth * 1,
+              height: windowHeight * 0.9,
+              backgroundColor: '#FAFAFA',
+              margin: 10,
+              padding: 0,
+              borderRadius: 10,
+              flex: 1,
+              alignSelf: 'center',
+              alignItems: 'center',
+            },
+            {},
+          ]}>
+          <HeCard
+            style={[
+              mainCardContainer,
+              {backgroundColor: '#fff', height: '100%'},
+            ]}>
+            <View
+              style={{
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}>
+              <Text onPress={() => setShow(false)} style={{width: '30%'}}>
+                Cancel
+              </Text>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  width: '90%',
+                  alignItems: 'center',
+                }}>
+                <Text style={{width: '60%'}}>New Care Circle Member</Text>
+                <HeButton
+                  name="Add"
+                  buttonText={styles.addMoreButtonText}
+                  styleButton={styles.addMoreButton}
+                />
+              </View>
+            </View>
+            <View style={styles.emailInputContainer}>
+              <Text style={styles.titleText}>Name</Text>
+              <He_TextInput
+                placeholder="NAME"
+                screenName={'SignUp'}
+                style={styles.inputView}
+                styles={styles.textInputStyle}
+              />
+            </View>
+            <View style={styles.emailInputContainer}>
+              <Text style={styles.titleText}>Email</Text>
+              <He_TextInput
+                placeholder="EMAIL"
+                screenName={'SignUp'}
+                style={styles.inputView}
+                styles={styles.textInputStyle}
+              />
+            </View>
+            <View style={styles.emailInputContainer}>
+              <Text style={styles.titleText}>MOBLIE</Text>
+              <View style={styles.mobileInputContainer}>
+                <Dropdown
+                  // ref={el => {
+                  //   console.log('agdhkashdjasj', el.getBoundingClientRect());
+                  // }}
+                  // visible={countryCodevisible}
+                  label={countryCode}
+                  onPress={() => toggleCountryCodeDropdown()}
+                  // data={Country_Code.country_code}
+                  // onSelect={setSelected}
+                  buttonStyle={styles.buttonStyleCountryCode}
+                  // overlay={}
+                  // dropdown={}
+                />
+                {/* dropdown */}
+                <Modal
+                  visible={countryCodevisible}
+                  transparent
+                  animationType="none"
+                  style={{overflow: 'hidden'}}>
+                  <View style={styles.dropdownOverlayCountryCode}>
+                    <FlatList
+                      style={[
+                        styles.dropdownSingleSelectCountryCode,
+                        {
+                          zIndex: 1,
+                          top: 172,
+                        },
+                      ]}
+                      data={Country_Code.country_code}
+                      scrollEnabled={true}
+                      renderItem={({item}) => (
+                        <TouchableOpacity
+                          style={itemStyle}
+                          onPress={() => {
+                            setContryCode(item.label);
+                            toggleCountryCodeDropdown();
+                          }}>
+                          <Text>{item.label}</Text>
+                        </TouchableOpacity>
+                      )}
+                      keyExtractor={(item, index) => index.toString()}
+                    />
+                  </View>
+                </Modal>
+                {/* dropdown */}
+                <He_TextInput
+                  placeholder="Moblie No"
+                  value={userMoblieNo}
+                  onChangeText={text => setuserMoblieNo(text)}
+                  screenName={'SignUp'}
+                  style={styles.inputView1}
+                  styles={styles.textInputStyle1}
+                />
+              </View>
+            </View>
+          </HeCard>
+        </View>
+      </Modal>
       <ScrollView
         style={settingsTitleContainer}
         showsVerticalScrollIndicator={false}>
@@ -127,15 +263,7 @@ const PatientCareCircle = props => {
             Add Care Circle Member
           </Text>
         </TouchableOpacity>
-        <Modal visible={Show}>
-          <View
-            style={{
-              //   backgroundColor: '#E5E5E5',
-              justifyContent: 'flex-end',
-            }}>
-            <Text onPress={() => setShow(false)}>Close</Text>
-          </View>
-        </Modal>
+
         <HeButton
           name="Save"
           buttonText={styles.buttonText}
