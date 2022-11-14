@@ -4,6 +4,7 @@ import images from '../assets/images/images';
 import { VitalBox } from '../components/he_VitalBox';
 import Card from '../components/he_Card';
 import { StarRating } from '../components/he_StarRating';
+import { SpecialistCard } from '../components/HeSpecialistCard';
 
 const styles = require('../assets/css/Style');
 
@@ -28,7 +29,7 @@ const ChooseDoctor = ({ navigation }) => {
             </View>
             <View>
                 {/* render this in the flatlist */}
-                <Card style={{
+                {/* <Card style={{
                     shadowColor: "#000",
                     shadowOffset: {
                         width: 0,
@@ -88,8 +89,23 @@ const ChooseDoctor = ({ navigation }) => {
                             <Text style={{ fontSize: 18, marginLeft: 20, marginTop: 4, fontFamily: 'Rubik', color: 'black' }}>$60/hr</Text>
                         </View>
                     </View>
-                </Card>
+                </Card> */}
                 {/* render this in the flatlist */}
+                {[[], [], []].map(() => (
+                    <SpecialistCard
+                        name={'Dr Ash Damle'}
+                        waitTime={'2 Min'}
+                        docType={'Doctor'}
+                        location={'Mumbai'}
+                        languages={'English/Hindi'}
+                        yearsOfExperience={'20 years'}
+                        ratedIndex={3}
+                        rating={'4/5 (2000)'}
+                        ratePerHour={'$20/hr'}
+                        onPress={() => navigation.navigate('SpecialistDetails')}
+                        source={require('../assets/images/signup/ash_photo.png')}
+                    />
+                ))}
             </View>
         </View>
     );

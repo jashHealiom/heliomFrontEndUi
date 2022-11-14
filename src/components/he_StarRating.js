@@ -7,18 +7,21 @@ const StarRating = props => {
     ratedIndex,
     onPress,
     index,
+    starStyle
   } = props;
   return (
     <View style={style}>
       {ratedIndex >= index ? (
         <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
           <Image
+            style={[{ height: 21, width: 21 }, starStyle]}
             source={require('../assets/images/signup/vectorfilled_star.png')}
           />
         </TouchableOpacity>
       ) : (
         <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
           <Image
+            style={[{ height: 21, width: 21 }, starStyle]}
             source={require('../assets/images/signup/vectorunfilled_star.png')}
           />
         </TouchableOpacity>
