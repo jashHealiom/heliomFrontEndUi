@@ -1,5 +1,5 @@
-import {View, Text, StyleSheet, Button} from 'react-native';
-import React, {useState} from 'react';
+import { View, Text, StyleSheet, Button } from 'react-native';
+import React, { useState } from 'react';
 
 import PatientEnableFaceID from './PatientEnableFaceID';
 import PatientEnableTouchID from './PatientEnableTouchID';
@@ -18,7 +18,7 @@ const Manish = () => {
     <>
       <View style={styles.container}>
         {/* <PatientProfilePaymentInput /> */}
-        <PatientCareCircle />
+        {/* <PatientCareCircle /> */}
         {/* <PatientEnableFaceID /> */}
         {/* <PatientEnableTouchID /> */}
         {/* <ProviderEnableTouchId /> */}

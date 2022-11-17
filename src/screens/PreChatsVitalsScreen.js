@@ -5,7 +5,7 @@ import {VitalBox} from '../components/he_VitalBox';
 
 const styles = require('../assets/css/Style');
 
-const CallScreen = ({navigation}) => {
+const PreChatsVitalsScreen = ({navigation}) => {
   const [mute, setMute] = useState(false);
   const [videoOn, setVideoOn] = useState(true);
   return (
@@ -18,43 +18,37 @@ const CallScreen = ({navigation}) => {
       }}>
       {/* <Text>Hi this is the call screen</Text> */}
       <View style={{flex: 0.96}}>
-        <View>
-          <View
-            style={{
-              flexDirection: 'row',
-              justifyContent: 'flex-start',
-              marginLeft: 20,
-              marginTop: 20,
-            }}>
-            <Image
-              style={{height: 50, width: 50, borderRadius: 50}}
-              source={require('../assets/images/signup/ash_photo.png')}
-            />
-            <Text
-              style={{
-                paddingTop: 12,
-                paddingLeft: 8,
-                fontSize: 18,
-                color: 'white',
-                fontFamily: 'Rubik',
-              }}>
-              Dr Paddy B
-            </Text>
-          </View>
-        </View>
         <TouchableOpacity
-          style={{
-            backgroundColor: 'black',
-            height: 144,
-            width: 104,
-            position: 'absolute',
-            right: 20,
-            top: 82,
-          }}
           activeOpacity={0.7}
-          onPress={() => {
-            console.log('Invert your and other persons video');
-          }}></TouchableOpacity>
+          style={{
+            backgroundColor: '#FFFFFF',
+            width: 40,
+            borderRadius: 8,
+            height: 40,
+            // alignContent: 'center',
+            // justifyContent: 'center',
+            marginTop: 10,
+            marginLeft: 12,
+          }}
+          onPress={() => navigation.goBack()}>
+          <Image
+            style={{height: 40, width: 40, borderRadius: 50}}
+            source={require('../assets/images/signup/left_arrow1.png')}
+          />
+        </TouchableOpacity>
+        <View>
+          <Text
+            style={{
+              fontFamily: 'Rubik',
+              color: '#6D707D',
+              fontSize: 16,
+              marginHorizontal: 20,
+              marginTop: 15,
+            }}>
+            Dr. Molk Hess will join in 3 min. Be sure to have your video & audio
+            on.
+          </Text>
+        </View>
         <View
           style={{position: 'absolute', width: '100%', bottom: 20, left: 20}}>
           <VitalBox
@@ -144,4 +138,4 @@ const CallScreen = ({navigation}) => {
   );
 };
 
-export default CallScreen;
+export default PreChatsVitalsScreen;

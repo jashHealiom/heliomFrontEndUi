@@ -1,8 +1,8 @@
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
 import React from 'react';
 import HeButton from '../components/HeButton';
 
-const HomeScreen = ({ navigation }) => {
+const HomeScreen = ({navigation}) => {
   return (
     <View
       style={{
@@ -24,10 +24,22 @@ const HomeScreen = ({ navigation }) => {
         onPress={() => navigation.navigate('callScreen')}
       />
       <HeButton
+        name="PreChatsVitalsScreen"
+        buttonText={styles.buttonText}
+        styleButton={styles.Button}
+        onPress={() => navigation.navigate('PreChatsVitalsScreen')}
+      />
+      <HeButton
         name="ChooseDoctor"
         buttonText={styles.buttonText}
         styleButton={styles.Button}
         onPress={() => navigation.navigate('chooseDoctor')}
+      />
+      <HeButton
+        name="Waiting Screen"
+        buttonText={styles.buttonText}
+        styleButton={styles.Button}
+        onPress={() => navigation.navigate('Waiting')}
       />
       <HeButton
         name="Manish"
